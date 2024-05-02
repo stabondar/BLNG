@@ -1,0 +1,18 @@
+---
+import NavOverlayItem from "./NavOverlayItem.astro"
+
+const items = 
+[
+    {subtitle: 'DESIGN', color: '#189AF9', title: 'For designers', link: '#', descr: 'Enhancing the creative journey for jewelry designers with tools'},
+    {subtitle: 'Studio', color: '#FC502A', title: 'For designers', link: '#', descr: 'Enhancing the creative journey for jewelry designers with tools'},
+    {subtitle: 'Retail', color: '#898FA6', title: 'For designers', link: '#', descr: 'Enhancing the creative journey for jewelry designers with tools'}
+]
+---
+
+<div class="nav-overlay absolute top-0 left-0 right-0 z-10 pt-24 pb-10">
+    <div class="_container">
+        <div class="flex justify-center gap-10">
+            {items.map((item, index) => <NavOverlayItem index={index} {...item} />)}
+        </div>
+    </div>
+</div>

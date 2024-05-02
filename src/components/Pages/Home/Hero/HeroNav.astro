@@ -1,0 +1,19 @@
+---
+import HeroIndexes from "./HeroIndexes.astro"
+import SliderArrow from "@components/SliderArrow.astro"
+
+const props = Astro.props
+
+const length = 6
+---
+
+<div class="hero_nav absolute right-0 bottom-8 flex flex-col items-end justify-end gap-7 z-10">
+    <HeroIndexes length={`0${length}`}/>
+    <div class="overflow-clip relative">
+        <div class="hero_nav-title _28">Schlumberger Neklace</div>
+    </div>
+    <div class="flex flex-row gap-2.5">
+        <SliderArrow white={true}/>
+        <SliderArrow white={true} rotate={true}/>
+    </div>
+</div>

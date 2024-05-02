@@ -1,0 +1,13 @@
+---
+interface Props
+{
+    text: string;
+    style: string;
+}
+
+const props = Astro.props
+---
+
+<div class="animated-description" style={props.style}>
+    <div class="_38">{props.text}</div>
+</div>

@@ -1,0 +1,15 @@
+---
+import Title from '@components/Title.astro'
+import HeroSlider from './Hero/HeroSlider.astro'
+
+const props = Astro.props
+---
+
+<header class="pb-32">
+    <div class="_container">
+        <div class="hero pt-48 flex flex-col justify-center">
+            <Title h1={true} title="True craftmanship requires real humans. And a touch of BLNG."/>
+            <HeroSlider />
+        </div>
+    </div>
+</header>

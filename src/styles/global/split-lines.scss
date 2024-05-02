@@ -1,0 +1,11 @@
+.line-clip
+{
+    overflow: clip;
+}
+
+.body-line
+{
+    width: var(--width);
+    height: 1em;
+    overflow: clip;
+}

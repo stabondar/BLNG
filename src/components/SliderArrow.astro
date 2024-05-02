@@ -1,0 +1,34 @@
+---
+import ArrowIcon from '@components/ArrowIcon.astro'
+
+interface Props
+{
+    rotate?: boolean,
+    white?: boolean,
+}
+
+const props = Astro.props
+---
+
+<div class="slider-arrow flex items-center justify-center rounded-full aspect-square w-14" class:list={[props.rotate && 'rotate-180', props.white && 'white-bg']}>
+    <ArrowIcon width="w-6" />
+</div>
+
+<style lang="scss">
+    .slider-arrow
+    {
+        border: 1px solid currentColor;
+        color: color-mix(in srgb, #292929, transparent 80%);
+        transition: color var(--color-ease);
+
+        &:hover
+        {
+            color: color-mix(in srgb, #292929, transparent 30%);
+        }
+
+        &.white-bg
+        {
+            background-color: #fff;
+        }
+    }
+</style>

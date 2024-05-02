@@ -1,0 +1,29 @@
+.page-title
+{
+    .hero_line:nth-child(1)
+    {
+        &::before
+        {
+            content: '.';
+            color: var(--red);
+            font-size: 1em;
+            padding-right: calc(36 / var(--to-rem));
+            transition: opacity var(--color-ease);
+            opacity: 0;
+        }
+    }
+}
+
+.show-dots
+{
+    .page-title
+    {
+        .hero_line:nth-child(1)
+        {
+            &::before
+            {
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+---
+import Title from "@components/Title.astro"
+import ExperienceItem from "./Experience/ExperienceItem.astro";
+
+import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
+
+import videoImg from '@static/experience.png'
+
+const img = await getImage({src: videoImg, format: 'webp', quality: 'max'})
+---
+
+<section class="pt-52 pb-32">
+    <div class="_container">
+        <Title h2={true} title="Experience the magic. Render your dreams."/>
+
+        <div class="video-section relative w-full mt-24">
+            <Image src={img.src} alt="Video Section Img" width={img.attributes.width} height={img.attributes.height} class="relative z-10"/>
+        </div>
+
+        <div class="flex flex-row justify-center gap-36 mt-12">
+            <ExperienceItem title="Amplify Human Creativity" descr="Enhancing the creative journey for jewelry designers with tools to quickly ideate, refine, and visualize their inspirations in real time."/>
+            <ExperienceItem title="Advance Craftsmanship" descr="The ability to rapidly iterate and visualize ideas leads to more experimentations and enhance the quality and depth of the final product."/>
+        </div>
+    </div>
+</section>

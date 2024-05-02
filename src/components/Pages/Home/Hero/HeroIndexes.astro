@@ -1,0 +1,9 @@
+---
+const props = Astro.props
+---
+
+<div class="hero_indexes flex flex-row items-center justify-end gap-2">
+    <div class="_16 hero_indexes-current">01</div>
+    <div class="hero_indexes-divider h-3 w-px bg-black"></div>
+    <div class="_16 hero_indexes-all opacity-30">{props.length}</div>
+</div>

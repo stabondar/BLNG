@@ -1,0 +1,18 @@
+---
+import HeroSlide from "./HeroSlide.astro"
+import HeroNav from './HeroNav.astro'
+
+import imgBefore from '@static/hero before.jpg'
+import imgAfter from '@static/hero after.jpg'
+
+const props = Astro.props
+---
+
+<div class="hero_slider mt-16 relative">
+    <div class="swiper-wrapper h-full">
+        <HeroSlide imgBefore={imgBefore} imgAfter={imgAfter} />
+        <HeroSlide imgBefore={imgAfter} imgAfter={imgBefore} />
+    </div>
+
+    <HeroNav />
+</div>

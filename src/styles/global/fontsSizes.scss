@@ -1,0 +1,90 @@
+$body: 'FuturaPT', sans-serif;
+
+.caps
+{
+    text-transform: uppercase;
+}
+
+._74
+{
+    font-size: clamp(4.625rem, calc(74 / var(--to-rem)), 5.125rem);
+    line-height: 1;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._60
+{
+    font-size: clamp(3.75rem, calc(60 / var(--to-rem)), 4rem);
+    line-height: 1.1;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._38
+{
+    font-size: clamp(2.375rem, calc(38 / var(--to-rem)), 2.625rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._32
+{
+    font-size: clamp(calc(32 / 16 * 1rem), calc(32 / var(--to-rem)), calc(36 / 16 * 1rem));
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._28
+{
+    font-size: clamp(1.75rem, calc(28 / var(--to-rem)), 2rem);
+    line-height: 1.1;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._24
+{
+    font-size: clamp(calc(24 / 16 * 1rem), calc(24 / var(--to-rem)), calc(28 / 16 * 1rem));
+    line-height: 1.4;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._22
+{
+    font-size: clamp(calc(22 / 16 * 1rem), calc(22 / var(--to-rem)), calc(24 / 16 * 1rem));
+    line-height: 1.4;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._16
+{
+    font-size: clamp(1rem, calc(16 / var(--to-rem)), 1.3rem);
+    line-height: 1;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._14
+{
+    font-size: clamp(.875rem, calc(14 / var(--to-rem)), 1.2rem);
+    line-height: 1;
+    font-weight: 500;
+    font-family: $body;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+._13
+{
+    font-size: clamp(calc(13 / 16 * 1rem), calc(13 / var(--to-rem)), calc(15 / 16 * 1rem));
+    line-height: 1.4;
+    font-weight: 300;
+    font-family: $body;
+}

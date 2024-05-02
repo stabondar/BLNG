@@ -1,0 +1,40 @@
+.hero_slider
+{
+    height: 50rem;
+}
+
+.swiper-slide
+{
+    position: relative;
+}
+
+.hero_drag-parent
+{
+    --left: 50%;
+}
+
+.hero_drag
+{
+    background-color: color-mix(in srgb, #AEAEAE, transparent 70%);
+    border: 1px solid color-mix(in srgb, #292929, transparent 80%);
+    left: var(--left);
+    bottom: 2rem;
+    transform: translateX(-50%);
+}
+
+.hero_drag-line
+{
+    position: absolute;
+    left: var(--left);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,.3) 17%,
+        rgba(0,0,0,.5) 47%,
+        rgba(0,0,0,.4) 80%,
+        rgba(0,0,0,0) 100%,
+    );
+}

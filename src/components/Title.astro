@@ -1,0 +1,13 @@
+---
+interface Props
+{
+    title: string;
+    h1?: boolean;
+    h2?: boolean;
+}
+
+const props = Astro.props
+---
+
+{props.h1 && <h1 class="text-center _74">{props.title}</h1>}
+{props.h2 && <h2 class="text-center _60">{props.title}</h2>}

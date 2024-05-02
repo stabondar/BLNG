@@ -1,0 +1,9 @@
+---
+import { Image } from "astro:assets"
+
+const props = Astro.props
+---
+
+<div class="hero_img absolute inset-0">
+    <Image src={props.src} alt="Hero Image Before" width={props.width} height={props.height} format="webp"/>
+</div>

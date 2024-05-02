@@ -1,0 +1,19 @@
+@import './root.scss';
+
+@import './global/lenis.scss';
+@import './global/split-lines.scss';
+@import './global/fonts.scss';
+@import './global/fontsSizes.scss';
+@import './global/main.scss';
+@import './global/loader.scss';
+@import './global/container.scss';
+@import './global/rule.scss';
+@import './global/section.scss';
+
+@import './components/nav.scss';
+@import './components/video.scss';
+@import './components/title-animation.scss';
+@import './components/titles.scss';
+@import './components/rich-text.scss';
+
+@import './pages/home/';

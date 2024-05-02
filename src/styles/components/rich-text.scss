@@ -1,0 +1,34 @@
+.rich-text
+{
+    & > *
+    {
+        display: block;
+    }
+
+    h2
+    {
+        font-size: calc(44 / var(--to-rem));
+        letter-spacing: -0.04em;
+        line-height: 1;
+        font-weight: 300;
+        font-family: $body;
+        margin-bottom: calc(50 / var(--to-rem));
+    }
+    
+    p
+    {
+        margin-top: calc(25 / var(--to-rem));
+        font-size: calc(20 / var(--to-rem));
+        line-height: 1.5;
+        font-weight: 400;
+        font-family: $body;
+        text-indent: calc(100 / var(--to-rem));
+    
+    }
+
+    .rich-img
+    {
+        margin-top: calc(75 / var(--to-rem));
+        margin-bottom: calc(75 / var(--to-rem));
+    }
+}

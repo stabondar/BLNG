@@ -1,0 +1,22 @@
+---
+interface Props
+{
+    index?: string;
+    title: string;
+    video: string;
+}
+
+const props = Astro.props
+---
+
+<div class="step-item flex flex-row items-start justify-between px-10 py-10 rounded-[1.25rem] bg-[#E8E8E8] relative min-h-[32.75rem] overflow-clip">
+    <div class="_22 relative z-10 opacity-30">{props.index}</div>
+    <div class="_22 relative z-10">{props.title}</div>
+    <div class="absolute inset-0 z-0">
+        <div class="background-video">
+            <video muted autoplay crossorigin="anonymous" loop playsinline>
+                <source src={props.video} type="video/mp4" />
+            </video>
+        </div>
+    </div>
+</div>

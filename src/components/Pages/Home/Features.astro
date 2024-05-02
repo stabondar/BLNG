@@ -1,0 +1,46 @@
+---
+import SliderArrow from "@components/SliderArrow.astro"
+import FeaturesItem from "./Features/FeaturesItem.astro"
+
+import { getImage } from "astro:assets"
+
+import img1 from '@static/features/features 01.svg'
+import img2 from '@static/features/features 02.svg'
+import img3 from '@static/features/features 03.svg'
+
+const props = Astro.props
+
+const items = 
+[
+    {title: 'Text to render', img: img1},
+    {title: 'Abstract doodle', img: img2},
+    {title: 'Simple sketches', img: img3},
+    {title: 'Logos & inscriptions', img: img1},
+]
+---
+
+<section class="pt-52">
+    <div class="_container">
+        <div class="flex flex-row gap-5">
+            <div class="features_left flex flex-col justify-start gap-48 self-center flex-none">
+                <div class="_32">Features</div>
+                <div class="flex flex-row gap-2.5">
+                    <SliderArrow/>
+                    <SliderArrow rotate={true}/>
+                </div>
+            </div>
+            <div class="features_slider">
+                <div class="swiper-wrapper flex flex-row">
+                    {items.map(item => <FeaturesItem title={item.title} img={item.img}/>)}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .features_left
+    {
+        width: calc(355 / 16 * 1rem);
+    }
+</style>

@@ -1,0 +1,17 @@
+---
+interface Props
+{
+    title: string;
+    higlight: string;
+    alignText: string;
+    align: string;
+}
+
+const props = Astro.props
+---
+
+<div class:list={[props.alignText, props.align]}>
+    <div class="_14">
+        {props.title} <span>{props.higlight}</span>
+    </div>
+</div>
