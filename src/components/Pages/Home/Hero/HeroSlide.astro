@@ -2,18 +2,16 @@
 import HeroDrag from './HeroDrag.astro'
 import HeroImg from './HeroImg.astro'
 
-import { getImage } from "astro:assets"
 
+// const optimaziedBefore = await getImage({src: props.imgBefore, format: 'webp', quality: 'max'});
+// const optimaziedAfter = await getImage({src: props.imgAfter, format: 'webp', quality: 'max'});
 const props = Astro.props
-
-const optimaziedBefore = await getImage({src: props.imgBefore, format: 'webp', quality: 'max'});
-const optimaziedAfter = await getImage({src: props.imgAfter, format: 'webp', quality: 'max'});
 ---
 
 <div class="swiper-slide h-full">
     <div class="hero_imgs block absolute inset-0">
-        <HeroImg src={optimaziedBefore.src} alt="Hero Image Before" width={optimaziedBefore.attributes.width} height={optimaziedBefore.attributes.height} format="webp"/>
-        <HeroImg src={optimaziedAfter.src} alt="Hero Image After" width={optimaziedAfter.attributes.width} height={optimaziedAfter.attributes.height} format="webp"/>
+        <HeroImg src={props.imgBefore} alt="Hero Image Before" width={props.imgBefore.width} height={props.imgBefore.height}/>
+        <HeroImg src={props.imgAfter} alt="Hero Image After" width={props.imgAfter.width} height={props.imgAfter.height}/>
         <HeroDrag />
     </div>
 </div>

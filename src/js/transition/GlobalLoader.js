@@ -12,6 +12,7 @@ export default class GlobalLoader
         this.pageAnimation = pageAnimation
         this.pageContent = pageContent
 
+        this.hero = document.querySelector('.hero')
         this.loader = document.querySelector('.loader')
         this.loaderCounter = this.loader.querySelector('div')
         this.container = container
@@ -19,11 +20,12 @@ export default class GlobalLoader
         this.scroll.stop()
 
         this.loadImg()
+        // this.init()
     }
 
     loadImg()
     {
-        const images = document.querySelectorAll('img');
+        const images = this.hero.querySelectorAll('img');
 
         imagesLoaded(images, { background: true }).on('progress', instance => 
         {
@@ -33,7 +35,7 @@ export default class GlobalLoader
 
         const imgPlay = new Promise(resolve =>
         {
-            imagesLoaded(document.querySelectorAll('img'), { background: true }, () =>
+            imagesLoaded(images, { background: true }, () =>
             {
                 this.init()
                 resolve()
@@ -45,6 +47,7 @@ export default class GlobalLoader
     {
         let delay = 0.5
 
+        gsap.set(this.container, {autoAlpha: 1})
         // this.pageAnimation(delay)
         this.pageContent()
     }

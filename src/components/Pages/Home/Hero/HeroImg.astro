@@ -1,9 +1,19 @@
 ---
+interface Props
+{
+    src: any,
+    width: number,
+    height: number,
+    alt: string
+}
+
 import { Image } from "astro:assets"
 
 const props = Astro.props
+
+console.log(props)
 ---
 
 <div class="hero_img absolute inset-0">
-    <Image src={props.src} alt="Hero Image Before" width={props.width} height={props.height} format="webp"/>
+    <Image src={props.src} alt={props.alt} width={props.width} height={props.height} format="webp"/>
 </div>
