@@ -10,9 +10,9 @@ import videoImg from '@static/experience.png'
 const img = await getImage({src: videoImg, format: 'webp', quality: 'max'})
 ---
 
-<section class="pt-52 pb-32">
+<section class="dark-section pt-52 pb-32">
     <div class="_container">
-        <Title h2={true} title="Experience the magic. Render your dreams."/>
+        <Title h2={true} size={550} title="Experience the magic. Render your dreams."/>
 
         <div class="video-section relative w-full mt-24">
             <Image src={img.src} alt="Video Section Img" width={img.attributes.width} height={img.attributes.height} class="relative z-10"/>

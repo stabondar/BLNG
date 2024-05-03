@@ -1,8 +1,9 @@
 ---
 // import  SpeedInsights  from "@vercel/speed-insights/astro"
 import Nav from "@components/Nav/Nav.astro";
+import Cursor from "@components/Cursor.astro";
 // import Burger from "@components/Burger.astro";
-// import Loader from "@components/Loader.astro";
+import Loader from "@components/Loader.astro";
 
 interface Props 
 {
@@ -28,7 +29,8 @@ const { descr } = Astro.props;
 	</head>
 	<body data-transition="wrapper">
 		<div class="global">
-			<!-- <Loader /> -->
+			<Loader />
+			<Cursor />
 			<Nav />
 			<!-- <Burger /> -->
 		</div>

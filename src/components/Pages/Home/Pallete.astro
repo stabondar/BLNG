@@ -1,0 +1,57 @@
+---
+import video from '@static/steps/steps-video-1.mp4'
+
+const colors = 
+[
+    {color: '#E6DACA'},
+    {color: '#DEC7A7'},
+    {color: '#DFB994'},
+    {color: '#D7AF7B'},
+    {color: '#CF9661'},
+    {color: '#CF9661'},
+    {color: '#8D573D'},
+    {color: '#E6DACA'},
+    {color: '#DEC7A7'},
+    {color: '#DFB994'},
+    {color: '#D7AF7B'},
+    {color: '#CF9661'},
+    {color: '#CF9661'},
+    {color: '#8D573D'},
+]
+---
+
+<section class="white-section pt-32 pb-32">
+    <div class="_container short">
+        <div class="flex justify-between gap-20">
+            <div class="flex flex-col self-end pb-16 gap-48 max-w-[450px]">
+                <div class="block">
+                    <div class="_14 capitalize pb-10">DIVERSITY</div>
+                    <div class="_60 pb-6">Embracing Diversity</div>
+                    <div class="_22 opacity-50">Enhancing the creative journey for jewelry designers with tools to quickly ideate, refine, and visualize their inspirations in real time.</div>
+                </div>
+
+                <div class="block">
+                    <div class="bg-black h-px opacity-20 w-full mb-5"></div>
+                    <div class="_14 capitalize pb-8">LIGHT BEIGE</div>
+                    <div class="grid grid-cols-7 gap-6">
+                        {colors.map(color => <div class="pallete-item relative aspect-square w-full rounded-full" style={`background-color: ${color.color}`}></div>)}
+                    </div>
+                </div>
+            </div>
+            <div class="pallete-img block relative z-10 aspect-[668/950] overflow-clip rounded-[20px] flex-none">
+                <div class="background-video">
+                    <video muted autoplay crossorigin="anonymous" loop playsinline>
+                        <source src={video} type="video/mp4" />
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    ._14
+    {
+        font-weight: 400;
+    }
+</style>

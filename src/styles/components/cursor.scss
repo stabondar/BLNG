@@ -1,0 +1,13 @@
+.cursor
+{
+    transition: opacity var(--color-ease), scale var(--color-ease);
+    transform: translate3d(var(--x), var(--y), 0);
+    opacity: 0;
+    scale: 0;
+
+    &.show
+    {
+        opacity: 1;
+        scale: 1;
+    }
+}

@@ -63,6 +63,13 @@ $body: 'FuturaPT', sans-serif;
     font-family: $body;
 }
 
+._18
+{
+    font-size: clamp(calc(18 / 16 * 1rem), calc(18 / var(--to-rem)), calc(20 / 16 * 1rem));
+    font-weight: 300;
+    font-family: $body;
+}
+
 ._16
 {
     font-size: clamp(1rem, calc(16 / var(--to-rem)), 1.3rem);

@@ -10,7 +10,7 @@ interface Props
 const props = Astro.props
 ---
 
-<div class="slider-arrow flex items-center justify-center rounded-full aspect-square w-14" class:list={[props.rotate && 'rotate-180', props.white && 'white-bg']}>
+<div class="slider-arrow flex items-center justify-center rounded-full aspect-square w-14 cursor-pointer" class:list={[props.rotate && 'rotate-180', props.white && 'white-bg']}>
     <ArrowIcon width="w-6" />
 </div>
 
@@ -18,12 +18,12 @@ const props = Astro.props
     .slider-arrow
     {
         border: 1px solid currentColor;
-        color: color-mix(in srgb, #292929, transparent 80%);
+        color: color-mix(in srgb, currentColor, transparent 80%);
         transition: color var(--color-ease);
 
         &:hover
         {
-            color: color-mix(in srgb, #292929, transparent 30%);
+            color: color-mix(in srgb, currentColor, transparent 30%);
         }
 
         &.white-bg

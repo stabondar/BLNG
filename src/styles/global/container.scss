@@ -6,4 +6,10 @@
     padding-left: 100px;
     padding-right: 100px;
     margin: auto;
+
+    &.short
+    {
+        padding-left: 225px;
+        padding-right: 225px;
+    }
 }

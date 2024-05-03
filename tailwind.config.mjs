@@ -6,8 +6,8 @@ export default {
 		{
 			colors: 
 			{
-				black: 'rgba(0, 0, 0, .8)',
-				white: '#F5F5F5',
+				black: 'var(--black)',
+				white: 'var(--white)',
 			}
 		},
 	},

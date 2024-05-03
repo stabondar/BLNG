@@ -1,9 +1,16 @@
 ---
 const props = Astro.props
+
+const titles = props.titles
 ---
 
 <div class="hero_indexes flex flex-row items-center justify-end gap-2">
-    <div class="_16 hero_indexes-current">01</div>
+    <div class="_16 hero_indexes-current overflow-clip flex flex-row">
+        <span class="self-start">0</span>
+        <div class="hero_indexes-numbers inline-block relative">
+            {titles.map((title, index) => <div>{index + 1}</div>)}
+        </div>
+    </div>
     <div class="hero_indexes-divider h-3 w-px bg-black"></div>
-    <div class="_16 hero_indexes-all opacity-30">{props.length}</div>
+    <div class="_16 hero_indexes-all opacity-30">{`0${titles.length}`}</div>
 </div>

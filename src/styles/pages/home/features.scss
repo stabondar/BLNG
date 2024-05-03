@@ -1,0 +1,36 @@
+.features
+{
+    .swiper-slide
+    {
+        width: min(calc(355 / 16 * 1rem), 50%);
+        height: calc(506 / 16 * 1rem);
+    }
+}
+
+
+.feature-slide
+{
+
+    &::before
+    {
+        content:'';
+        position: absolute;
+        inset: 0;
+        border-radius: calc(26 / 16 * 1rem);
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.4) 0%, 
+            rgba(255, 255, 255, 0) 41%,
+            rgba(255, 255, 255, 0) 57%,
+            rgba(255, 255, 255, .1) 100%
+        );
+    }
+
+    &::after
+    {
+        content:'';
+        position: absolute;
+        inset: 1px;
+        border-radius: calc(25 / 16 * 1rem);
+        background: #323232;
+    }
+}

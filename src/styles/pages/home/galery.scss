@@ -1,0 +1,55 @@
+.galery_slider
+{
+    transition: clip-path var(--ease);
+    pointer-events: none;
+    clip-path: inset(0 0 0 100%);
+
+    &.active
+    {
+        pointer-events: all;
+        clip-path: inset(0 0 0 0%);
+    }
+}
+
+.galery_progress
+{
+    background: color-mix(in srgb, currentColor, transparent 80%);
+}
+
+.galery_tab-propgress
+{
+    background: color-mix(in srgb, currentColor, transparent 90%);
+}
+
+.galery_tab-descr
+{
+    transition: opacity var(--color-ease);
+    opacity: 0;
+}
+
+.galery_tab-propgress-inner
+{
+    transition: transform var(--ease);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.galery_progress-inner
+{
+    transition: transform var(--ease);
+    transform: scaleX(var(--progress, 0));
+    transform-origin: left;
+}
+
+.galery_tab.active
+{
+    .galery_tab-propgress-inner
+    {
+        transform: scaleX(1);
+    }
+
+    .galery_tab-descr
+    {
+        opacity: 0.6;
+    }
+}

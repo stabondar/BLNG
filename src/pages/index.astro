@@ -6,13 +6,16 @@ import AnimatedDescription from "@components/AnimatedDescription.astro"
 import DividerSection from "@components/DividerSection.astro"
 import Features from "@components/Pages/Home/Features.astro"
 import Experience from "@components/Pages/Home/Experience.astro"
+import PhoneSection from "@components/Pages/Home/PhoneSection.astro"
 import Steps from "@components/Pages/Home/Steps.astro"
+import Galery from "@components/Pages/Home/Galery.astro"
+import Pallete from "@components/Pages/Home/Pallete.astro"
 ---
 
 <Layout title="BLNG" barbaPage="home" descr="True craftmanship requires real humans. And a touch of BLNG.">
 	<Hero />
 	<VideoSection />
-	<section class="pt-24 pb-52">
+	<section class="dark-section pt-24 pb-52">
 		<div class="_container">
 			<AnimatedDescription style="width: 57.375rem" text="Welcome to BLNG, where creativity meets technology in the realm of jewelry design, for amateurs and professionals. With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide. Gone are the days of endless revisions and painstaking rendering processes." />
 		</div>
@@ -20,10 +23,13 @@ import Steps from "@components/Pages/Home/Steps.astro"
 	<DividerSection />
 	<Features />
 	<Experience />
+	<PhoneSection />
 	<Steps />
-	<section class="pt-8 pb-52">
+	<section class="pt-8 pb-24">
 		<div class="_container">
 			<AnimatedDescription style="width: 57.375rem" text="Welcome to BLNG, where creativity meets technology in the realm of jewelry design, for amateurs and professionals. With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide. Gone are the days of endless revisions and painstaking rendering processes." />
 		</div>
 	</section>
+	<Galery />
+	<Pallete />
 </Layout>

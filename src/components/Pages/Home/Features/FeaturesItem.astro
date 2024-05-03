@@ -7,45 +7,17 @@ const props = Astro.props
 const img = await getImage({src: props.img})
 ---
 
-<div class="swiper-slide feature-slide flex flex-col items-center pt-[4.5rem] pb-24 text-white text-center">
-    <div class="_14 relative z-10 opacity-60 mb-6">CREATE</div>
-    <div class="_32 relative z-10 flex-grow">{props.title}</div>
-    <div class="aspect-square w-32 relative z-10">
-        <Image src={img.src} alt={props.title} width={img.attributes.width} height={img.attributes.height} />
+<div class="swiper-slide">
+    <div class="feature-slide flex flex-col items-center relative w-full h-full pt-[4.5rem] pb-24 text-white text-center">
+        <div class="_14 relative z-10 opacity-60 mb-6">CREATE</div>
+        <div class="_32 relative z-10 flex-grow">{props.title}</div>
+        <div class="aspect-square w-32 relative z-10">
+            <Image src={img.src} alt={props.title} width={img.attributes.width} height={img.attributes.height} />
+        </div>
     </div>
 </div>
 
 <style lang="scss">
-    .feature-slide
-    {
-        width: calc(355 / 16 * 1rem);
-        height: calc(506 / 16 * 1rem);
-        position: relative;
-
-        &::before
-        {
-            content:'';
-            position: absolute;
-            inset: 0;
-            border-radius: calc(26 / 16 * 1rem);
-            background: linear-gradient(45deg, 
-                rgba(255, 255, 255, 0.4) 0%, 
-                rgba(255, 255, 255, 0) 41%,
-                rgba(255, 255, 255, 0) 57%,
-                rgba(255, 255, 255, .1) 100%
-            );
-        }
-
-        &::after
-        {
-            content:'';
-            position: absolute;
-            inset: 1px;
-            border-radius: calc(25 / 16 * 1rem);
-            background: #323232;
-        }
-    }
-
     ._14
     {
         font-weight: 400;

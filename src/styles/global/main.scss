@@ -43,6 +43,24 @@ img
     object-fit: cover;
 }
 
+.dark-section
+{
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.black-section
+{
+    background-color: #212121;
+    color: var(--white);
+}
+
+.white-section
+{
+    background-color: #fff;
+    color: var(--black);
+}
+
 ::selection
 {
     background-color: var(--red);

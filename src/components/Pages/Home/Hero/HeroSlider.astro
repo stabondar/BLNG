@@ -5,14 +5,34 @@ import HeroNav from './HeroNav.astro'
 import imgBefore from '@static/hero before.jpg'
 import imgAfter from '@static/hero after.jpg'
 
+const titles = 
+[
+    {title: 'Schlumberger Neklace'},
+    {title: 'Schlumberger Neklace2'},
+    {title: 'Schlumberger Neklace3'},
+    {title: 'Schlumberger Neklace4'},
+    {title: 'Schlumberger Neklace5'},
+]
+
 const props = Astro.props
 ---
 
 <div class="hero_slider mt-16 relative">
-    <div class="swiper-wrapper h-full">
-        <HeroSlide imgBefore={imgBefore} imgAfter={imgAfter} />
-        <HeroSlide imgBefore={imgAfter} imgAfter={imgBefore} />
+    <div class="hero_swiper-parent h-full">
+        <div class="swiper-wrapper h-full noSwipingClass">
+            {titles.map((title, index) => 
+            {
+               if(index % 2 == 0)
+                {
+                     return <HeroSlide imgBefore={imgBefore} imgAfter={imgAfter} />
+                }
+                else
+                {
+                     return <HeroSlide imgBefore={imgAfter} imgAfter={imgBefore} />
+                } 
+            })}
+        </div>
     </div>
 
-    <HeroNav />
+    <HeroNav titles={titles}/>
 </div>

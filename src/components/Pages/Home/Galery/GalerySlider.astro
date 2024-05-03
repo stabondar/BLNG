@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets"
+
+const props = Astro.props
+const imgs = props.props
+---
+
+<div class="galery_slider absolute inset-0 cursor-pointer">
+    <div class="swiper-wrapper h-full">
+        {imgs.map((img) => 
+            <div class="swiper-slide h-full">
+                <Image src={img.img} alt={img.alt} width={img.img.width} height={img.img.height} loading="eager"/>
+            </div>
+        )}
+    </div>
+
+    <div class="galery_preview absolute right-2.5 bottom-2.5 w-[245px] aspect-[245/193] rounded-2xl overflow-clip z-10 flex flex-col justify-end p-5 gap-2.5 text-white">
+        <div class="galery_preview-parent absolute inset-0 pointer-events-none">
+            <div class="swiper-wrapper h-full">
+                {imgs.map((img) => 
+                    <div class="swiper-slide h-full relative">
+                        <Image src={img.preveiw} alt={img.alt} width={img.preveiw.width} height={img.preveiw.height}/>
+                        <div class="absolute bottom-0 left-0 right-0 h-16" style={`background: linear-gradient(to top, ${img.color}, transparent);`}></div>
+                    </div>
+                )}
+            </div>
+        </div>
+
+        <div class="_18 opacity-80 relative z-10">Up next</div>
+        <div class="galery_progress h-px w-full relative rounded-full z-10">
+            <div class="galery_progress-inner absolute inset-0 bg-white"></div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@ interface Props
     higlight: string;
     alignText: string;
     align: string;
+    color?: string;
 }
 
 const props = Astro.props
@@ -12,6 +13,6 @@ const props = Astro.props
 
 <div class:list={[props.alignText, props.align]}>
     <div class="_14">
-        {props.title} <span>{props.higlight}</span>
+        {props.title} <span style={`color: ${props.color}`}>{props.higlight}</span>
     </div>
 </div>

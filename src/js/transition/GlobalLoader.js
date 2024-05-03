@@ -1,7 +1,6 @@
 import App from '@js/App'
 import gsap from 'gsap'
-
-import LoaderCanvas from './canvas/LoaderCanvas'
+import imagesLoaded from 'imagesloaded'
 
 export default class GlobalLoader
 {
@@ -14,25 +13,39 @@ export default class GlobalLoader
         this.pageContent = pageContent
 
         this.loader = document.querySelector('.loader')
+        this.loaderCounter = this.loader.querySelector('div')
         this.container = container
-
-        this.canvas = new LoaderCanvas()
-
-        this.canvas.on('loaded', () => 
-        {
-            this.init()
-        })
 
         this.scroll.stop()
 
-        // this.init()
+        this.loadImg()
+    }
+
+    loadImg()
+    {
+        const images = document.querySelectorAll('img');
+
+        imagesLoaded(images, { background: true }).on('progress', instance => 
+        {
+            const progress = instance.progressedCount / instance.images.length * 100;
+            this.loaderCounter.innerHTML = Math.round(progress) + '%';
+        })
+
+        const imgPlay = new Promise(resolve =>
+        {
+            imagesLoaded(document.querySelectorAll('img'), { background: true }, () =>
+            {
+                this.init()
+                resolve()
+            })
+        })
     }
 
     reveal()
     {
         let delay = 0.5
 
-        this.pageAnimation(delay)
+        // this.pageAnimation(delay)
         this.pageContent()
     }
 
@@ -49,7 +62,7 @@ export default class GlobalLoader
 
     init()
     {
-        this.tl = gsap.timeline({defaults: { duration: 1, ease: 'power1.inOut', 
+        this.tl = gsap.timeline({defaults: { duration: .4, ease: 'power1.inOut', 
             onStart: () => this.update(),
             onComplete: () => this.complete() 
         }})

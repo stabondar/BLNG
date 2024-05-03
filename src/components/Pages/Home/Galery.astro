@@ -1,0 +1,63 @@
+---
+import GalerySlider from "./Galery/GalerySlider.astro"
+import GaleryTab from "./Galery/GaleryTab.astro"
+
+import large1 from '@static/galery/01.jpg'
+import large2 from '@static/galery/02.jpg'
+import large3 from '@static/galery/03.jpg'
+import large4 from '@static/galery/04.jpg'
+import large5 from '@static/galery/05.jpg'
+import preview1 from '@static/galery/preview 01.jpg'
+import preview2 from '@static/galery/preview 02.jpg'
+import preview3 from '@static/galery/preview 03.jpg'
+import preview4 from '@static/galery/preview 04.jpg'
+import preview5 from '@static/galery/preview 05.jpg'
+
+const item1 = 
+[
+    {img: large1, alt: 'image 1', preveiw : preview2, color: '#000'},
+    {img: large2, alt: 'image 2', preveiw : preview3, color: '#536D7F'},
+    {img: large3, alt: 'image 3', preveiw : preview4, color: '#001F2E'},
+    {img: large4, alt: 'image 4', preveiw : preview5, color: '#9C8674'},
+    {img: large5, alt: 'image 5', preveiw : preview1, color: '#536D7F'},
+]
+const item2 = 
+[
+    {img: large3, alt: 'image 3', preveiw : preview4, color: '#001F2E'},
+    {img: large5, alt: 'image 5', preveiw : preview1, color: '#536D7F'},
+    {img: large2, alt: 'image 2', preveiw : preview3, color: '#536D7F'},
+    {img: large4, alt: 'image 4', preveiw : preview5, color: '#9C8674'},
+    {img: large1, alt: 'image 1', preveiw : preview2, color: '#000'},
+]
+
+const item3 = 
+[
+    {img: large5, alt: 'image 5', preveiw : preview1, color: '#536D7F'},
+    {img: large3, alt: 'image 3', preveiw : preview4, color: '#001F2E'},
+    {img: large4, alt: 'image 4', preveiw : preview5, color: '#9C8674'},
+    {img: large1, alt: 'image 1', preveiw : preview2, color: '#000'},
+    {img: large2, alt: 'image 2', preveiw : preview3, color: '#536D7F'},
+]
+
+const tabs = 
+[
+    {title: 'PRODUCT IMAGE AND VIDEO', descr: "With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide."},
+    {title: 'ON-FIGURE IMAGE AND VIDEO', descr: "With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide."},
+    {title: 'STILL LIFE IMAGES', descr: "With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide."}
+]
+---
+
+<section class="pt-24 pb-32 galery">
+    <div class="_container">
+        <div class="flex flex-col gap-10">
+            <div class="galery_list aspect-[1480/800] w-full relative overflow-clip rounded-[20px]">
+                <GalerySlider props={item1}/>
+                <GalerySlider props={item2}/>
+                <GalerySlider props={item3}/>
+            </div>
+        </div>
+        <div class="galery_tabs grid grid-cols-3 gap-7 mt-10">
+            {tabs.map(tab => <GaleryTab title={tab.title} descr={tab.descr}/>)}
+        </div>
+    </div>    
+</section>

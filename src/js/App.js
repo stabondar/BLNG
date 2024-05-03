@@ -40,14 +40,16 @@ export default class App extends EventEmitter
         // }
         // setTimeout(() => load(), 400)
 
-        // this.init()
-        this.importComponents()
+        this.init()
+        // this.importComponents()
     }
 
     async importComponents()
     {
+        const cursor = await import('@jsComp/Cursor.js').then(module => new module.default())
         const getVH = await import('@jsUtils/GetVH.js').then(module => new module.default())
         const atTop = await import('@jsUtils/AtTop.js').then(module => new module.default())
+        const chengeColor = await import('@jsComp/ChangeColor.js').then(module => new module.default())
 
         CheckPages()
     }
@@ -75,7 +77,7 @@ export default class App extends EventEmitter
                     name: 'once',
                     async once (data)
                     {
-                        // it.globalLoader = await import('@jsTransition/GlobalLoader.js').then(module => new module.default(CheckLoader, it.importComponents, data.next.container))
+                        it.globalLoader = await import('@jsTransition/GlobalLoader.js').then(module => new module.default(false, it.importComponents, data.next.container))
                     }
                 },
                 // {   

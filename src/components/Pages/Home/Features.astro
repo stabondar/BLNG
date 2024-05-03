@@ -19,15 +19,16 @@ const items =
 ]
 ---
 
-<section class="pt-52">
+<section class="dark-section pt-52">
     <div class="_container">
-        <div class="flex flex-row gap-5">
-            <div class="features_left flex flex-col justify-start gap-48 self-center flex-none">
-                <div class="_32">Features</div>
-                <div class="flex flex-row gap-2.5">
+        <div class="features flex flex-row gap-5">
+            <div class="features_left flex flex-col justify-center gap-48 self-stretch flex-none relative z-10">
+                <div class="_32 relative z-10">Features</div>
+                <div class="flex flex-row gap-2.5 relative z-10">
                     <SliderArrow/>
                     <SliderArrow rotate={true}/>
                 </div>
+                <div class="absolute bg-black right-0 top-0 bottom-0 w-dvw"></div>
             </div>
             <div class="features_slider">
                 <div class="swiper-wrapper flex flex-row">

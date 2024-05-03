@@ -1,3 +1,24 @@
+.nav
+{
+    transition: color var(--color-ease);
+
+    .button
+    {
+        transition: background-color var(--color-ease), color var(--color-ease);
+    }
+
+    &.white
+    {
+        color: var(--white);
+
+        .button
+        {
+            background-color: var(--white);
+            color: var(--black);
+        }
+    }
+}
+
 .nav_logo
 {
     aspect-ratio: 115 / 32;
@@ -56,6 +77,20 @@
 
 .nav-drop-open
 {
+    .nav
+    {
+        &.white
+        {
+            color: var(--black);
+
+            .button
+            {
+                background-color: var(--black);
+                color: var(--white);
+            }
+        }
+    }
+
     .nav-overlay-bg
     {
         opacity: 0.2;

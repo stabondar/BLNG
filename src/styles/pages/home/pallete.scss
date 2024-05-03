@@ -1,0 +1,23 @@
+.pallete-img
+{
+    width: clamp(calc(600 / 16 * 1rem), calc(600 / var(--to-rem)), calc(700 / 16 * 1rem));
+}
+
+.pallete-item
+{
+    &::before
+    {
+        content: '';
+        position: absolute;
+        inset: -5px;
+        border: 1px solid #000;
+        opacity: 0;
+        transition: opacity var(--color-ease);
+        border-radius: 100vw;
+    }
+
+    &:hover::before
+    {
+        opacity: 1;
+    }
+}
