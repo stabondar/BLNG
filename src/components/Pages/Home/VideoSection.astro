@@ -3,11 +3,14 @@ import Subtitle from "@components/Subtitle.astro"
 import Title from "@components/Title.astro"
 import VideoSectionBg from './VideoSection/VideoSectionBg.astro'
 
+import videoImg from '@static/video-section.png'
+
 import { Image } from "astro:assets";
 import { getImage } from "astro:assets";
 
-import videoImg from '@static/video section.png'
+const img = await getImage({src: videoImg, quality: 'max', format: 'webp'})
 
+console.log(videoImg)
 ---
 
 <section class="dark-section pb-32 pt-48" white-trigger>
@@ -18,7 +21,7 @@ import videoImg from '@static/video section.png'
         </div>
 
         <div class="video-section relative w-full">
-            <Image src={videoImg} alt="Video Section Img" width={videoImg.width} height={videoImg.height} class="relative z-10"/>
+            <Image src={img.src} alt="Video Section Img" width={img.attributes.width} height={img.attributes.height} class="relative z-10"/>
             <VideoSectionBg />
         </div>
     </div>
