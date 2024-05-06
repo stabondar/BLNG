@@ -19,8 +19,8 @@ export default class GlobalLoader
 
         this.scroll.stop()
 
-        // this.loadImg()
-        this.init()
+        this.loadImg()
+        // this.init()
     }
 
     loadImg()
