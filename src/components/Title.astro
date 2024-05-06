@@ -1,7 +1,7 @@
 ---
 interface Props
 {
-    title: string;
+    title: any;
     h1?: boolean;
     h2?: boolean;
     size?: number;
@@ -10,5 +10,7 @@ interface Props
 const props = Astro.props
 ---
 
-{props.h1 && <h1 class="text-center _74">{props.title}</h1>}
+{props.h1 && <h1 class="text-center _74">
+    <Fragment set:html={props.title}/>
+</h1>}
 {props.h2 && <h2 class="text-center _60 m-auto text-balance" style={props.size && `max-width: ${props.size}px`}>{props.title}</h2>}

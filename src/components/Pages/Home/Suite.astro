@@ -1,0 +1,57 @@
+---
+import Title from "@components/Title.astro"
+import SuiteItem from "./Suite/SuiteItem.astro"
+
+import img1 from '@static/suites/01 a.jpg'
+import img2 from '@static/suites/02.jpg'
+import img3 from '@static/suites/03.png'
+---
+
+<section class="pt-48 pb-48 white-section">
+    <div class="_container">
+        <div class="flex flex-col justify-center items-center m-auto gap-8 text-center mb-32">
+            <Title title="The perfect suite for your jewelry" h2={true} size={900}/>
+            <p class="_22 opacity-50 max-w-[730px]">Experience firsthand the advantages of integrating Generative Design and Visual Effects to your product development cycle and marketing content production. BLNG offers a suite of tools for every step of the jewelry production, from initial sketch to final sale. Including a personal shopper for your customers.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            <SuiteItem 
+                title="Multimodal Generative Design for your ideas" 
+                titleWidth={400}
+                subtitle="DESIGN"
+                buttonText="Request demo"
+                buttonLink="/"
+                accentColor="#189AF9"
+                vertical={true}
+                imgFull={true}
+                background="#EDEDED"
+                img={img1}
+            />
+            <SuiteItem 
+                title="Multimodal Generative Design for your ideas" 
+                titleWidth={400}
+                subtitle="STUDIO"
+                buttonText="Request demo"
+                buttonLink="/"
+                accentColor="#FC502A"
+                vertical={true}
+                imgFull={true}
+                background="#282828"
+                buttonBg="rgba(255,255,255,0.1)"
+                color="white"
+                img={img2}
+            />
+            <SuiteItem 
+                title="The ultimate personal shopper" 
+                titleWidth={280}
+                subtitle="RETAIL"
+                buttonText="Learn more"
+                buttonLink="/"
+                accentColor="#898FA6"
+                vertical={false}
+                imgFull={false}
+                background="#E6E6E6"
+                img={img3}
+            />
+        </div>
+    </div>
+</section>

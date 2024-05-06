@@ -5,10 +5,12 @@ import HeroSlider from './Hero/HeroSlider.astro'
 const props = Astro.props
 ---
 
-<header class="pb-32">
+<header class="pb-48">
     <div class="_container">
         <div class="hero pt-48 flex flex-col justify-center">
-            <Title h1={true} title="True craftmanship requires real humans. And a touch of BLNG."/>
+            <div class="block mx-auto"> 
+                <Title h1={true} title=`True craftmanship requires real humans. <br/> And a touch of BLNG.`/>
+            </div>
             <HeroSlider />
         </div>
     </div>

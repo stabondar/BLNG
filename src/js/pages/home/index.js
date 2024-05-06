@@ -5,6 +5,8 @@ import Phone from "./Phone";
 import Galery from "./Galery";
 import Phrase from "./Phrase";
 import SvgBg from "./SvgBg";
+import Pallete from "./Pallete";
+import Steps from './Steps'
 
 export default class index
 {
@@ -17,5 +19,7 @@ export default class index
         this.galery = new Galery()
         this.phrase = new Phrase()
         this.svgBg = new SvgBg()
+        this.palette = new Pallete()
+        this.steps = new Steps()
     }
 }

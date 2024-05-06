@@ -1,26 +1,23 @@
 ---
-import video from '@static/steps/steps-video-1.mp4'
+import video from '@static/CamAnimated hand yin yang.mp4'
 
 const colors = 
 [
-    {color: '#E6DACA'},
-    {color: '#DEC7A7'},
-    {color: '#DFB994'},
-    {color: '#D7AF7B'},
-    {color: '#CF9661'},
-    {color: '#CF9661'},
-    {color: '#8D573D'},
-    {color: '#E6DACA'},
-    {color: '#DEC7A7'},
-    {color: '#DFB994'},
-    {color: '#D7AF7B'},
-    {color: '#CF9661'},
-    {color: '#CF9661'},
-    {color: '#8D573D'},
+    {color: '#2F2C25'},
+    {color: '#3F382F'},
+    {color: '#664D3F'},
+    {color: '#876852'},
+    {color: '#A48A64'},
+    {color: '#D8C5A7'},
+    {color: '#D8C5A7'},
+    {color: '#EADFC4'},
+    {color: '#F5EDD9'},
+    {color: '#F2ECE2'},
+    {color: '#F6F0E8'},
 ]
 ---
 
-<section class="white-section pt-32 pb-32">
+<section class="white-section pt-48 pb-48">
     <div class="_container short">
         <div class="flex justify-between gap-20">
             <div class="flex flex-col self-end pb-16 gap-48 max-w-[450px]">
@@ -32,9 +29,9 @@ const colors =
 
                 <div class="block">
                     <div class="bg-black h-px opacity-20 w-full mb-5"></div>
-                    <div class="_14 capitalize pb-8">LIGHT BEIGE</div>
+                    <div class="pallete_color _14 capitalize pb-8">COLOR</div>
                     <div class="grid grid-cols-7 gap-6">
-                        {colors.map(color => <div class="pallete-item relative aspect-square w-full rounded-full" style={`background-color: ${color.color}`}></div>)}
+                        {colors.map(color => <div class="pallete_item relative aspect-square w-full rounded-full" style={`background-color: ${color.color}`}></div>)}
                     </div>
                 </div>
             </div>

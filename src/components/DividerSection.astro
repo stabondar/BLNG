@@ -1,4 +1,10 @@
-<section class="dark-section">
+---
+const props = Astro.props
+
+const sectionColor = props.color;
+---
+
+<section class={sectionColor}>
     <div class="_container">
         <div class="section-divider w-full h-px"></div>
     </div>

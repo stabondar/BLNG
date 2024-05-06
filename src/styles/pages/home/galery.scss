@@ -36,8 +36,8 @@
 
 .galery_progress-inner
 {
-    transition: transform var(--ease);
-    transform: scaleX(var(--progress, 0));
+    // transition: transform var(--ease);
+    transform: scaleX(calc(var(--progress, 0)));
     transform-origin: left;
 }
 

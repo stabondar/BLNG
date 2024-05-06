@@ -1,0 +1,85 @@
+---
+import Title from "./Title.astro"
+import Button from "./Button.astro"
+import Logo from "./Logo.astro"
+import Linkedin from './Socials/Linkedin.astro'
+import FaceBook from './Socials/FaceBook.astro'
+import Instagram from './Socials/Instagram.astro'
+import YouTube from './Socials/YouTube.astro'
+
+const props = Astro.props
+---
+
+<footer class="dark-section pt-36">
+    <div class="_container">
+        <div class="flex flex-col justify-center items-center m-auto text-center mb-36">
+            <p class="_14 opacity-40 capitalize mb-7">THIS IS A LITTLE TITLE</p>
+            <div class="mb-4">
+                <Title title="Reach out to us" h2={true}/>
+            </div>
+            <p class="descr _18 opacity-50 max-w-[590px] mb-14">Experience firsthand the advantages of integrating Generative Design and Visual Effects to your product development cycle.</p>
+            <Button text="Request demo" link="/" background="#0081FE" color="#FFFFFF" weight={400}/>
+        </div>
+
+        <div class="grid py-7 grid-cols-3 relative">
+            <div class="absolute top-0 left-0 right-0 h-px bg-current opacity-10"></div>
+            <div class="self-center flex items-center ">
+                <a class="w-28" href="/">
+                    <Logo />
+                </a>
+            </div>
+            
+            <div class="flex flex-row gap-7 justify-self-center">
+                <a href="/" target="_blank" class="social flex items-center justify-center aspect-square w-11 rounded-full">
+                    <Linkedin />
+                </a>
+
+                <a href="/" target="_blank" class="social flex items-center justify-center aspect-square w-11 rounded-full">
+                    <FaceBook />
+                </a>
+                
+                <a href="/" target="_blank" class="social flex items-center justify-center aspect-square w-11 rounded-full">
+                    <Instagram />
+                </a>
+
+                <a href="/" target="_blank" class="social flex items-center justify-center aspect-square w-11 rounded-full">
+                    <YouTube />
+                </a>
+            </div>
+
+            <div class="flex flex-row gap-9 justify-self-end items-center">
+                <a href="/" class="policy _16 opacity-50">Terms & Conditions</a>
+                <a href="/" class="policy _16 opacity-50">Privacy policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style lang="scss">
+    .social
+    {
+        border: 1px solid color-mix(in srgb, currentColor, transparent 90%);
+        transition: border-color var(--color-ease);
+
+        &:hover
+        {
+            border-color: currentColor;
+        }
+    }
+
+    .policy
+    {
+        transition: opacity var(--color-ease);
+
+        &:hover
+        {
+            opacity: 1;
+        }
+    }
+
+    .descr
+    {
+        line-height: 1.83;
+        font-weight: 400;
+    }
+</style>

@@ -3,7 +3,7 @@
     width: clamp(calc(600 / 16 * 1rem), calc(600 / var(--to-rem)), calc(700 / 16 * 1rem));
 }
 
-.pallete-item
+.pallete_item
 {
     &::before
     {
@@ -16,8 +16,12 @@
         border-radius: 100vw;
     }
 
-    &:hover::before
+    &.active,
+    &:hover 
     {
-        opacity: 1;
+        &::before
+        {
+            opacity: 1;
+        }
     }
 }

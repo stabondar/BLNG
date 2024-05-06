@@ -1,16 +1,23 @@
 import Swiper from 'swiper';
-import {Controller} from 'swiper/modules'
+import {Controller, Autoplay} from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/controller'
+import 'swiper/css/autoplay'
+import EventEmitter from '@js/components/EventEmitter';
 
-export default class Galery
+export default class Galery extends EventEmitter
 {
     constructor()
     {
+        super()
+
         this.cursor = document.querySelector('.cursor')
+        this.cursorText = this.cursor.querySelector('._14')
         this.list = document.querySelector('.galery_list')
         this.section = document.querySelector('.galery')
         this.mainSliders = this.section.querySelectorAll('.galery_slider')
+
+        this.swipers = []
 
         this.mainSliders.forEach(slider => this.init(slider))
 
@@ -19,12 +26,19 @@ export default class Galery
         this.tabs[0].classList.add('active')
         this.mainSliders[0].classList.add('active')
 
+        this.swipers.forEach(swiper => swiper.autoplay.stop())
+        this.swipers[0].autoplay.start()
+
+
         this.tabs.forEach(tab =>
         {
             tab.addEventListener('click', () =>
             {
                 this.tabs.forEach(tab => tab.classList.remove('active'))
                 tab.classList.add('active')
+
+                this.swipers.forEach(swiper => swiper.autoplay.stop())
+                this.swipers[Array.from(this.tabs).indexOf(tab)].autoplay.start()
 
                 this.mainSliders.forEach(slider => slider.classList.remove('active'))
                 this.mainSliders[Array.from(this.tabs).indexOf(tab)].classList.add('active')
@@ -33,6 +47,8 @@ export default class Galery
 
         this.list.addEventListener('mouseenter', () => this.cursor.classList.add('show'))
         this.list.addEventListener('mouseleave', () => this.cursor.classList.remove('show'))
+
+        this.update()
     }
 
     init(slider)
@@ -41,8 +57,13 @@ export default class Galery
         
         const swiper = new Swiper(slider, 
         {
-            modules: [Controller],
+            modules: [Controller, Autoplay],
             loop: true,
+            autoplay: 
+            {
+                delay: 4000,
+
+            },
             speed: 1000,
             slidesPerView: 1,
             preventInteractionOnTransition: true,
@@ -61,19 +82,46 @@ export default class Galery
             grabCursor: false,
         })
 
-        slider.addEventListener('click', () => swiper.slideNext())
+        const slideNext = slider.querySelector('.galery_right')
+        const slidePrev = slider.querySelector('.galery_left')
+
+        slideNext.addEventListener('click', () => swiper.slideNext())
+        slidePrev.addEventListener('click', () => swiper.slidePrev())
+
+        slidePrev.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'PREVIOUS')
+        slideNext.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Next')
 
         swiper.controller.control = previewSwiper
         previewSwiper.controller.control = swiper
 
-        swiper.on('slideChange', () => 
+        // swiper.on('slideChange', () => 
+        // {
+        //     slider.style.setProperty('--progress', swiper.realIndex / (swiper.slides.length - 1))
+        // })
+
+        // this.on('tick', () => 
+        // {
+        //     console.log(swiper.autoplayTimeLeft)
+        // })
+
+        swiper.on('autoplayTimeLeft', () => 
         {
-            slider.style.setProperty('--progress', swiper.realIndex / (swiper.slides.length - 1))
+            // get percentage of time left
+            let timeLeft = swiper.autoplay.timeLeft / 4000
+            slider.style.setProperty('--progress', 1 - timeLeft)
         })
+
+        this.swipers.push(swiper)
     }
 
     updateIndexes()
     {
         this.hero.style.setProperty('--current', this.swiper.realIndex)
+    }
+
+    update()
+    {
+        this.trigger('tick')
+        window.requestAnimationFrame(() => this.update())
     }
 }
