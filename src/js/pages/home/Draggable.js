@@ -9,6 +9,7 @@ export default class Drag
     {
         this.hero = document.querySelector('.hero')
         this.sliders = this.hero.querySelectorAll('.swiper-slide')
+        this.nav = this.hero.querySelector('.hero_nav')
 
         this.init()
     }
@@ -25,8 +26,26 @@ export default class Drag
                 edgeResistance: 1,
                 bounds: slide,
                 onDrag: () => this.updateLeft(slide, itemToDrag),
+                onDragEnd: () => this.endDrag(slide, itemToDrag)
             })
         })
+    }
+
+    endDrag(slide, itemToDrag)
+    {
+        let slideLeft = slide.getBoundingClientRect().left
+        let itemLeft = itemToDrag.getBoundingClientRect().left
+        let slideWidth = slide.getBoundingClientRect().width
+        let itemWidth = itemToDrag.getBoundingClientRect().width
+
+        let left = ((itemLeft - slideLeft) + (itemWidth / 2)) / slideWidth * 100
+
+        if(left > 75)
+        {
+            gsap.to(slide, {'--left': `50%`, duration: 0.3})
+            gsap.to(this.nav, {'--opacity': 1, duration: 0.3})
+            gsap.to(itemToDrag, {x: 0, duration: 0.3})
+        }
     }
 
     updateLeft(slide, itemToDrag)
@@ -40,5 +59,11 @@ export default class Drag
         let left = ((itemLeft - slideLeft) + (itemWidth / 2)) / slideWidth * 100
 
         slide.style.setProperty('--left', `${left}%`)
+
+        if(left > 75)
+        {
+            let delta = 1 - (left - 70) / 25
+            this.nav.style.setProperty('--opacity', delta)
+        }
     }
 }

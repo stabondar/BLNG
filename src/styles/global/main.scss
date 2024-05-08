@@ -47,12 +47,28 @@ img
 {
     background-color: var(--black);
     color: var(--white);
+
+    ::selection
+    {
+        background-color: var(--white);
+        color: var(--black);
+        -webkit-text-fill-color: var(--black);
+        -webkit-text-stroke-color: transparent;
+    }
 }
 
 .black-section
 {
     background-color: #212121;
     color: var(--white);
+
+    ::selection
+    {
+        background-color: var(--white);
+        color: var(--black);
+        -webkit-text-fill-color: var(--black);
+        -webkit-text-stroke-color: transparent;
+    }
 }
 
 .white-section
@@ -63,8 +79,8 @@ img
 
 ::selection
 {
-    background-color: var(--red);
-    color: rgba(var(--white-rgb), 1);
-    -webkit-text-fill-color: rgba(var(--white-rgb), 1);
+    background-color: var(--black);
+    color: var(--white);
+    -webkit-text-fill-color: var(--white);
     -webkit-text-stroke-color: transparent;
 }

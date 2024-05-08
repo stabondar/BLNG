@@ -17,6 +17,7 @@ export default class Galery extends EventEmitter
         this.section = document.querySelector('.galery')
         this.mainSliders = this.section.querySelectorAll('.galery_slider')
 
+        this.delaySpeed = 3200
         this.swipers = []
 
         this.mainSliders.forEach(slider => this.init(slider))
@@ -61,8 +62,7 @@ export default class Galery extends EventEmitter
             loop: true,
             autoplay: 
             {
-                delay: 4000,
-
+                delay: this.delaySpeed,
             },
             speed: 1000,
             slidesPerView: 1,
@@ -88,7 +88,7 @@ export default class Galery extends EventEmitter
         slideNext.addEventListener('click', () => swiper.slideNext())
         slidePrev.addEventListener('click', () => swiper.slidePrev())
 
-        slidePrev.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'PREVIOUS')
+        slidePrev.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Previous')
         slideNext.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Next')
 
         swiper.controller.control = previewSwiper
@@ -107,7 +107,7 @@ export default class Galery extends EventEmitter
         swiper.on('autoplayTimeLeft', () => 
         {
             // get percentage of time left
-            let timeLeft = swiper.autoplay.timeLeft / 4000
+            let timeLeft = swiper.autoplay.timeLeft / this.delaySpeed
             slider.style.setProperty('--progress', 1 - timeLeft)
         })
 

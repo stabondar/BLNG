@@ -18,11 +18,11 @@ export default class SvgBg
     {
         this.tl = gsap.timeline({paused: true})
 
-        this.tl.from(this.paths, {duration: 1, drawSVG: '0%', stagger: {from: 'random', each: 0.1}})
+        this.tl.from(this.paths, {drawSVG: '0%', stagger: {amount: 0.5}, ease: 'none'})
 
         ScrollTrigger.create(
         {
-            trigger: this.section, start: 'top 80%', end: 'center center', scrub: true,
+            trigger: this.section, start: 'top 60%', end: '+=1500px', scrub: 1,
             animation: this.tl
         })
     }

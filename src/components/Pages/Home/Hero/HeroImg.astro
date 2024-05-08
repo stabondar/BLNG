@@ -13,5 +13,5 @@ const props = Astro.props
 ---
 
 <div class="hero_img absolute inset-0">
-    <Image src={props.src} alt={props.alt} width={props.width} height={props.height} format="webp"/>
+    <Image src={props.src} alt={props.alt} width={props.width} height={props.height} format="webp" aria-grabbed={false} class="select-none"/>
 </div>

@@ -2,7 +2,7 @@
 const props = Astro.props
 ---
 
-<div class="nav-overlay-item flex flex-col justify-between py-8 px-6 rounded-[1.25rem] aspect-square cursor-pointer" style=`--delay: ${0.1 * props.index + 0.2}s`>
+<div class="nav-overlay-item flex flex-col justify-between py-8 px-6 rounded-[1.25rem] aspect-square cursor-pointer" style=`--delay: ${0.1 * props.index + 0.2}s` data-section={props.section}>
     <div class="_14" style=`color: ${props.color}`>{props.subtitle}</div>
     <div class="flex flex-col gap-3">
         <div class="_24">{props.title}</div>

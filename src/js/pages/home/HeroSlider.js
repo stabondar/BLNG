@@ -12,6 +12,9 @@ export default class HeroSlider
         this.arrowNext = this.hero.querySelectorAll('.slider-arrow')[1]
         this.currentSlideDiv = this.hero.querySelector('.hero_indexes-numbers')
         this.titlesDiv = this.hero.querySelector('.hero_nav-titles')
+        this.allTitles = this.hero.querySelectorAll('.hero_nav-title')
+
+        this.allTitles[0].classList.add('active')
 
         this.swiper = null
 
@@ -45,6 +48,9 @@ export default class HeroSlider
     updateIndexes()
     {
         this.hero.style.setProperty('--current', this.swiper.realIndex)
+
+        this.allTitles.forEach(title => title.classList.remove('active'))
+        this.allTitles[this.swiper.realIndex].classList.add('active')
     }
 
     setWidth()
