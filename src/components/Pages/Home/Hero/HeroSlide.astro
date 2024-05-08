@@ -1,17 +1,18 @@
 ---
+import { getImageUrl } from '@lib/getImage'
 import HeroDrag from './HeroDrag.astro'
 import HeroImg from './HeroImg.astro'
 
-
-// const optimaziedBefore = await getImage({src: props.imgBefore, format: 'webp', quality: 'max'});
-// const optimaziedAfter = await getImage({src: props.imgAfter, format: 'webp', quality: 'max'});
 const props = Astro.props
+
+const imgBefore = getImageUrl(props.leftImage).url()
+const imgAfter = getImageUrl(props.rightImage).url()
 ---
 
 <div class="swiper-slide h-full">
     <div class="hero_imgs block absolute inset-0">
-        <HeroImg src={props.imgBefore} alt="Hero Image Before" width={props.imgBefore.width} height={props.imgBefore.height}/>
-        <HeroImg src={props.imgAfter} alt="Hero Image After" width={props.imgAfter.width} height={props.imgAfter.height}/>
+        <HeroImg src={imgBefore} alt="Hero Image Before" width={1480} height={800}/>
+        <HeroImg src={imgAfter} alt="Hero Image After" width={1480} height={800}/>
         <HeroDrag />
     </div>
 </div>

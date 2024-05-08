@@ -6,8 +6,8 @@ import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
-// const { PUBLIC_SANITY_PROJECT_ID } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
-// const { PUBLIC_SANITY_DATASET } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const { PUBLIC_SANITY_PROJECT_ID } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
+const { PUBLIC_SANITY_DATASET } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,8 +24,8 @@ export default defineConfig({
     tailwind(),
     sanity(
     {
-        projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
-        dataset: process.env.PUBLIC_SANITY_DATASET,
+        projectId: '4x3qe5zn',
+        dataset: 'production',
         useCdn: false,
         apiVersion: "2024-04-26",
         studioBasePath: "/admin"

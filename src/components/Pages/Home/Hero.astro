@@ -2,6 +2,17 @@
 import Title from '@components/Title.astro'
 import HeroSlider from './Hero/HeroSlider.astro'
 
+import { getSanity } from "@lib/api"
+import { getRefs } from "@lib/getRefs"
+
+const hero = await getSanity('hero')
+const getSliders = await getRefs('beforeAfter', hero[0].galery)
+
+const sortedSliders = hero[0].galery.map(galeryItem => 
+{
+    return getSliders.find(slider => slider._id === galeryItem._ref);
+})
+
 const props = Astro.props
 ---
 
@@ -9,9 +20,9 @@ const props = Astro.props
     <div class="_container">
         <div class="hero pt-48 flex flex-col justify-center">
             <div class="block mx-auto"> 
-                <Title h1={true} title=`True craftmanship requires real humans. <br/> And a touch of BLNG.`/>
+                <Title h1={true} title={hero[0].title}/>
             </div>
-            <HeroSlider />
+            <HeroSlider sliders={sortedSliders}/>
         </div>
     </div>
 </header>

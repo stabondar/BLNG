@@ -3,23 +3,24 @@ import Subtitle from "@components/Subtitle.astro"
 import Title from "@components/Title.astro"
 import VideoSectionBg from './VideoSection/VideoSectionBg.astro'
 
-import videoImg from '@static/video-section.png'
-
 import { Image } from "astro:assets";
-import { getImage } from "astro:assets";
+import { getSanity } from "@lib/api";
+import { getImageUrl } from "@lib/getImage";
 
-const img = await getImage({src: videoImg, quality: 'max', format: 'webp'})
+const section = await getSanity('homeDesign')
+
+const img = getImageUrl(section[0].image).url()
 ---
 
 <section class="dark-section pt-48" white-trigger section-design>
     <div class="_container">
         <div class="flex flex-col gap-12 mb-24">
-            <Subtitle color="#189AF9" title="Explore" higlight="Design" alignText="text-center" align="justify-center"/>
-            <Title h2={true} size={550} title="Experience the magic. Render your dreams."/>
+            <Subtitle color="#189AF9" title={section[0].subtitle} alignText="text-center" align="justify-center"/>
+            <Title h2={true} size={550} title={section[0].title}/>
         </div>
 
         <div class="video-section relative w-full">
-            <Image src={img.src} alt="Video Section Img" width={img.attributes.width} height={img.attributes.height} class="relative z-10"/>
+            <Image src={img} alt="Video Section Img" width={1480} height={800} class="relative z-10"/>
             <VideoSectionBg />
         </div>
     </div>

@@ -12,6 +12,11 @@ import Galery from "@components/Pages/Home/Galery.astro"
 import Pallete from "@components/Pages/Home/Pallete.astro"
 import Suite from "@components/Pages/Home/Suite.astro"
 import Footer from "@components/Footer.astro"
+
+import { getSanity } from "@lib/api";
+
+const phraseFirst = await getSanity('homePhraseFirst')
+const phraseSecond = await getSanity('homePhraseSecond')
 ---
 
 <Layout title="BLNG" barbaPage="home" descr="True craftmanship requires real humans. And a touch of BLNG.">
@@ -19,7 +24,7 @@ import Footer from "@components/Footer.astro"
 	<VideoSection />
 	<section class="dark-section pt-52 pb-48">
 		<div class="_container">
-			<AnimatedDescription style="width: 57.375rem" text="Welcome to BLNG, where creativity meets technology in the realm of jewelry design, for amateurs and professionals. With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide. Gone are the days of endless revisions and painstaking rendering processes." />
+			<AnimatedDescription style="width: 57.375rem" text={phraseFirst[0].title} />
 		</div>
 	</section>
 	<DividerSection color="dark-section"/>
@@ -29,7 +34,7 @@ import Footer from "@components/Footer.astro"
 	<Steps />
 	<section class="pt-32">
 		<div class="_container">
-			<AnimatedDescription style="width: 57.375rem" text="Welcome to BLNG, where creativity meets technology in the realm of jewelry design, for amateurs and professionals. With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide. Gone are the days of endless revisions and painstaking rendering processes." />
+			<AnimatedDescription style="width: 57.375rem" text={phraseSecond[0].title} />
 		</div>
 	</section>
 	<Galery />

@@ -1,52 +1,34 @@
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
-import { CiCircleList } from "react-icons/ci";
+
+const createSection = (title, id, S) => 
+{
+    return S.listItem()
+        .title(title)
+        .child(S.editor().schemaType(id).documentId(id))
+}
 
 export const deskStructure = (S, context) => S.list()
-    .title('Citix')
+    .title('BLNG')
     .items(
     [
         S.listItem()
-            .title('News Page')
+            .title('Home Page')
             .child( 
                 S.list()
-                    .title('News Page')
+                    .title('Home Page')
                     .items(
                     [
-                        // S.listItem()
-                        //     .title('Posts')
-                        //     .child(
-                        //         S.documentTypeList('blog')
-                        //             .title('Posts')
-                        //     ),
-                        orderableDocumentListDeskItem(
-                        {
-                            title: 'Posts',
-                            type: 'blog',
-                            icon: CiCircleList,
-                            S, 
-                            context
-                        }),
-                        S.divider(),
-                        // S.listItem()
-                        //     .title('Categories')
-                        //     .child(
-                            //         S.documentTypeList('categories')
-                            //             .title('Categories')
-                            //     ),
-                        orderableDocumentListDeskItem(
-                            {
-                                title: 'Categories',
-                                type: 'categories',
-                                icon: CiCircleList,
-                                S, 
-                                context
-                            }),
+                        createSection('Hero', 'hero', S),
+                        createSection('Design Section', 'homeDesign', S),
+                        createSection('Phrase Section First', 'homePhraseFirst', S),
+                        createSection('Features Section', 'homeFeatures', S),
+                        createSection('Phrase Section Second', 'homePhraseSecond', S),
                     ])
             ),
             S.divider(),
         
         // remove default document types
         ...S.documentTypeListItems().filter(listItem => 
-            !['blog', 'categories']
+            !['hero', 'beforeAfter', 'homeDesign', 'homePhraseFirst', 'homePhraseSecond', 'features', 'homeFeatures']
             .includes(listItem.getId())),
     ])

@@ -2,28 +2,25 @@
 import SliderArrow from "@components/SliderArrow.astro"
 import FeaturesItem from "./Features/FeaturesItem.astro"
 
-import { getImage } from "astro:assets"
-
-import img1 from '@static/features/features 01.svg'
-import img2 from '@static/features/features 02.svg'
-import img3 from '@static/features/features 03.svg'
-
 const props = Astro.props
 
-const items = 
-[
-    {title: 'Text to render', img: img1},
-    {title: 'Abstract doodle', img: img2},
-    {title: 'Simple sketches', img: img3},
-    {title: 'Logos & inscriptions', img: img1},
-]
+import { getSanity } from "@lib/api";
+import { getRefs } from "@lib/getRefs";
+
+const section = await getSanity('homeFeatures')
+const getSliders = await getRefs('features', section[0].slides)
+
+const sortedSliders = section[0].slides.map(galeryItem => 
+{
+    return getSliders.find(slider => slider._id === galeryItem._ref);
+})
 ---
 
 <section class="dark-section pt-48">
     <div class="_container">
         <div class="features flex flex-row gap-5">
             <div class="features_left flex flex-col justify-center gap-48 self-stretch flex-none relative z-10">
-                <div class="_32 relative z-10">Features</div>
+                <div class="_32 relative z-10">{section[0].title}</div>
                 <div class="flex flex-row gap-2.5 relative z-10">
                     <SliderArrow/>
                     <SliderArrow rotate={true}/>
@@ -32,7 +29,7 @@ const items =
             </div>
             <div class="features_slider">
                 <div class="swiper-wrapper flex flex-row">
-                    {items.map(item => <FeaturesItem title={item.title} img={item.img}/>)}
+                    {sortedSliders.map(slide => <FeaturesItem {...slide}/>)}
                 </div>
             </div>
         </div>
