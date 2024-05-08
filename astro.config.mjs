@@ -31,5 +31,5 @@ export default defineConfig({
         studioBasePath: "/admin"
     }), 
   // react()
-  , sanity(), react()]
+   react()]
 });
