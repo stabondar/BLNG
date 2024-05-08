@@ -1,6 +1,6 @@
 import { loadEnv } from "vite";
 import { defineConfig, squooshImageService } from 'astro/config';
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import tailwind from "@astrojs/tailwind";
 
 import sanity from "@sanity/astro";
@@ -14,7 +14,7 @@ export default defineConfig({
   image: {
     service: squooshImageService()
   },
-  output: "server",
+  output: "static",
   adapter: vercel(),
   // vite: {
   //     plugins: [glsl()]
@@ -24,7 +24,7 @@ export default defineConfig({
     tailwind(),
     sanity(
     {
-        projectId: '4x3qe5zn',
+        projectId: PUBLIC_SANITY_PROJECT_ID,
         dataset: 'production',
         useCdn: false,
         apiVersion: "2024-04-26",
