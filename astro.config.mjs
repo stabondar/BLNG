@@ -24,7 +24,7 @@ export default defineConfig({
     tailwind(),
     sanity(
     {
-        projectId: PUBLIC_SANITY_PROJECT_ID,
+        projectId: '4x3qe5zn',
         dataset: 'production',
         useCdn: false,
         apiVersion: "2024-04-26",
