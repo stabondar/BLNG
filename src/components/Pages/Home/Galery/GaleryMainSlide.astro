@@ -1,0 +1,11 @@
+---
+import { Image } from "astro:assets"
+import { getImageUrl } from "@lib/getImage"
+const props = Astro.props
+
+const image = getImageUrl(props.large).url()
+---
+
+<div class="swiper-slide h-full">
+    <Image src={image} alt='' inferSize={true} loading="eager" class="h-full"/>
+</div>

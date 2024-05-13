@@ -1,0 +1,16 @@
+---
+import { PortableText } from "astro-portabletext";  
+
+const props = Astro.props[0]
+---
+
+<header class="black-section">
+    <div class="_container">
+        <div class="pt-56 pb-32 flex flex-col gap-20 tablet:pt-36 sm:pt-20 sm:gap-10">
+            <div class="_58 sm:text-30">{props.title}</div>
+            <div class="about_descr">
+                <PortableText value={props.content} />
+            </div>
+        </div>
+    </div>
+</header>

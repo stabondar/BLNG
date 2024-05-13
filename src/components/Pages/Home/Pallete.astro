@@ -1,45 +1,42 @@
 ---
-import video from '@static/CamAnimated hand yin yang.mp4'
+// import video from '@static/CamAnimated hand yin yang.mp4'
+import { getSanity } from "@lib/api"
+import { getRefs } from "@lib/getRefs"
+import { PortableText } from "astro-portabletext";
 
-const colors = 
-[
-    {color: '#2F2C25'},
-    {color: '#3F382F'},
-    {color: '#664D3F'},
-    {color: '#876852'},
-    {color: '#A48A64'},
-    {color: '#D8C5A7'},
-    {color: '#D8C5A7'},
-    {color: '#EADFC4'},
-    {color: '#F5EDD9'},
-    {color: '#F2ECE2'},
-    {color: '#F6F0E8'},
-]
+const section = await getSanity('homeColors')
+
+const colors = await getRefs('colorItem', section[0].colors)
+
+const sortedColors = section[0].colors.map(galeryItem => 
+{
+    return colors.find(slider => slider._id === galeryItem._ref);
+})
 ---
 
-<section class="white-section pt-48 pb-48">
+<section class="white-section pt-48 pb-48 tablet:pt-36 tablet:pb-36 sm:pt-24 sm:pb-24">
     <div class="_container short">
-        <div class="flex justify-between gap-20">
-            <div class="flex flex-col self-end pb-16 gap-48 max-w-[450px]">
-                <div class="block">
-                    <div class="_14 capitalize pb-10">DIVERSITY</div>
-                    <div class="_60 pb-6">Embracing Diversity</div>
-                    <div class="_22 opacity-50">Enhancing the creative journey for jewelry designers with tools to quickly ideate, refine, and visualize their inspirations in real time.</div>
-                </div>
+        <div class="grid grid-cols-[1fr,_1.4fr] grid-rows-2 gap-x-10 tablet-sm:flex tablet-sm:flex-col tablet-sm:gap-10">
 
-                <div class="block">
-                    <div class="bg-black h-px opacity-20 w-full mb-5"></div>
-                    <div class="pallete_color _14 capitalize pb-8">COLOR</div>
-                    <div class="grid grid-cols-7 gap-6">
-                        {colors.map(color => <div class="pallete_item relative aspect-square w-full rounded-full" style={`background-color: ${color.color}`}></div>)}
-                    </div>
-                </div>
+            <div class="block col-span-1 row-span-1 col-start-1 self-end">
+                <div class="_14 sm:text-14 capitalize pb-10 tablet-sm:pb-7 sm:pb-5"><PortableText value={section[0].subtitle} /></div>
+                <div class="_60 pb-6 tablet-sm:pb-4 sm:pb-5"><PortableText value={section[0].heading} /></div>
+                <div class="_22 sm:text-16 opacity-50">{section[0].description}</div>
             </div>
-            <div class="pallete-img block relative z-10 aspect-[668/950] overflow-clip rounded-[20px] flex-none">
+
+            <div class="pallete-img row-span-2 col-span-1 col-start-2 row-start-1 block relative z-10 aspect-[668/950] overflow-clip rounded-[20px] tablet-sm:w-2/3 sm:w-full">
                 <div class="background-video">
                     <video muted autoplay crossorigin="anonymous" loop playsinline>
-                        <source src={video} type="video/mp4" />
+                        <!-- <source src={video} type="video/mp4" /> -->
                     </video>
+                </div>
+            </div>
+
+            <div class="block col-span-1 row-span-1 col-start-1 max-w-[422px] self-end pb-3 tablet-sm:self-start tablet-sm:max-w-none">
+                <div class="bg-black h-px opacity-20 w-full mb-5"></div>
+                <div class="pallete_color _14 capitalize pb-8">COLOR</div>
+                <div class="flex flex-row flex-wrap gap-6 sm:gap-4">
+                    {sortedColors.map(color => <div class="pallete_item relative aspect-square w-[38px] rounded-full" style={`background-color: ${color.color}`}></div>)}
                 </div>
             </div>
         </div>

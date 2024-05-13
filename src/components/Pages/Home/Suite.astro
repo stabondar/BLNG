@@ -1,25 +1,29 @@
 ---
 import Title from "@components/Title.astro"
 import SuiteItem from "./Suite/SuiteItem.astro"
+import { getSanity } from "@lib/api"
+import { getImageUrl } from "@lib/getImage"
 
-import img1 from '@static/suites/01 a.jpg'
-import img2 from '@static/suites/02.jpg'
-import img3 from '@static/suites/03.png'
+const section = await getSanity('services')
+
+const img1 = getImageUrl(section[0].item1image).url()
+const img2 = getImageUrl(section[0].item2image).url()
+const img3 = getImageUrl(section[0].item3image).url()
 ---
 
-<section class="pt-48 pb-48 white-section">
+<section class="pt-48 pb-48 tablet:pt-36 tablet:pb-36 white-section sm:pt-24 sm:pb-24">
     <div class="_container">
-        <div class="flex flex-col justify-center items-center m-auto gap-8 text-center mb-32">
-            <Title title="The perfect suite for your jewelry" h2={true} size={900}/>
-            <p class="_22 opacity-50 max-w-[730px]">Experience firsthand the advantages of integrating Generative Design and Visual Effects to your product development cycle and marketing content production. BLNG offers a suite of tools for every step of the jewelry production, from initial sketch to final sale. Including a personal shopper for your customers.</p>
+        <div class="flex flex-col justify-center items-center m-auto gap-8 text-center mb-32 tablet-sm:mb-10 tablet-sm:gap-7">
+            <Title title={section[0].heading} h2={true} size={900}/>
+            <p class="_22 opacity-50 max-w-[730px] sm:text-16">{section[0].description}</p>
         </div>
-        <div class="grid grid-cols-2 gap-5">
+        <div class="grid grid-cols-2 gap-5 tablet-sm:flex tablet-sm:flex-col">
             <SuiteItem 
-                title="Multimodal Generative Design for your ideas" 
+                title={section[0].item1title} 
                 titleWidth={400}
-                subtitle="DESIGN"
+                subtitle={section[0].item1text} 
                 buttonText="Request demo"
-                buttonLink="/"
+                buttonLink={section[0].item1link}
                 accentColor="#189AF9"
                 vertical={true}
                 imgFull={true}
@@ -27,11 +31,11 @@ import img3 from '@static/suites/03.png'
                 img={img1}
             />
             <SuiteItem 
-                title="Multimodal Generative Design for your ideas" 
+                title={section[0].item2title} 
                 titleWidth={400}
-                subtitle="STUDIO"
+                subtitle={section[0].item2text} 
                 buttonText="Request demo"
-                buttonLink="/"
+                buttonLink={section[0].item2link}
                 accentColor="#FC502A"
                 vertical={true}
                 imgFull={true}
@@ -41,9 +45,9 @@ import img3 from '@static/suites/03.png'
                 img={img2}
             />
             <SuiteItem 
-                title="The ultimate personal shopper" 
+                title={section[0].item3title} 
                 titleWidth={280}
-                subtitle="RETAIL"
+                subtitle={section[0].item3text} 
                 buttonText="Learn more"
                 buttonLink="/"
                 accentColor="#898FA6"

@@ -2,7 +2,7 @@
 // import  SpeedInsights  from "@vercel/speed-insights/astro"
 import Nav from "@components/Nav/Nav.astro";
 import Cursor from "@components/Cursor.astro";
-// import Burger from "@components/Burger.astro";
+import Burger from "@components/Burger.astro";
 import Loader from "@components/Loader.astro";
 
 interface Props 
@@ -26,13 +26,13 @@ const { descr } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-	</head>
+	</head>	
 	<body data-transition="wrapper">
 		<div class="global">
 			<Loader />
 			<Cursor />
 			<Nav />
-			<!-- <Burger /> -->
+			<Burger />
 		</div>
 		
 		<main data-transition="container" data-transition-page={barbaPage}>
@@ -51,7 +51,7 @@ const { descr } = Astro.props;
 
 <script>
 	import '../styles/styles.scss'
-	import app from '../js/App.js'
+	import app from '@js/App.js'
 
 	const js = new app()
 </script>

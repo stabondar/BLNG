@@ -9,7 +9,7 @@ const titles = props.titles
 const length = 6
 ---
 
-<div class="hero_nav absolute right-0 bottom-8 flex flex-col items-end justify-end gap-7 z-10">
+<div class="hero_nav absolute right-0 bottom-8 flex flex-col items-end justify-end gap-7 z-10 tablet-sm:relative tablet-sm:mt-10 tablet-sm:items-start sm:gap-5 sm:bottom-0">
     <HeroIndexes length={`0${length}`} titles={titles}/>
     <div class="hero_nav-titles _28 leading-none overflow-clip relative text-right">
         {titles.map(title => <div class="hero_nav-title">{title.title}</div>)}

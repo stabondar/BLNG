@@ -1,0 +1,17 @@
+---
+import Layout from "@layout/Layout.astro";
+import InnerPageHeader from "@components/InnerPageHeader.astro";
+import PostsList from "@components/Pages/Blog/PostsList.astro";
+import Footer from "@components/Footer.astro";
+import { getSanity } from "@lib/api";
+import { getSanityOrder } from '@lib/apiOrderable'
+
+const header = await getSanity('blog')
+const posts = await getSanityOrder('blogList')
+---
+
+<Layout barbaPage="news" descr="BLNG News" title="BLNG News">
+    <InnerPageHeader title={header[0].title} />
+    <PostsList posts={posts} />
+    <Footer />
+</Layout>

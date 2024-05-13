@@ -1,5 +1,6 @@
 ---
 // import { html } from 'astro/dist/renderer';
+import { PortableText } from "astro-portabletext";
 
 interface Props
 {
@@ -10,18 +11,27 @@ interface Props
 }
 
 const props = Astro.props
-
-const title = props.title.replace(/\n/g, '<br>')
 ---
 
 {
-    props.h1 && <h1 class="text-center _74" >
-        <Fragment set:html={title}/>
+    props.h1 && <h1 class="text-center _74 title" >
+        <PortableText value={props.title} />
     </h1>
 }
 
 {
-    props.h2 && <h2 class="text-center _60 m-auto text-balance" style={props.size && `max-width: ${props.size}px`}>
-        <Fragment set:html={title}/>
+    props.h2 && <h2 class="text-center _60 m-auto text-balance title" style={props.size && `max-width: ${props.size}px`}>
+        <PortableText value={props.title} />
     </h2>
 }
+
+<style is:global lang="scss">
+    .title
+    {
+        strong
+        {
+            color: color-mix(in srgb, currentColor, transparent 60%);
+            font-weight: inherit;
+        }
+    }
+</style>

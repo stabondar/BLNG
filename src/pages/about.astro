@@ -1,0 +1,21 @@
+---
+import Layout from "@layout/Layout.astro"
+import AboutHero from "@components/Pages/About/AboutHero.astro";
+import AboutLogos from "@components/Pages/About/AboutLogos.astro";
+import AboutTeam from "@components/Pages/About/AboutTeam.astro";
+import Footer from "@components/Footer.astro"
+import DividerSection from "@components/DividerSection.astro";
+
+import { getSanity } from "@lib/api";
+
+const hero = await getSanity('aboutHero')
+const team = await getSanity('aboutTeam')
+---
+
+<Layout title="BLNG" barbaPage="about" descr="True craftmanship requires real humans. And a touch of BLNG.">
+    <AboutHero {...hero} />
+    <DividerSection color="black-section" />
+    <AboutLogos {...hero} />
+    <AboutTeam {...team} />
+	<Footer />
+</Layout>

@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets"
+import { getImageUrl } from "@lib/getImage"
+const props = Astro.props
+
+const image = getImageUrl(props.next).url()
+---
+
+<div class="swiper-slide h-full relative">
+    <Image src={image} alt='' inferSize={true}/>
+    <div class="absolute bottom-0 left-0 right-0 h-16" style={`background: linear-gradient(to top, ${props.color}, transparent);`}></div>
+</div>

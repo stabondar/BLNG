@@ -19,6 +19,14 @@
     }
 }
 
+.burger-open
+{
+    .nav
+    {
+        color: var(--white);
+    }
+}
+
 .nav_logo
 {
     aspect-ratio: 115 / 32;

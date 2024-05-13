@@ -10,7 +10,7 @@ export default class Nav
         this.body = document.querySelector('body')
         this.navTrigger = document.querySelector('.nav_drop')
         this.navOverlay = document.querySelector('.nav-overlay-bg')
-        this.overlayItems = document.querySelectorAll('.nav-overlay-item')
+        this.overlayItems = [...document.querySelectorAll('.nav-overlay-item'), ...document.querySelectorAll('.burger_product')]
 
         this.init()
         this.scrollToSection()
@@ -23,14 +23,25 @@ export default class Nav
             item.addEventListener('click', () => 
             {
                 let targetSection = item.getAttribute('data-section')
-                let section = document.querySelector(`[${targetSection}]`)
 
-                let offset = 0
+                if(document.querySelector('[data-transition-page="home"]'))
+                {
+                    let section = document.querySelector(`[${targetSection}]`)
+    
+                    let offset = 0
+    
+                    index == this.overlayItems.length - 1 ? offset = -100 : offset = 0
+    
+                    this.body.classList.remove('nav-drop-open')
+                    this.scroll.scrollTo(section, {duration: 1, offset: offset, force: true,})
+                    
+                } else
+                {
+                    this.body.classList.remove('nav-drop-open')
+                    this.app.barba.go('/')
 
-                index == this.overlayItems.length - 1 ? offset = -100 : offset = 0
-
-                this.body.classList.remove('nav-drop-open')
-                this.scroll.scrollTo(section, {duration: 1, offset: offset})
+                    this.app.scrollToSection = targetSection
+                }
             })
         })
     }

@@ -3,9 +3,8 @@ import barba from '@barba/core'
 
 import Scroll from '@jsUtils/Scroll'
 import { CheckPages } from '@jsComp/CheckPage'
-// import { CheckLoader } from '@jsComp/CheckLoader'
+import { CheckLoader } from '@jsComp/CheckLoader'
 import EventEmitter from '@jsComp/EventEmitter.js'
-import Nav from '@jsComp/Nav'
 
 let instance = null
 
@@ -16,37 +15,20 @@ export default class App extends EventEmitter
     {
         super()
 
-        if(instance)
-        {
-            return instance
-        }
+        if(instance) { return instance }
 
         instance = this
         window.app = this
 
-        this.scroll = new Scroll()
-        this.nav = new Nav()
-        // this.burger = new Burger()
+        // this.scroll = new Scroll()
 
-        const destroy = () => this.trigger('destroy')
-        
-        // const load = async () =>
-        // {
-        //     // this.scroll.lenis.scrollTo(0, {offset: 0, duration: 0.1, immediate: true})
-
-        //     CheckPages()
-
-        //     // this.init(destroy)
-        // }
-        // setTimeout(() => load(), 400)
+        this.scrollToSection = null
 
         this.init()
-        // this.importComponents()
     }
 
     async importComponents()
     {
-        const cursor = await import('@jsComp/Cursor.js').then(module => new module.default())
         const getVH = await import('@jsUtils/GetVH.js').then(module => new module.default())
         const atTop = await import('@jsUtils/AtTop.js').then(module => new module.default())
         const chengeColor = await import('@jsComp/ChangeColor.js').then(module => new module.default())
@@ -54,7 +36,15 @@ export default class App extends EventEmitter
         CheckPages()
     }
 
-    init(destroy)
+    async loadOnce()
+    {
+        instance.scroll = await import('@jsUtils/Scroll.js').then(module => new module.default())
+        const burger = await import('@jsComp/Burger.js').then(module => new module.default())
+        const cursor = await import('@jsComp/Cursor.js').then(module => new module.default())
+        const nav = await import('@jsComp/Nav.js').then(module => new module.default())
+    }
+
+    init()
     {
         let it = this
 
@@ -77,33 +67,33 @@ export default class App extends EventEmitter
                     name: 'once',
                     async once (data)
                     {
-                        it.globalLoader = await import('@jsTransition/GlobalLoader.js').then(module => new module.default(false, it.importComponents, data.next.container))
+                        it.globalLoader = await import('@jsTransition/GlobalLoader.js').then(module => new module.default(CheckLoader, it.importComponents, data.next.container, it.loadOnce))
                     }
                 },
-                // {   
-                //     name: 'transition',
-                //     async leave(data)
-                //     {
-                //         const done = this.async()
-                //         it.leave = await import('@jsTransition/Leave.js').then(module => new module.default(done, destroy))
-                //     },
-                //     async enter(data)
-                //     {
-                //         it.enter = await import('@jsTransition/Enter.js').then(module => new module.default(data.next.container, it.importComponents, CheckLoader))
-                //     },
-                // },
-                // {   
-                //     name: 'self',
-                //     async leave(data)
-                //     {
-                //         const done = this.async()
-                //         it.leave = await import('@jsTransition/Leave.js').then(module => new module.default(done, destroy))
-                //     },
-                //     async enter(data)
-                //     {
-                //         it.enter = await import('@jsTransition/Enter.js').then(module => new module.default(data.next.container, it.importComponents, CheckLoader))
-                //     },
-                // }
+                {   
+                    name: 'transition',
+                    async leave(data)
+                    {
+                        const done = this.async()
+                        it.leave = await import('@jsTransition/Leave.js').then(module => new module.default(done))
+                    },
+                    async enter(data)
+                    {
+                        it.enter = await import('@jsTransition/Enter.js').then(module => new module.default(data.next.container, it.importComponents, CheckLoader))
+                    },
+                },
+                {   
+                    name: 'self',
+                    async leave(data)
+                    {
+                        const done = this.async()
+                        it.leave = await import('@jsTransition/Leave.js').then(module => new module.default(done))
+                    },
+                    async enter(data)
+                    {
+                        it.enter = await import('@jsTransition/Enter.js').then(module => new module.default(data.next.container, it.importComponents, CheckLoader))
+                    },
+                }
             ]
         })
 
@@ -116,5 +106,7 @@ export default class App extends EventEmitter
                 video.load()
             })
         })
+
+        this.barba = barba
     }
 }   

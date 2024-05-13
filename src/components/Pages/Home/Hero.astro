@@ -5,7 +5,7 @@ import HeroSlider from './Hero/HeroSlider.astro'
 import { getSanity } from "@lib/api"
 import { getRefs } from "@lib/getRefs"
 
-const hero = await getSanity('hero')
+const hero = await getSanity('homeHero')
 const getSliders = await getRefs('beforeAfter', hero[0].galery)
 
 const sortedSliders = hero[0].galery.map(galeryItem => 
@@ -16,11 +16,11 @@ const sortedSliders = hero[0].galery.map(galeryItem =>
 const props = Astro.props
 ---
 
-<header class="pb-48">
+<header class="pb-48 tablet:pb-36 bg-[#E5E6E7] sm:pb-24">
     <div class="_container">
-        <div class="hero pt-48 flex flex-col justify-center">
+        <div class="hero pt-48 tablet:pt-40 flex flex-col justify-center sm:pt-24">
             <div class="block mx-auto"> 
-                <Title h1={true} title={hero[0].title}/>
+                <Title h1={true} title={hero[0].text}/>
             </div>
             <HeroSlider sliders={sortedSliders}/>
         </div>

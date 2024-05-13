@@ -1,0 +1,22 @@
+---
+import AboutLogo from "./AboutLogo.astro"
+import { getRefs } from "@lib/getRefs";
+
+const props = Astro.props[0]
+
+const getSliders = await getRefs('aboutLogos', props.logos)
+
+const logos = props.logos.map(galeryItem => 
+{
+    return getSliders.find(slider => slider._id === galeryItem._ref);
+})
+---
+
+<section class="pt-16 pb-48 black-section tablet:pb-36 sm:pb-24">
+    <div class="_container">
+        <div class="_14 opacity-60 capitalize text-center">OUR EXPERIENCE</div>
+        <div class="mt-14 flex flex-row justify-center items-center gap-24 tablet-sm:gap-16">
+            {logos.map(item => <AboutLogo {...item} />)}
+        </div>
+    </div>
+</section>

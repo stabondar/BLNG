@@ -1,8 +1,3 @@
-.hero_slider
-{
-    height: 50rem;
-}
-
 .hero_swiper-parent
 {
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
@@ -106,5 +101,13 @@
             opacity: 1;
             pointer-events: all;
         }
+    }
+}
+
+@media screen and (max-width: 992px) 
+{
+    .hero_nav
+    {
+        opacity: 1;
     }
 }

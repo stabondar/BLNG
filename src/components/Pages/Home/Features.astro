@@ -16,11 +16,11 @@ const sortedSliders = section[0].slides.map(galeryItem =>
 })
 ---
 
-<section class="dark-section pt-48">
+<section class="dark-section pt-48 tablet:pt-36 sm:pt-24">
     <div class="_container">
-        <div class="features flex flex-row gap-5">
-            <div class="features_left flex flex-col justify-center gap-48 self-stretch flex-none relative z-10">
-                <div class="_32 relative z-10">{section[0].title}</div>
+        <div class="features flex flex-row gap-5 sm:flex-col sm:gap-10">
+            <div class="features_left flex flex-col justify-center gap-48 self-stretch flex-none relative z-10 sm:flex-row sm:justify-between sm:gap-0 sm:w-full sm:items-center">
+                <div class="_32 relative z-10 sm:text-28">{section[0].title}</div>
                 <div class="flex flex-row gap-2.5 relative z-10">
                     <SliderArrow/>
                     <SliderArrow rotate={true}/>
@@ -40,5 +40,21 @@ const sortedSliders = section[0].slides.map(galeryItem =>
     .features_left
     {
         width: calc(355 / 16 * 1rem);
+    }
+    
+    @media screen and (max-width: 992px) 
+    {
+        .features_left
+        {
+            width: calc(230 / 16 * 1rem);
+        }
+    }
+
+    @media screen and (max-width: 479px) 
+    {
+        .features_left
+        {
+            width: auto;
+        }
     }
 </style>

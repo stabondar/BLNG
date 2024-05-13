@@ -1,0 +1,24 @@
+---
+import { getRefs } from "@lib/getRefs";
+import AboutMember from "./AboutMember.astro";
+
+const props = Astro.props[0]
+
+const getTeam = await getRefs('team', props.team)
+
+const team = props.team.map(item => 
+{
+    return getTeam.find(slider => slider._id === item._ref);
+})
+---
+
+<section class="py-48 tablet-sm:py-36 sm:py-24" black-trigger>
+    <div class="_container">
+        <h3 class="_60 text-50 mb-20 tablet-sm:mb-10 text-center sm:text-30">{props.title}</h3>
+        <div class="grid grid-cols-4 gap-x-5 gap-y-20 tablet:grid-cols-3 sm:grid-cols-1 sm:gap-14">
+            {
+                team.map(member => <AboutMember {...member} />)
+            }
+        </div>
+    </div>
+</section>

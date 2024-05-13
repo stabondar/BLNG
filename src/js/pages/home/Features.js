@@ -38,12 +38,15 @@ export default class Features
 
         this.swiper.on('slideChange', () => 
         {
-            if(this.swiper.activeIndex !== this.swiper.slides.length - 3)
+            if(window.innerWidth > 1600)
             {
-                this.swiper.allowSlideNext = true
-            } else
-            {
-                this.swiper.allowSlideNext = false
+                if(this.swiper.activeIndex !== this.swiper.slides.length - 3)
+                {
+                    this.swiper.allowSlideNext = true
+                } else
+                {
+                    this.swiper.allowSlideNext = false
+                }
             }
         })
 

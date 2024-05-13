@@ -1,0 +1,44 @@
+---
+import BurgerProducts from "./Nav/BurgerProducts.astro"
+
+const props = Astro.props
+
+const items = 
+[
+    {subtitle: 'DESIGN', section: 'section-design', color: '#189AF9', title: 'For designers', link: '#', descr: 'Enhancing the creative journey for jewelry designers with tools'},
+    {subtitle: 'Studio', section: 'section-studio', color: '#FC502A', title: 'For designers', link: '#', descr: 'Enhancing the creative journey for jewelry designers with tools'},
+    {subtitle: 'Retail', section: 'section-retail', color: '#898FA6', title: 'For designers', link: '#', descr: 'Enhancing the creative journey for jewelry designers with tools'}
+]
+---
+
+<div class="burger fixed top-0 left-0 right-0 z-10 bg-black text-white h-dvh" data-lenis-prevent>
+    <div class="_container">
+        <div class="burger_body h-fit pt-24 flex flex-col gap-12">
+
+            <div class="flex flex-col gap-12">
+                <div class="flex flex-col gap-3">
+                    <div class="burger_divider w-full h-px bg-white opacity-15"></div>
+                    <div class="_12 uppercase">site</div>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <a class="burger_item _44" href="/">Home</a>
+                    <a class="burger_item _44" href="/about">About</a>
+                    <a class="burger_item _44" href="/news">News</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-12">
+                <div class="flex flex-col gap-3">
+                    <div class="burger_divider w-full h-px bg-white opacity-15"></div>
+                    <div class="_12 uppercase">PRODUCTS</div>
+                </div>
+
+                <div class="flex flex-col">
+                    {items.map((item, index) => <BurgerProducts {...item} index={index} lenght={items.length} />)}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

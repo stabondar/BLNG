@@ -9,9 +9,9 @@ interface Props
 const props = Astro.props
 ---
 
-<div class="step-item flex flex-row items-start justify-between px-10 py-10 rounded-[1.25rem] bg-[#E8E8E8] relative min-h-[42.75rem] overflow-clip">
-    <div class="_22 relative z-10 opacity-30">{props.index}</div>
-    <div class="_22 relative z-10">{props.title}</div>
+<div class="step-item flex flex-row items-start justify-between px-10 py-10 rounded-[1.25rem] bg-[#E8E8E8] relative min-h-[42.75rem] overflow-clip tablet-sm:flex-none tablet-sm:min-w-[291px] tablet-sm:min-h-[420px] sm:px-5 sm:py-6">
+    <div class="_22 relative z-10 opacity-30 sm:text-14">{props.index}</div>
+    <div class="_22 relative z-10 sm:text-14">{props.title}</div>
     <div class="absolute inset-0 z-0">
         <div class="background-video">
             <video muted autoplay crossorigin="anonymous" loop playsinline>

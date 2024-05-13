@@ -2,25 +2,29 @@
 import Title from "@components/Title.astro"
 import ExperienceItem from "./Experience/ExperienceItem.astro";
 
+import { getSanity } from "@lib/api";
+import { getImageUrl } from "@lib/getImage";
 import { Image } from "astro:assets";
 import { getImage } from "astro:assets";
 
-import videoImg from '@static/experience.png'
+const section = await getSanity('homeMockup')
 
-const img = await getImage({src: videoImg, format: 'webp', quality: 'max'})
+const getImg = getImageUrl(section[0].image).url()
+
+const img = await getImage({src: getImg, format: 'webp', quality: '80', inferSize: true})
 ---
 
-<section class="dark-section pt-48 pb-48">
+<section class="dark-section pt-48 pb-48 tablet:pt-36 tablet:pb-36 sm:pt-24 sm:pb-24">
     <div class="_container">
-        <Title h2={true} size={550} title="Experience the magic. Render your dreams."/>
+        <Title h2={true} size={550} title={section[0].text}/>
 
-        <div class="video-section relative w-full mt-24">
-            <Image src={img.src} alt="Video Section Img" width={img.attributes.width} height={img.attributes.height} class="relative z-10"/>
+        <div class="video-section relative w-full mt-24 tablet-sm:mt-20 sm:mt-12">
+            <Image src={img.src} alt="Video Section Img" inferSize={true} class="relative z-10"/>
         </div>
 
-        <div class="flex flex-row justify-center gap-36 mt-12">
-            <ExperienceItem title="Amplify Human Creativity" descr="Enhancing the creative journey for jewelry designers with tools to quickly ideate, refine, and visualize their inspirations in real time."/>
-            <ExperienceItem title="Advance Craftsmanship" descr="The ability to rapidly iterate and visualize ideas leads to more experimentations and enhance the quality and depth of the final product."/>
+        <div class="flex flex-row justify-center gap-36 mt-12 tablet-sm:flex-col tablet-sm:gap-12 tablet-sm:justify-start">
+            <ExperienceItem title={section[0].item1title} descr={section[0].item1text}/>
+            <ExperienceItem title={section[0].item2title} descr={section[0].item2text}/>
         </div>
     </div>
 </section>

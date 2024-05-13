@@ -1,0 +1,17 @@
+---
+const props = Astro.props
+---
+
+<div class="burger_product gap-2 flex flex-col relative pb-7" class:list={[props.index != 0 && 'pt-7']} data-section={props.section}>
+    <div class="_12 uppercase" style=`color: ${props.color}`>{props.subtitle}</div>
+    <div class="_16 opacity-50">{props.descr}</div>
+
+    {props.index != props.lenght - 1 && <div class="burger_divider absolute bottom-0 left-0 right-0 h-px bg-white opacity-15"></div>}
+</div>
+
+<style>
+    ._16
+    {
+        line-height: 1.4;
+    }
+</style>

@@ -2,6 +2,10 @@
 import GalerySlider from "./Galery/GalerySlider.astro"
 import GaleryTab from "./Galery/GaleryTab.astro"
 
+import { getSanityOrder } from "@lib/apiOrderable"
+
+const sections = await getSanityOrder('galery')
+
 import large1 from '@static/galery/01.jpg'
 import large2 from '@static/galery/02.jpg'
 import large3 from '@static/galery/03.jpg'
@@ -38,26 +42,20 @@ const item3 =
     {img: large1, alt: 'image 1', preveiw : preview2, color: '#000'},
     {img: large2, alt: 'image 2', preveiw : preview3, color: '#536D7F'},
 ]
-
-const tabs = 
-[
-    {title: 'PRODUCT IMAGE AND VIDEO', descr: "With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide."},
-    {title: 'ON-FIGURE IMAGE AND VIDEO', descr: "With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide."},
-    {title: 'STILL LIFE IMAGES', descr: "With our cutting-edge AI tool, we've revolutionized the process of bringing sketches to life, offering an innovative solution for jewelry designers worldwide."}
-]
 ---
 
-<section class="pt-48 pb-48 galery">
+<section class="pt-48 pb-48 tablet:pt-36 tablet:pb-36 galery sm:pt-20 sm:pb-24">
     <div class="_container">
         <div class="flex flex-col gap-10">
-            <div class="galery_list aspect-[1480/800] w-full relative overflow-clip rounded-[20px]">
-                <GalerySlider props={item1}/>
+            <div class="galery_list aspect-[1480/800] w-full relative overflow-clip rounded-[20px] sm:aspect-[388/551]">
+                <!-- <GalerySlider props={item1}/>
                 <GalerySlider props={item2}/>
-                <GalerySlider props={item3}/>
+                <GalerySlider props={item3}/> -->
+                {sections.map(section => <GalerySlider {...section}/>)}
             </div>
         </div>
-        <div class="galery_tabs grid grid-cols-3 gap-7 mt-10">
-            {tabs.map(tab => <GaleryTab title={tab.title} descr={tab.descr}/>)}
+        <div class="galery_tabs grid grid-cols-3 gap-7 mt-10 tablet-sm:flex tablet-sm:flex-col">
+            {sections.map(tab => <GaleryTab title={tab.title} descr={tab.descr}/>)}
         </div>
     </div>    
 </section>

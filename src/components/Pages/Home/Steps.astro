@@ -3,23 +3,29 @@ import Subtitle from "@components/Subtitle.astro"
 import Title from "@components/Title.astro"
 import StepsItems from "./Steps/StepsItems.astro"
 
-import video from '@static/steps/steps-video-1.mp4'
+import video1 from '/videos/toon_shaded_outline_turntable_yin_yang.mp4'
+import video2 from '/videos/reformated_turntable_yin_yang.mp4'
+import video3 from '/videos/CamAnimated_hand_yin_yang_website_graybg.mp4'
+
+import { getSanity } from "@lib/api"
+
+const section = await getSanity('homeModels')
 
 const items = 
 [
-    {title: 'CAD Model', video: video},
-    {title: 'Render', video: video},
-    {title: 'Market-ready', video: video},
+    {title: section[0].item1title, video: video1},
+    {title: section[0].item2title, video: video2},
+    {title: section[0].item3title, video: video3},
 ]
 ---
 
-<section class="pt-48" black-trigger section-studio>
+<section class="pt-48 tablet:pt-36 sm:pt-24" black-trigger section-studio>
     <div class="_container">
-        <div class="flex flex-col gap-12 mb-24">
-            <Subtitle color="#FC502A" title="Explore" higlight="Studio" alignText="text-center" align="justify-center"/>
-            <Title h2={true} size={650} title=`From CAD Models. To market-ready content`/>
+        <div class="flex flex-col gap-12 mb-24 tablet-sm:mb-20 tablet-sm:gap-9 sm:mb-12">
+            <Subtitle color="#FC502A" title={section[0].subtitle} alignText="text-center" align="justify-center"/>
+            <Title h2={true} size={650} title={section[0].heading}/>
         </div>
-        <div class="grid grid-cols-3 gap-5">
+        <div class="grid grid-cols-3 gap-5 tablet-sm:flex tablet-sm:flex-row tablet-sm:overflow-x-scroll tablet-sm:-mx-10 tablet-sm:px-10 tablet-sm:pb-1">
             {items.map((item, index) => <StepsItems index=`0${index + 1}` title={item.title} video={item.video}/>)}
         </div>
     </div>

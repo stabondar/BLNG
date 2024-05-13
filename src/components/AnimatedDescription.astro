@@ -8,6 +8,6 @@ interface Props
 const props = Astro.props
 ---
 
-<div class="animated-description" style={props.style}>
+<div class='animated-description tablet:w-full' class:list={props.style}>
     <div class="_38">{props.text}</div>
 </div>

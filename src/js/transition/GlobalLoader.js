@@ -4,20 +4,21 @@ import imagesLoaded from 'imagesloaded'
 
 export default class GlobalLoader
 {
-    constructor(pageAnimation, pageContent, container)
+    constructor(pageAnimation, pageContent, container, once)
     {
         this.app = new App()
-        this.scroll = this.app.scroll.lenis
 
         this.pageAnimation = pageAnimation
         this.pageContent = pageContent
+        this.once = once
 
-        this.hero = document.querySelector('.hero')
+        this.hero = document.querySelector('header')
         this.loader = document.querySelector('.loader')
+        this.loaderText = this.loader.querySelector('._22')
         this.loaderCounter = this.loader.querySelector('div')
         this.container = container
 
-        this.scroll.stop()
+        this.allowLoad = false
 
         this.loadImg()
         // this.init()
@@ -26,6 +27,12 @@ export default class GlobalLoader
     loadImg()
     {
         const images = this.hero.querySelectorAll('img');
+
+        if(images.length === 0)
+        {
+            this.init()
+            return
+        }
 
         imagesLoaded(images, { background: true }).on('progress', instance => 
         {
@@ -48,8 +55,9 @@ export default class GlobalLoader
         let delay = 0.5
 
         gsap.set(this.container, {autoAlpha: 1})
-        // this.pageAnimation(delay)
+        this.pageAnimation(delay)
         this.pageContent()
+        this.once()
     }
 
     complete()
@@ -59,32 +67,30 @@ export default class GlobalLoader
 
     scrolltop()
     {
-        this.scroll.start()
-        this.scroll.scrollTo(0, {offset: 0, duration: 0.1, immediate: true})
+        window.scrollTo({top: 1, behavior: 'instant'})
     }
 
     init()
     {
         this.tl = gsap.timeline({defaults: { duration: .4, ease: 'power1.inOut', 
-            onStart: () => this.update(),
+            onStart: () => !this.allowLoad && this.update(),
             onComplete: () => this.complete() 
         }})
 
         this.tl.to(this.loader, {opacity: 0, }, 0)
+        .to(this.loaderText, {opacity: 0, }, 0)
     }
 
     update()
     {
-        let allowLoad = false
-        
         const interval = setInterval(() =>
         {
-            if(!allowLoad && this.tl.progress() > 0.05)
+            if(!this.allowLoad && this.tl.progress() > 0.05)
             {
+                this.allowLoad = true
+                clearInterval(interval)
                 this.scrolltop()
                 this.reveal()
-                clearInterval(interval)
-                allowLoad = true
             }
         }, 10)
     }

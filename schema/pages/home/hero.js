@@ -1,20 +1,14 @@
-import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
+import customHeading from "@schema/customHeading"
 
 export default
 {
-    name: 'hero',
+    name: 'homeHero',
     title: 'Hero Section',
     type: 'document',
-    orderings: [orderRankOrdering],
-    orderRank: 'string',
     fields: 
     [   
-        orderRankField({type: 'hero'}),
         {
-            name: 'title',
-            type: 'text',
-            title: 'Heading',
-            rows: 2,
+            ...customHeading('Heading', 'text'),
         },
         {
             name: 'galery',

@@ -1,3 +1,9 @@
+import video from '@static/CamAnimated hand yin yang.mp4'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default class Pallete
 {
     constructor()
@@ -5,7 +11,36 @@ export default class Pallete
         this.text = document.querySelector('.pallete_color') 
         this.items = document.querySelectorAll('.pallete_item')
 
+        this.video = document.querySelector('.pallete-img').querySelector('video')
+
+        this.loaded = false
+
         this.init()
+        this.trigger()
+    }
+
+    trigger()
+    {
+        ScrollTrigger.create(
+        {
+            trigger: '.pallete-img',
+            start: 'top bottom',
+            onEnter: () => 
+            {
+                !this.loaded && this.embedVideo()
+            }
+        })
+    }
+
+    embedVideo()
+    {
+        this.createSource = `<source src="${video}" type="video/mp4">`
+
+        this.video.innerHTML = this.createSource
+        this.video.load()
+        this.video.play()
+
+        this.loaded = true
     }
 
     init()

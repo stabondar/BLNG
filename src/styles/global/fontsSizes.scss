@@ -7,7 +7,7 @@ $body: 'FuturaPT', sans-serif;
 
 ._74
 {
-    font-size: clamp(4.625rem, calc(74 / var(--to-rem)), 5.125rem);
+    font-size: clamp(calc(68 / 16 * 1rem), calc(74 / var(--to-rem)), calc(78 / 16 * 1rem));
     line-height: 1;
     font-weight: 300;
     font-family: $body;
@@ -17,6 +17,24 @@ $body: 'FuturaPT', sans-serif;
 {
     font-size: clamp(3.75rem, calc(60 / var(--to-rem)), 4rem);
     line-height: 1.1;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._58
+{
+    font-size: clamp(calc(58 / 16 * 1rem), calc(58 / var(--to-rem)), calc(60 / 16 * 1rem));
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-weight: 300;
+    font-family: $body;
+}
+
+._44
+{
+    font-size: calc(44 / 16 * 1rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     font-weight: 300;
     font-family: $body;
 }
@@ -72,6 +90,21 @@ $body: 'FuturaPT', sans-serif;
     font-family: $body;
 }
 
+._20
+{
+    font-size: clamp(calc(20 / 16 * 1rem), calc(20 / var(--to-rem)), calc(21 / 16 * 1rem));
+    font-weight: 300;
+    font-family: $body;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+
+    &.bold
+    {
+        font-weight: 400;
+    
+    }
+}
+
 ._18
 {
     font-size: clamp(calc(18 / 16 * 1rem), calc(18 / var(--to-rem)), calc(19 / 16 * 1rem));
@@ -103,4 +136,59 @@ $body: 'FuturaPT', sans-serif;
     line-height: 1.4;
     font-weight: 300;
     font-family: $body;
+}
+
+._12
+{
+    font-size: calc(12 / 16 * 1rem);
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    font-family: $body;
+}
+
+@media screen and (max-width: 1200px) 
+{
+    ._74
+    {
+        font-size: calc(68 / 1200 * 100vw);
+    }
+
+    ._60
+    {
+        font-size: calc(50 / 16 * 1rem);
+    }
+
+    ._38
+    {
+        font-size: calc(32 / 16 * 1rem);
+    }
+
+    ._28
+    {
+        font-size: calc(24 / 16 * 1rem);
+    }
+}
+
+@media screen and (max-width: 480px) 
+{
+    ._74
+    {
+        font-size: calc(35 / 375 * 100vw);
+    }
+
+    ._60
+    {
+        font-size: calc(36 / 16 * 1rem);
+    }
+
+    ._38
+    {
+        font-size: calc(24 / 16 * 1rem);
+    }
+
+    ._28
+    {
+        font-size: calc(24 / 16 * 1rem);
+    }
 }

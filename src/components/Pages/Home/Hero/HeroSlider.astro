@@ -7,13 +7,15 @@ const props = Astro.props
 const slides = props.sliders 
 ---
 
-<div class="hero_slider mt-16 relative">
-    <div class="hero_swiper-parent h-full">
-        <div class="swiper-wrapper h-full noSwipingClass">
-            {slides.map((slide, index) => 
-            {
-                return <HeroSlide {...slide} />
-            })}
+<div class="hero_slider mt-16 relative sm:mt-10">
+    <div class="hero_slider-parent relative h-[752px] w-full mx-auto tablet-sm:w-auto md:h-auto md:aspect-[388/453]">
+        <div class="hero_swiper-parent h-full">
+            <div class="swiper-wrapper h-full noSwipingClass">
+                {slides.map((slide, index) => 
+                {
+                    return <HeroSlide {...slide} />
+                })}
+            </div>
         </div>
     </div>
 

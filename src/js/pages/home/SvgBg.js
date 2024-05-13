@@ -16,13 +16,25 @@ export default class SvgBg
 
     init()
     {
+        let end = 0
+
+        const getWidth = () =>
+        {
+            if(window.innerWidth < 479)
+                end = '+=300px'
+            else
+                end = '+=1500px'
+
+            return end
+        }
+
         this.tl = gsap.timeline({paused: true})
 
         this.tl.from(this.paths, {drawSVG: '0%', stagger: {amount: 0.5}, ease: 'none'})
 
         ScrollTrigger.create(
         {
-            trigger: this.section, start: 'top 60%', end: '+=1500px', scrub: 1,
+            trigger: this.section, start: 'top 60%', end: () => getWidth, scrub: 1,
             animation: this.tl
         })
     }

@@ -1,18 +1,9 @@
 ---
-import icon1 from '@static/phone/phone icons 01.svg'
-import icon2 from '@static/phone/phone icons 02.svg'
-import icon3 from '@static/phone/phone icons 03.svg'
-
 import PhoneTile from './PhoneTile.astro'
 
-const items = 
-[
-    {title: 'Start typing', descr: 'Start from text, doodle, image', img: icon3, position: 'left-[252px] top-[140px]'},
-    {title: 'Mask Influence', descr: 'Start from text, doodle, image', img: icon1, position: 'left-[-31px] top-[320px] -translate-x-full'},
-    {title: 'Edit details', descr: 'Start from text, doodle, image', img: icon2, position: 'left-[321px] top-[404px]'},
-]
+const props = Astro.props
 ---
 
 <div class="absolute inset-0 z-20">
-    {items.map(item => <PhoneTile {...item} />)}
+    {props.items.map(item => <PhoneTile {...item} />)}
 </div>

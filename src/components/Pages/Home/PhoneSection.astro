@@ -2,19 +2,34 @@
 import PhoneMask from "./Phone/PhoneMask.astro"
 import PhoneTiles from "./Phone/PhoneTiles.astro"
 import Title from "@components/Title.astro"
+
+import { getSanity } from "@lib/api";
+import { getImageUrl } from "@lib/getImage";
+
+const section = await getSanity('homePhone')
+const img1 = getImageUrl(section[0].item1image).url()
+const img2 = getImageUrl(section[0].item2image).url()
+const img3 = getImageUrl(section[0].item3image).url()
+
+const items = 
+[
+    {title: section[0].item1title, descr: section[0].item1text, img: img1, position: 'left-[252px] top-[140px] sm:left-[75%] sm:-translate-x-1/4'},
+    {title: section[0].item2title, descr: section[0].item2text, img: img2, position: 'left-[-31px] top-[320px] -translate-x-full tablet-sm:left-auto sm:right-[65%] sm:-translate-x-0'},
+    {title: section[0].item3title, descr: section[0].item3text, img: img3, position: 'left-[321px] top-[404px] sm:top-full sm:left-[180px] sm:-translate-y-1/2'},
+]
 ---
 
 <section class="black-section">
     <div class="phone relative h-[350vh]">
         <div class="phone_sticky sticky top-0 h-dvh flex flex-col justify-center items-center overflow-clip">
-            <div class="relative w-[340px] h-[705px] self-center">
+            <div class="relative w-[340px] h-[705px] self-center sm:aspect-[340/705] sm:w-[220px] sm:h-auto">
                 <div class="phone_title absolute left-1/2 -translate-x-1/2 w-max">
-                    <Title h2={true} title="Experience the magic"/>
+                    <Title h2={true} title={section[0].heading}/>
                 </div>
             </div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+                <PhoneTiles items={items} />
                 <PhoneMask />  
-                <PhoneTiles />
             </div>
         </div>
     </div>

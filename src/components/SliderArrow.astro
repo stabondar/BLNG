@@ -31,4 +31,13 @@ const props = Astro.props
             background-color: #fff;
         }
     }
+
+    @media screen and (max-width: 479px) 
+    {
+        .slider-arrow
+        {
+            color: color-mix(in srgb, currentColor, transparent 20%);
+            border-color: color-mix(in srgb, currentColor, transparent 60%);
+        }
+    };
 </style>

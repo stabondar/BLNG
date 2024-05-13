@@ -1,0 +1,51 @@
+.burger
+{
+    display: none;
+    transition: opacity var(--fast-ease), visibility 0s linear 0.6s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.burger-open
+{
+    .burger
+    {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+        transition: opacity var(--fast-ease), visibility 0s linear;    
+    }
+
+    .nav_burger-line
+    {
+        transform: translate(-50%, -50%) rotate(45deg);
+
+        &:nth-child(2)
+        {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+}
+
+.nav_burger-line
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 3px)) rotate(0deg);
+    transition: transform var(--fast-ease);
+    
+    &:nth-child(2)
+    {
+        transform: translate(-50%, calc(-50% + 3px)) rotate(0deg);
+    }
+}
+
+@media screen and (max-width: 768px) 
+{
+    .burger
+    {
+        display: block;
+    }    
+}

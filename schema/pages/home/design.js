@@ -1,3 +1,5 @@
+import customHeading from "@schema/customHeading"
+
 export default
 {
     name: 'homeDesign',
@@ -6,16 +8,10 @@ export default
     fields: 
     [   
         {
-            name: 'title',
-            type: 'text',
-            title: 'Heading',
-            rows: 2,
+            ...customHeading('Heading', 'heading'),
         },
         {
-            name: 'subtitle',
-            type: 'text',
-            title: 'Subtitle',
-            rows: 2,
+            ...customHeading('Subtitle', 'subtitle'),
         },
         {
             title: 'Image',
@@ -31,7 +27,7 @@ export default
     {
         select: 
         {
-            title: 'title',
+            title: 'heading',
             media: 'image'
         }
     }

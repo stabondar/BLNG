@@ -1,0 +1,17 @@
+---
+import { getImageUrl } from '@lib/getImage'
+
+type Asset = Parameters<typeof getImageUrl>[0];
+
+export interface Props {
+  asset: Asset;
+  alt: string;
+}
+
+const { asset, alt } = Astro.props;
+const image = getImageUrl(asset);
+---
+
+<figure class="rich-img">
+  <img src={image.toString()} alt={alt} />
+</figure>

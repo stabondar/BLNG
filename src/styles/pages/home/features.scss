@@ -34,3 +34,29 @@
         background: #323232;
     }
 }
+
+@media screen and (max-width: 479px) 
+{
+    .features
+    {
+        .swiper-slide
+        {
+            width: min(calc(240 / 16 * 1rem), 100%);
+            height: calc(337 / 16 * 1rem);
+        }
+    }
+
+    .feature-slide
+    {
+
+        &::before
+        {
+            border-radius: calc(20 / 16 * 1rem);
+        }
+
+        &::after
+        {
+            border-radius: calc(19 / 16 * 1rem);
+        }
+    }
+}

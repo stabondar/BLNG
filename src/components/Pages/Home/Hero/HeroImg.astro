@@ -2,16 +2,17 @@
 interface Props
 {
     src: any,
-    width: number,
-    height: number,
     alt: string
 }
 
 import { Image } from "astro:assets"
+import { getImage } from "astro:assets"
 
 const props = Astro.props
+
+const img = await getImage({src: props.src, inferSize: true, format: "webp", quality: 90})
 ---
 
 <div class="hero_img absolute inset-0">
-    <Image src={props.src} alt={props.alt} width={props.width} height={props.height} format="webp" aria-grabbed={false} class="select-none"/>
+    <Image fetchpriority="high" src={img.src} alt={props.alt} inferSize={true} format="webp" aria-grabbed={false} loading="eager" class="select-none object-contain tablet-sm:object-cover"/>
 </div>

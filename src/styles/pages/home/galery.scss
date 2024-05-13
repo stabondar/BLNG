@@ -53,3 +53,25 @@
         opacity: 0.6;
     }
 }
+
+@media screen and (max-width: 1024px) 
+{
+    .galery_tab-descr-parent
+    {
+        grid-template-rows: 0fr;
+        transition: grid-template-rows var(--ease);
+
+        .galery_tab-descr
+        {
+            opacity: 0.6;
+        }
+    }
+
+    .galery_tab.active
+    {
+        .galery_tab-descr-parent
+        {
+            grid-template-rows: 1fr;
+        }
+    }
+}

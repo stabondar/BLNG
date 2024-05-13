@@ -22,9 +22,9 @@ const phraseSecond = await getSanity('homePhraseSecond')
 <Layout title="BLNG" barbaPage="home" descr="True craftmanship requires real humans. And a touch of BLNG.">
 	<Hero />
 	<VideoSection />
-	<section class="dark-section pt-52 pb-48">
+	<section class="dark-section pt-52 pb-48 tablet:pb-36 tablet:pt-36 sm:pt-40 sm:pb-24">
 		<div class="_container">
-			<AnimatedDescription style="width: 57.375rem" text={phraseFirst[0].title} />
+			<AnimatedDescription style="w-[57.375rem]" text={phraseFirst[0].title} />
 		</div>
 	</section>
 	<DividerSection color="dark-section"/>
@@ -32,9 +32,9 @@ const phraseSecond = await getSanity('homePhraseSecond')
 	<Experience />
 	<PhoneSection />
 	<Steps />
-	<section class="pt-32">
+	<section class="pt-32 sm:pt-20">
 		<div class="_container">
-			<AnimatedDescription style="width: 57.375rem" text={phraseSecond[0].title} />
+			<AnimatedDescription style="w-[57.375rem]" text={phraseSecond[0].title} />
 		</div>
 	</section>
 	<Galery />

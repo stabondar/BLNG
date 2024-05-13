@@ -5,30 +5,33 @@
         display: block;
     }
 
-    h2
+    h3
     {
-        font-size: calc(44 / var(--to-rem));
-        letter-spacing: -0.04em;
-        line-height: 1;
-        font-weight: 300;
+        font-size: calc(26 / 16 * 1rem);
+        line-height: 1.4;
+        font-weight: 400;
         font-family: $body;
-        margin-bottom: calc(50 / var(--to-rem));
+        margin-bottom: calc(20 / 16 * 1rem);
     }
     
     p
     {
-        margin-top: calc(25 / var(--to-rem));
-        font-size: calc(20 / var(--to-rem));
+        margin-top: calc(15 / 16 * 1rem);
+        font-size: calc(20 / 16 * 1rem);
         line-height: 1.5;
-        font-weight: 400;
+        font-weight: 300;
         font-family: $body;
-        text-indent: calc(100 / var(--to-rem));
     
     }
 
     .rich-img
     {
-        margin-top: calc(75 / var(--to-rem));
-        margin-bottom: calc(75 / var(--to-rem));
+        margin-top: calc(60 / 16 * 1rem);
+        margin-bottom: calc(60 / 16 * 1rem);
+    }
+
+    & > *:nth-child(1)
+    {
+        margin-top: 0 !important;
     }
 }

@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets"
+import { getImageUrl } from "@lib/getImage"
+
+const props = Astro.props
+
+const image = getImageUrl(props.image).url()
+---
+
+<div class="about_logo">
+    <Image src={image} alt={props.alt} inferSize={true} alt="client logo" class="object-contain object-center max-w-80 max-h-20" />
+</div>

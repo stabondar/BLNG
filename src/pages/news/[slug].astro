@@ -1,0 +1,76 @@
+---
+import { getSanityOrder } from "@lib/apiOrderable";
+import { PortableText } from "astro-portabletext";  
+import { getImage } from 'astro:assets'
+import { getImageUrl } from '@lib/getImage'
+import Layout from "@layout/Layout.astro";
+import PortableTextImage from '@components/Pages/Blog/PortableTextImage.astro'
+import Footer from "@components/Footer.astro";
+import InnerPageHeader from "@components/InnerPageHeader.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() 
+{
+    const posts = await getSanityOrder('blogList')
+
+    return posts.map(
+    ({
+        slug,
+        date,
+        time,
+        blogTitle,
+        previewImage,
+        content
+    }) => ({
+        params: { slug: slug.current },
+        props: { blogTitle, date, previewImage, content, time }
+    }))
+}
+
+const { blogTitle, previewImage, time, date, content } = Astro.props
+
+const heroUrl = getImageUrl(previewImage).url()
+const hero = await getImage({src: heroUrl, format: 'webp', quality: 'max', inferSize: true})
+
+const components = 
+{
+    type: 
+    {
+        image: PortableTextImage
+    }
+}
+
+const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+
+const thisDate = new Date(date)
+const day = thisDate.getDate().toString().padStart(2, '0') 
+const month = (thisDate.getMonth()).toString()
+const year = thisDate.getFullYear().toString()
+
+const formattedDate = `${day} ${monthNames[month]}, ${year}`
+---
+
+<Layout title=`BLNG | ${blogTitle}` descr="" barbaPage="news-inner">
+    <InnerPageHeader title={blogTitle} img={hero} />
+    <section>
+        <div class="_container">
+            <div class="relative pt-14 pb-48 tablet:pb-36 sm:pb-24 grid grid-cols-[1fr,_3fr,_1fr] tablet:grid-cols-[1fr,_3fr] tablet-sm:flex tablet-sm:flex-col tablet-sm:gap-10">
+                <div class="col-span-1 sticky top-24 self-start tablet-sm:relative tablet-sm:top-0">
+                    <div class="_20 mb-2 bold">BLNG</div>
+                    <div class="flex flex-row gap-2 items-center opacity-60">
+                        <div class="_18">{time} min read</div>
+                        <div class="aspect-square w-[5px] rounded-full bg-current"></div>
+                        <div class="_18">{formattedDate}</div>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <div class="mx-auto max-w-[730px] rich-text">
+                        <PortableText value={content} components={components}/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <Footer />
+</Layout>

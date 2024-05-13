@@ -8,7 +8,7 @@ interface Props
 const props = Astro.props
 ---
 
-<div class="flex flex-col gap-5 text-center max-w-[27.25rem]">
-    <h4 class="_32">{props.title}</h4>
-    <p class="_22 opacity-50 text-balance">{props.descr}</p>
+<div class="flex flex-col gap-5 text-center max-w-[27.25rem] tablet-sm:max-w-none tablet-sm:text-start">
+    <h4 class="_32 sm:text-22">{props.title}</h4>
+    <p class="_22 opacity-50 text-balance sm:text-16">{props.descr}</p>
 </div>

@@ -13,3 +13,33 @@
         padding-right: 225px;
     }
 }
+
+@media screen and (max-width: 1281px) 
+{
+    ._container
+    {
+        padding-left: 40px;
+        padding-right: 40px;
+
+        &.short
+        {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 479px) 
+{
+    ._container
+    {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        &.short
+        {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+}

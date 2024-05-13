@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default class Leave
 {
-    constructor(done, destroy)
+    constructor(done)
     {
         this.app = new App()
         this.scroll = this.app.scroll.lenis
@@ -19,13 +19,11 @@ export default class Leave
 
         this.loader.classList.remove('hidden')
         this.body.classList.remove('burger-open')
-        this.nav.classList.remove('white')
 
         gsap.to(this.loader, {opacity: 1, onComplete: () => 
         {
             ScrollTrigger.killAll()
             done()
-            // destroy()
         }})
     }
 }

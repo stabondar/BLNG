@@ -22,13 +22,13 @@ interface Props
 const props = Astro.props
 ---
 
-<div class="suite_item flex rounded-3xl relative overflow-clip p-20" class:list={[props.vertical && 'flex-col col-span-1 min-h-[850px]', !props.vertical && 'flex-row col-span-2 min-h-[486px]']} style=`background-color: ${props.background}; color: ${props.color}` section-retail={props.section && props.section}>
-    <div class="flex flex-col text-center items-center relative z-10" class:list={!props.vertical && 'self-center w-1/3'}>
-        <div class="_14 mb-6" style=`color: ${props.accentColor};`>{props.subtitle}</div>
-        <h4 class="_40 mb-8" style=`max-width: ${props.titleWidth}px`>{props.title}</h4>
+<div class="suite_item flex rounded-3xl relative overflow-clip p-20 sm:pt-14 sm:px-12" class:list={[props.vertical && 'flex-col col-span-1 min-h-[850px] sm:min-h-[602px]', !props.vertical && 'flex-row col-span-2 min-h-[486px] tablet-sm:flex-col tablet-sm:gap-20 tablet-sm:pb-0 sm:min-h-[602px]']} style=`background-color: ${props.background}; color: ${props.color}` section-retail={props.section && props.section}>
+    <div class="flex flex-col text-center items-center relative z-10" class:list={!props.vertical && 'self-center w-1/3 tablet-sm:w-1/2 sm:w-full'}>
+        <div class="_14 mb-6 sm:text-12" style=`color: ${props.accentColor};`>{props.subtitle}</div>
+        <h4 class="_40 mb-8 sm:text-30" style=`max-width: ${props.titleWidth}px`>{props.title}</h4>
         <Button link={props.buttonLink} text={props.buttonText} background={props.buttonBg}/>
     </div>
-    <div class:list={[props.imgFull && 'absolute inset-0', !props.imgFull && 'absolute top-20 w-[430px] right-32']}>
-        <Image src={props.img} alt={props.title} width={props.img.width} height={props.img.height}/>
+    <div class:list={[props.imgFull && 'absolute inset-0', !props.imgFull && 'absolute top-20 w-[430px] right-32 tablet-sm:relative tablet-sm:top-0 tablet-sm:right-0 tablet-sm:self-center tablet-sm:-mb-[120px] sm:w-[320px]']}>
+        <Image src={props.img} alt={props.title} inferSize={true} class="sm:h-[110%]"/>
     </div>
 </div>

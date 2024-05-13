@@ -1,0 +1,13 @@
+---
+import PostItem from "./PostItem.astro"
+
+const { posts } = Astro.props
+---
+
+<section>
+    <div class="_container">
+        <div class="max-w-[980px] mx-auto pb-48 tablet:pb-36 sm:pb-24">
+            {posts.map(post => <PostItem post={post} />)}
+        </div>
+    </div>
+</section>

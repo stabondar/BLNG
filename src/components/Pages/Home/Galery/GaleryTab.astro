@@ -2,12 +2,16 @@
 const props = Astro.props
 ---
 
-<div class="galery_tab flex flex-col gap-8 cursor-pointer">
+<div class="galery_tab flex flex-col gap-8 cursor-pointer tablet-sm:gap-5">
     <div class="flex flex-col gap-4">
-        <div class="_14">{props.title}</div>
+        <div class="_14 sm:text-12">{props.title}</div>
         <div class="galery_tab-propgress w-full h-px rounded-full relative overflow-clip">
             <div class="galery_tab-propgress-inner absolute inset-0 bg-black"></div>
         </div>
     </div>
-    <p class="galery_tab-descr _18 leading-[1.4]">{props.descr}</p>
+    <div class="galery_tab-descr-parent tablet-sm:grid">
+        <div class="tablet-sm:overflow-hidden tablet-sm:relative">
+            <p class="galery_tab-descr _18 leading-[1.4] tablet-sm:pb-2 sm:text-14">{props.descr}</p>
+        </div>
+    </div>
 </div>

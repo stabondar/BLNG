@@ -8,18 +8,23 @@ import NavDrop from './NavDrop.astro'
 
 <div class="nav fixed top-0 left-0 right-0 z-20">
     <div class="_container relative z-30">
-        <div class="grid py-7 grid-cols-3">
-            <a class="nav_logo w-28" href="/">
+        <div class="grid py-7 grid-cols-4 md:grid-cols-2 sm:py-4">
+            <a class="nav_logo w-28 sm:w-24" href="/">
                 <Logo />
             </a>
-            <div class="flex flex-row gap-8 items-center justify-center">
+            <div class="flex flex-row gap-8 col-span-2 items-center justify-center md:hidden">
                 <NavItem link="/" text="Home" />
                 <NavDrop text="Products" />
-                <NavItem link="/" text="About us" />
-                <NavItem link="/" text="News" />
+                <NavItem link="/about" text="About us" />
+                <NavItem link="/news" text="News" />
             </div>
-            <div class="justify-self-end">
+            <div class="justify-self-end md:hidden">
                 <Button link="/" text="Request a demo"/>
+            </div>
+
+            <div class="nav_burger hidden self-center justify-self-end md:flex aspect-square w-6 relative justify-center items-center">
+                <div class="nav_burger-line w-full h-[1.5px] bg-current"></div>
+                <div class="nav_burger-line w-full h-[1.5px] bg-current"></div>
             </div>
         </div>
     </div>

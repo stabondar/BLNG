@@ -40,7 +40,7 @@ export default class Drag
 
         let left = ((itemLeft - slideLeft) + (itemWidth / 2)) / slideWidth * 100
 
-        if(left > 75)
+        if(left > 75 || left < 25)
         {
             gsap.to(slide, {'--left': `50%`, duration: 0.3})
             gsap.to(this.nav, {'--opacity': 1, duration: 0.3})
