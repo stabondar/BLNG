@@ -31,6 +31,7 @@ export const deskStructure = (S, context) => S.list()
                     .title('Home Page')
                     .items(
                     [
+                        createSection('SEO', 'homeSeo', S),
                         createSection('Hero', 'homeHero', S),
                         createSection('Design Section', 'homeDesign', S),
                         createSection('Phrase Section First', 'homePhraseFirst', S),
@@ -39,7 +40,7 @@ export const deskStructure = (S, context) => S.list()
                         createSection('Phone Section', 'homePhone', S),
                         createSection('CAD Models', 'homeModels', S),
                         createSection('Phrase Section Second', 'homePhraseSecond', S),
-                        createOrderableSection('Gallery Section', 'galery', S, context),
+                        createSection('Gallery Section', 'galeryHome', S),
                         createSection('Colors Section', 'homeColors', S),
                         createSection('Services Section', 'services', S),
                         createSection('Footer', 'footer', S),
@@ -54,6 +55,7 @@ export const deskStructure = (S, context) => S.list()
                     .title('About Page')
                     .items(
                     [
+                        createSection('SEO', 'aboutSeo', S),
                         createSection('Hero', 'aboutHero', S),
                         createSection('Team', 'aboutTeam', S),
                         // createOrderableSection('Client Logos', 'aboutLogos', S, context),
@@ -69,6 +71,7 @@ export const deskStructure = (S, context) => S.list()
                     .title('Blog Page')
                     .items(
                     [
+                        createSection('SEO', 'blogSeo', S),
                         createSection('Title', 'blog', S),
                         createOrderableSection('Blog Posts', 'blogList', S, context),
                     ])
@@ -79,7 +82,7 @@ export const deskStructure = (S, context) => S.list()
             ![
                 'homeHero', 'beforeAfter', 'homeDesign', 'homePhraseFirst', 'homePhraseSecond', 'features', 'homeFeatures',
                 'aboutHero', 'aboutLogos', 'team', 'aboutTeam', 'blogList', 'blog', 'homeMockup', 'homePhone', 'homeModels',
-                'galeryItem', 'galery', 'homeColors', 'colorItem', 'services', 'footer'
+                'galeryItem', 'galeryHome', 'homeColors', 'colorItem', 'services', 'footer', 'homeSeo', 'aboutSeo', 'blogSeo'
             ]
             .includes(listItem.getId())),
     ])

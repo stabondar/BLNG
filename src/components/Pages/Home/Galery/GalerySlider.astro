@@ -1,17 +1,14 @@
 ---
-import { getRefs } from "@lib/getRefs"
 import GaleryMainSlide from "./GaleryMainSlide.astro"
 import GaleryPreviewSlide from "./GaleryPreviewSlide.astro"
 
 const props = Astro.props
-const sliders = await getRefs('galeryItem', props.galery)
-
 ---
 
 <div class="galery_slider absolute inset-0 cursor-pointer">
     <div class="swiper-wrapper h-full">
-        {sliders.map((img) => 
-            <GaleryMainSlide {...img}/>
+        {props.slides.map(item => 
+            <GaleryMainSlide {...item}/>
         )}
     </div>
     
@@ -20,7 +17,7 @@ const sliders = await getRefs('galeryItem', props.galery)
         <div class="galery_right h-full w-1/2"></div>
     </div>
 
-    <div class="galery_preview absolute right-2.5 bottom-2.5 w-[245px] aspect-[245/193] flex flex-col rounded-2xl overflow-clip z-10 justify-end p-5 text-white tablet-sm:flex-row tablet-sm:justify-start tablet-sm:flex-none tablet-sm:left-2.5 tablet-sm:aspect-auto tablet-sm:w-auto tablet-sm:p-1.5 tablet-sm:rounded-2xl tablet-sm:bg-[#212121]">
+    <!-- <div class="galery_preview absolute right-2.5 bottom-2.5 w-[245px] aspect-[245/193] flex flex-col rounded-2xl overflow-clip z-10 justify-end p-5 text-white tablet-sm:flex-row tablet-sm:justify-start tablet-sm:flex-none tablet-sm:left-2.5 tablet-sm:aspect-auto tablet-sm:w-auto tablet-sm:p-1.5 tablet-sm:rounded-2xl tablet-sm:bg-[#212121]">
         <div class="galery_preview-parent absolute inset-0 pointer-events-none tablet-sm:relative tablet-sm:inset-auto tablet-sm:aspect-square tablet-sm:w-14 tablet-sm:overflow-clip tablet-sm:rounded-xl">
             <div class="swiper-wrapper h-full">
                 {sliders.map((img) => 
@@ -35,5 +32,5 @@ const sliders = await getRefs('galeryItem', props.galery)
                 <div class="galery_progress-inner absolute inset-0 bg-white"></div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

@@ -1,9 +1,9 @@
 ---
-import video from '@static/steps-video-1.mp4'
-import phone from '@static/phone-mask.png'
-import nav from '@static/phone/Nav_bar.svg'
-import footer from '@static/phone/footer.png'
-import chat from '@static/phone/chat.png'
+import video from '@static/steps/steps-video-1.mp4'
+import phone from '@static/phone-mask.png?url'
+import nav from '@static/phone/Nav_bar.svg?url'
+import footer from '@static/phone/footer.png?url'
+import chat from '@static/phone/chat.png?url'
 
 import { Image } from 'astro:assets';
 import { getImage } from 'astro:assets';
@@ -11,21 +11,29 @@ import { getImage } from 'astro:assets';
 ---
 
 <div class="phone_mask aspect-[340/705] relative sm:w-[220px]">
-    <div class="absolute inset-0 z-10 scale-[1.18] translate-x-[1.5%] translate-y-[5.5%]">
-        <Image src={phone} alt="phone mask" width={phone.width} height={phone.height} class='object-contain'/>
+    <div class="absolute inset-0 z-10 scale-[1.18] translate-x-[1.5%] translate-y-[0.5%]">
+        <img data-src={phone} alt="phone mask" class='object-contain'/>
     </div>
-    <div class="background-video z-0">
-        <div class="absolute top-0 left-0 right-0 px-3 z-10">
-            <Image src={nav} alt="phone nav" width={nav.width} height={nav.height} class='aspect-[432.29/107.8] w-full'/>
+    <div class="background-video z-0 canvas-parent">
+        <div class="absolute top-0 left-0 right-0 px-3 z-10 sm:px-2">
+            <img data-src={nav} alt="phone nav" class='aspect-[432.29/107.8] w-full'/>
         </div>
         <div class="absolute bottom-0 left-0 right-0 px-3">
-            <Image src={footer} alt="phone footer" width={footer.width} height={footer.height} class='aspect-[432/253] w-full'/>
+            <img data-src={footer} alt="phone footer" class='aspect-[432/253] w-full'/>
         </div>
-        <div class="absolute top-[78px] left-0 right-0 px-3">
-            <Image src={chat} alt="phone chat" width={chat.width} height={chat.height} class='aspect-[432/201] w-full'/>
+        <div class="absolute top-[78px] left-0 right-0 px-3 sm:top-[49px]">
+            <img data-src={chat} alt="phone chat" class='aspect-[432/201] w-full'/>
         </div>
-        <video muted webkit-playsinline="true" preload="auto" crossorigin="anonymous" playsinline>
+        <!-- <video muted webkit-playsinline="true" preload="auto" crossorigin="anonymous" playsinline>
             <source src={video} type="video/mp4" />
-        </video>
+        </video> -->
+        <canvas id="phone-canvas"></canvas>
     </div>
 </div>
+
+<style>
+    #phone-canvas {
+        width: 100% !important; 
+        height: 100% !important;
+    }
+</style>

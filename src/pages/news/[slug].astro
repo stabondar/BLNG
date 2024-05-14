@@ -21,14 +21,17 @@ export async function getStaticPaths()
         time,
         blogTitle,
         previewImage,
-        content
+        content,
+        title,
+        descr, 
+        image,
     }) => ({
         params: { slug: slug.current },
-        props: { blogTitle, date, previewImage, content, time }
+        props: { blogTitle, date, previewImage, content, time, title, descr, image }
     }))
 }
 
-const { blogTitle, previewImage, time, date, content } = Astro.props
+const { blogTitle, previewImage, time, date, content, title, descr, image } = Astro.props
 
 const heroUrl = getImageUrl(previewImage).url()
 const hero = await getImage({src: heroUrl, format: 'webp', quality: 'max', inferSize: true})
@@ -49,9 +52,11 @@ const month = (thisDate.getMonth()).toString()
 const year = thisDate.getFullYear().toString()
 
 const formattedDate = `${day} ${monthNames[month]}, ${year}`
+
+const seoImg = getImageUrl(image).url()
 ---
 
-<Layout title=`BLNG | ${blogTitle}` descr="" barbaPage="news-inner">
+<Layout title={title} descr={descr} img={seoImg} barbaPage="news-inner">
     <InnerPageHeader title={blogTitle} img={hero} />
     <section>
         <div class="_container">

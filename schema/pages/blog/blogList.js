@@ -1,4 +1,5 @@
 import { orderRankField, orderRankOrdering } from '@sanity/orderable-document-list'
+import seoFields from "@schema/seoFields"
 
 export default
 {
@@ -9,10 +10,11 @@ export default
     fields: 
     [
         orderRankField({type: 'blogList'}),
+        ...seoFields('SEO Image', 'SEO Description', 'SEO Title'),
         {
-            name: 'blogTitle',
             title: 'Title',
-            type: 'string'
+            name: 'blogTitle',
+            type: 'string',
         },
         {
             title: 'Slug',

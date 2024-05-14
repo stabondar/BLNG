@@ -5,8 +5,9 @@ import { getImageUrl } from "@lib/getImage"
 const props = Astro.props
 
 const image = getImageUrl(props.image).url()
+const format = image.split('.').pop()
 ---
 
 <div class="about_logo">
-    <Image src={image} alt={props.alt} inferSize={true} alt="client logo" class="object-contain object-center max-w-80 max-h-20" />
+    <Image src={image} alt={props.alt} format={format} inferSize={true}  alt="client logo" class="object-contain object-center max-w-80 max-h-20" />
 </div>

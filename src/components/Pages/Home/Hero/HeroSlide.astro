@@ -11,8 +11,8 @@ const imgAfter = getImageUrl(props.rightImage).url()
 
 <div class="swiper-slide h-full">
     <div class="hero_imgs block absolute inset-0">
-        <HeroImg src={imgBefore} alt="Hero Image Before"/>
-        <HeroImg src={imgAfter} alt="Hero Image After"/>
+        <HeroImg src={imgBefore} index={props.index} alt="Hero Image Before"/>
+        <HeroImg src={imgAfter} index={props.index} alt="Hero Image After"/>
         <HeroDrag />
     </div>
 </div>

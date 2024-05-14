@@ -20,6 +20,20 @@ export default
             type: 'string',
         },
         {
+            title: 'Active to Tab',
+            name: 'tab',
+            type: 'string',
+            options: 
+            {
+                list: 
+                [
+                    {title: 'Tab #1', value: '1'},
+                    {title: 'Tab #2', value: '2'},
+                    {title: 'Tab #3', value: '3'},
+                ],
+            },
+        },
+        {
             title: 'Large Image',
             name: 'large',
             type: 'image',
@@ -27,6 +41,16 @@ export default
             {
                 hotspot: true
             }
+        },
+        {
+            title: 'Video',
+            name: 'video',
+            type: 'file'
+        },
+        {
+            title: 'Use Video',
+            name: 'boolean',
+            type: 'boolean'
         },
         {
             title: 'Next Image Preview',

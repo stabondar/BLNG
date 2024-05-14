@@ -29,6 +29,6 @@ const props = Astro.props
         <Button link={props.buttonLink} text={props.buttonText} background={props.buttonBg}/>
     </div>
     <div class:list={[props.imgFull && 'absolute inset-0', !props.imgFull && 'absolute top-20 w-[430px] right-32 tablet-sm:relative tablet-sm:top-0 tablet-sm:right-0 tablet-sm:self-center tablet-sm:-mb-[120px] sm:w-[320px]']}>
-        <Image src={props.img} alt={props.title} inferSize={true} class="sm:h-[110%]"/>
+        <img data-src={props.img} alt={props.title} class="sm:h-[110%]"/>
     </div>
 </div>

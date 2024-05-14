@@ -14,6 +14,24 @@ export default class Nav
 
         this.init()
         this.scrollToSection()
+        this.scrollDirection()
+    }
+
+    scrollDirection()
+    {
+        let direction
+        let prevDirection
+
+        this.scroll.on('scroll', (e) => 
+        {
+            prevDirection = direction
+            direction = e.direction
+
+            direction === 0 ? (direction = prevDirection) : (direction = direction)
+
+            if (direction !== 1) this.body.classList.remove('scroll-down')
+            else this.body.classList.add('scroll-down')
+        })
     }
 
     scrollToSection()

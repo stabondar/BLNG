@@ -3,44 +3,21 @@ import GalerySlider from "./Galery/GalerySlider.astro"
 import GaleryTab from "./Galery/GaleryTab.astro"
 
 import { getSanityOrder } from "@lib/apiOrderable"
+import { getRefs } from "@lib/getRefs"
 
-const sections = await getSanityOrder('galery')
+const section = await getSanityOrder('galeryHome')
+const refs = await getRefs('galeryItem', section[0].galery)
 
-import large1 from '@static/galery/01.jpg'
-import large2 from '@static/galery/02.jpg'
-import large3 from '@static/galery/03.jpg'
-import large4 from '@static/galery/04.jpg'
-import large5 from '@static/galery/05.jpg'
-import preview1 from '@static/galery/preview 01.jpg'
-import preview2 from '@static/galery/preview 02.jpg'
-import preview3 from '@static/galery/preview 03.jpg'
-import preview4 from '@static/galery/preview 04.jpg'
-import preview5 from '@static/galery/preview 05.jpg'
+const sortedRefs = section[0].galery.map(galeryItem => 
+{
+    return refs.find(item => item._id === galeryItem._ref);
+})
 
-const item1 = 
+const tabs = 
 [
-    {img: large1, alt: 'image 1', preveiw : preview2, color: '#000'},
-    {img: large2, alt: 'image 2', preveiw : preview3, color: '#536D7F'},
-    {img: large3, alt: 'image 3', preveiw : preview4, color: '#001F2E'},
-    {img: large4, alt: 'image 4', preveiw : preview5, color: '#9C8674'},
-    {img: large5, alt: 'image 5', preveiw : preview1, color: '#536D7F'},
-]
-const item2 = 
-[
-    {img: large3, alt: 'image 3', preveiw : preview4, color: '#001F2E'},
-    {img: large5, alt: 'image 5', preveiw : preview1, color: '#536D7F'},
-    {img: large2, alt: 'image 2', preveiw : preview3, color: '#536D7F'},
-    {img: large4, alt: 'image 4', preveiw : preview5, color: '#9C8674'},
-    {img: large1, alt: 'image 1', preveiw : preview2, color: '#000'},
-]
-
-const item3 = 
-[
-    {img: large5, alt: 'image 5', preveiw : preview1, color: '#536D7F'},
-    {img: large3, alt: 'image 3', preveiw : preview4, color: '#001F2E'},
-    {img: large4, alt: 'image 4', preveiw : preview5, color: '#9C8674'},
-    {img: large1, alt: 'image 1', preveiw : preview2, color: '#000'},
-    {img: large2, alt: 'image 2', preveiw : preview3, color: '#536D7F'},
+    {title: section[0].title1, descr: section[0].descr1},
+    {title: section[0].title2, descr: section[0].descr2},
+    {title: section[0].title3, descr: section[0].descr3},
 ]
 ---
 
@@ -51,11 +28,11 @@ const item3 =
                 <!-- <GalerySlider props={item1}/>
                 <GalerySlider props={item2}/>
                 <GalerySlider props={item3}/> -->
-                {sections.map(section => <GalerySlider {...section}/>)}
+                <GalerySlider slides={sortedRefs}/>
             </div>
         </div>
         <div class="galery_tabs grid grid-cols-3 gap-7 mt-10 tablet-sm:flex tablet-sm:flex-col">
-            {sections.map(tab => <GaleryTab title={tab.title} descr={tab.descr}/>)}
+            {tabs.map(tab => <GaleryTab title={tab.title} descr={tab.descr}/>)}
         </div>
     </div>    
 </section>

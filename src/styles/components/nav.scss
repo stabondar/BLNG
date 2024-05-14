@@ -1,6 +1,8 @@
 .nav
 {
-    transition: color var(--color-ease);
+    transition: color var(--color-ease), background-color var(--color-ease);
+
+    background-color: var(--white);
 
     .button
     {
@@ -10,12 +12,22 @@
     &.white
     {
         color: var(--white);
+        background-color: var(--black);
 
         .button
         {
             background-color: var(--white);
             color: var(--black);
         }
+    }
+}
+
+.at-top,
+.scroll-down
+{
+    .nav
+    {
+        background-color: transparent;
     }
 }
 
@@ -34,7 +46,9 @@
 
 .nav-overlay
 {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(80px);
     transition: clip-path var(--ease), visibility 0.8s, background-color var(--color-ease);
     clip-path: inset(0 0 100% 0);
     visibility: hidden;

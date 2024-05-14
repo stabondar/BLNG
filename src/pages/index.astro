@@ -14,12 +14,15 @@ import Suite from "@components/Pages/Home/Suite.astro"
 import Footer from "@components/Footer.astro"
 
 import { getSanity } from "@lib/api";
+import { getImageUrl } from "@lib/getImage"
 
+const seo = await getSanity('homeSeo')
+const img = getImageUrl(seo[0].image).url()
 const phraseFirst = await getSanity('homePhraseFirst')
 const phraseSecond = await getSanity('homePhraseSecond')
 ---
 
-<Layout title="BLNG" barbaPage="home" descr="True craftmanship requires real humans. And a touch of BLNG.">
+<Layout title={seo[0].title} barbaPage="home" descr={seo[0].descr} img={img}>
 	<Hero />
 	<VideoSection />
 	<section class="dark-section pt-52 pb-48 tablet:pb-36 tablet:pt-36 sm:pt-40 sm:pb-24">

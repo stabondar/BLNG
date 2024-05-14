@@ -7,12 +7,15 @@ import Footer from "@components/Footer.astro"
 import DividerSection from "@components/DividerSection.astro";
 
 import { getSanity } from "@lib/api";
+import { getImageUrl } from "@lib/getImage";
 
+const seo = await getSanity('aboutSeo')
+const img = getImageUrl(seo[0].image).url()
 const hero = await getSanity('aboutHero')
 const team = await getSanity('aboutTeam')
 ---
 
-<Layout title="BLNG" barbaPage="about" descr="True craftmanship requires real humans. And a touch of BLNG.">
+<Layout title={seo[0].title} barbaPage="about" descr={seo[0].descr} img={img}>
     <AboutHero {...hero} />
     <DividerSection color="black-section" />
     <AboutLogos {...hero} />

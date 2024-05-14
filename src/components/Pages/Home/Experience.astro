@@ -11,7 +11,7 @@ const section = await getSanity('homeMockup')
 
 const getImg = getImageUrl(section[0].image).url()
 
-const img = await getImage({src: getImg, format: 'webp', quality: '80', inferSize: true})
+// const img = await getImage({src: getImg, format: 'webp', quality: '80', inferSize: true})
 ---
 
 <section class="dark-section pt-48 pb-48 tablet:pt-36 tablet:pb-36 sm:pt-24 sm:pb-24">
@@ -19,7 +19,8 @@ const img = await getImage({src: getImg, format: 'webp', quality: '80', inferSiz
         <Title h2={true} size={550} title={section[0].text}/>
 
         <div class="video-section relative w-full mt-24 tablet-sm:mt-20 sm:mt-12">
-            <Image src={img.src} alt="Video Section Img" inferSize={true} class="relative z-10"/>
+            <!-- <Image fetchpriority="low" loading="lazy" src={getImg} alt="Video Section Img" inferSize={true} class="relative z-10"/> -->
+            <img fetchpriority="low" loading="lazy" data-src={getImg} alt="Video Section Img" class="relative z-10"/>
         </div>
 
         <div class="flex flex-row justify-center gap-36 mt-12 tablet-sm:flex-col tablet-sm:gap-12 tablet-sm:justify-start">

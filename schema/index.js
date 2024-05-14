@@ -23,10 +23,13 @@ import colors from "./pages/home/colors"
 import colorsItem from "./pages/home/colorsItem"
 import services from "./pages/home/services"
 import footer from "./pages/footer"
+import homeSeo from "./pages/home/homeSeo"
+import aboutSeo from "./pages/about/aboutSeo"
+import blogSeo from "./pages/blog/blogSeo"
 
 export const schemaTypes = 
 [
     beforeAfter, hero, text, design, 
     phraseFirst, phraseSecond, features, featuresSection, aboutHero, aboutLogos, team, aboutTeam,
-    blogList, blogPage, mockup, phoneSection, models, galeryItem, galery, colors, colorsItem, services, footer
+    blogList, blogPage, mockup, phoneSection, models, galeryItem, galery, colors, colorsItem, services, footer, homeSeo, aboutSeo, blogSeo
 ]

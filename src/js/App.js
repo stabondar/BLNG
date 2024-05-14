@@ -57,7 +57,7 @@ export default class App extends EventEmitter
                 prefix: 'data-transition',
                 namespace: 'page'
             },
-            debug: true,
+            debug: false,
             timeout: 7000,
             prevent: ({ el }) => (el.classList && el.classList.contains('prevent')) || el.closest('.prevent'),
             transitions:

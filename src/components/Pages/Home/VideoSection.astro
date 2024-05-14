@@ -21,7 +21,7 @@ const img = getImageUrl(section[0].image).url()
         </div>
 
         <div class="video-section relative w-full">
-            <Image src={img} alt="Video Section Img" width={1480} height={800} class="relative z-10" loading="lazy"/>
+            <Image  fetchpriority="high" src={img} alt="Video Section Img" width={1480} height={800} class="relative z-10"/>
             <VideoSectionBg />
         </div>
     </div>

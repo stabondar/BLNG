@@ -1,11 +1,31 @@
 ---
 import { Image } from "astro:assets"
 import { getImageUrl } from "@lib/getImage"
+import { getVideoUrl } from "@lib/getVideo"
 const props = Astro.props
 
-const image = getImageUrl(props.large).url()
+let video
+let image
+
+if(props.boolean == true)
+{
+    video = getVideoUrl(props.video)
+    video = video.url
+} else
+{
+    image = getImageUrl(props.large)
+    image = image.url()
+
+}
 ---
 
-<div class="swiper-slide h-full">
-    <Image src={image} alt='' inferSize={true} loading="eager" class="h-full"/>
+<div class="swiper-slide h-full" current-tab={props.tab}>
+    {props.boolean == true && (
+        <div class="background-video">
+            <video muted autoplay crossorigin="anonymous" loop playsinline>
+                <source src={video} type="video/mp4" />
+            </video>
+        </div>
+    )}
+    {props.boolean != true && <img data-src={image} alt='' loading="eager" class="h-full"/>}
 </div>

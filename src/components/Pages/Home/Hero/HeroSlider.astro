@@ -13,7 +13,7 @@ const slides = props.sliders
             <div class="swiper-wrapper h-full noSwipingClass">
                 {slides.map((slide, index) => 
                 {
-                    return <HeroSlide {...slide} />
+                    return <HeroSlide {...slide} index={index} />
                 })}
             </div>
         </div>

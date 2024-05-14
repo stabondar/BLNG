@@ -14,7 +14,8 @@ export default defineConfig(
 {
     image: 
     {
-        service: squooshImageService()
+        service: squooshImageService(),
+        domains: ["cdn.sanity.io"]
     },
     output: "server",
     adapter: vercel(),

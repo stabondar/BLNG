@@ -15,48 +15,32 @@ export default class Galery extends EventEmitter
         this.cursorText = this.cursor.querySelector('._14')
         this.list = document.querySelector('.galery_list')
         this.section = document.querySelector('.galery')
-        this.mainSliders = this.section.querySelectorAll('.galery_slider')
+        this.mainSlider = this.section.querySelector('.galery_slider')
+        this.slides = this.mainSlider.querySelectorAll('.swiper-slide')
 
         this.delaySpeed = 3200
-        this.swipers = []
-
-        this.mainSliders.forEach(slider => this.init(slider))
 
         this.tabs = this.section.querySelectorAll('.galery_tab')
         
         this.tabs[0].classList.add('active')
-        this.mainSliders[0].classList.add('active')
+        this.mainSlider.classList.add('active')
 
-        this.swipers.forEach(swiper => swiper.autoplay.stop())
-        this.swipers[0].autoplay.start()
-
-
-        this.tabs.forEach(tab =>
-        {
-            tab.addEventListener('click', () =>
-            {
-                this.tabs.forEach(tab => tab.classList.remove('active'))
-                tab.classList.add('active')
-
-                this.swipers.forEach(swiper => swiper.autoplay.stop())
-                this.swipers[Array.from(this.tabs).indexOf(tab)].autoplay.start()
-
-                this.mainSliders.forEach(slider => slider.classList.remove('active'))
-                this.mainSliders[Array.from(this.tabs).indexOf(tab)].classList.add('active')
-            })
-        })
+        this.tabSlides_1 = this.mainSlider.querySelectorAll('[current-tab="1"]').length
+        this.tabSlides_2 = this.mainSlider.querySelectorAll('[current-tab="2"]').length
+        this.tabSlides_3 = this.mainSlider.querySelectorAll('[current-tab="3"]').length
 
         this.list.addEventListener('mouseenter', () => this.cursor.classList.add('show'))
         this.list.addEventListener('mouseleave', () => this.cursor.classList.remove('show'))
 
+        this.init()
         this.update()
     }
 
-    init(slider)
+    init()
     {
-        const previewSliderParent = slider.querySelector('.galery_preview-parent')
+        // const previewSliderParent = slider.querySelector('.galery_preview-parent')
         
-        const swiper = new Swiper(slider, 
+        this.swiper = new Swiper(this.mainSlider, 
         {
             modules: [Controller, Autoplay],
             loop: true,
@@ -72,46 +56,67 @@ export default class Galery extends EventEmitter
             grabCursor: false,
         })
 
-        const previewSwiper = new Swiper(previewSliderParent, 
+        // const previewSwiper = new Swiper(previewSliderParent, 
+        // {
+        //     modules: [Controller],
+        //     loop: true,
+        //     speed: 1000,
+        //     slidesPerView: 1,
+        //     preventInteractionOnTransition: true,
+        //     grabCursor: false,
+        // })
+
+        this.slideNext = this.mainSlider.querySelector('.galery_right')
+        this.slidePrev = this.mainSlider.querySelector('.galery_left')
+
+        this.slideNext.addEventListener('click', () => this.swiper.slideNext())
+        this.slidePrev.addEventListener('click', () => this.swiper.slidePrev())
+
+        this.slidePrev.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Previous')
+        this.slideNext.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Next')
+
+        // swiper.controller.control = previewSwiper
+        // previewSwiper.controller.control = swiper
+
+        this.swiper.on('slideChange', () => 
         {
-            modules: [Controller],
-            loop: true,
-            speed: 1000,
-            slidesPerView: 1,
-            preventInteractionOnTransition: true,
-            grabCursor: false,
+            let index = this.swiper.realIndex
+            let currentSlide = this.slides[index]
+
+            let tab = currentSlide.getAttribute('current-tab') - 1
+
+            this.tabs.forEach(tab => tab.classList.remove('active'))
+            this.tabs[tab].classList.add('active')
         })
 
-        const slideNext = slider.querySelector('.galery_right')
-        const slidePrev = slider.querySelector('.galery_left')
+        this.tabs.forEach((tab, index) =>
+        {
+            tab.addEventListener('click', () =>
+            {
+                this.tabs.forEach(tab => tab.classList.remove('active'))
+                tab.classList.add('active')
 
-        slideNext.addEventListener('click', () => swiper.slideNext())
-        slidePrev.addEventListener('click', () => swiper.slidePrev())
+                if(index === 0)
+                {
+                    this.swiper.slideToLoop(0, 400)
+                } else
+                if(index === 1)
+                {
+                    this.swiper.slideToLoop(this.tabSlides_1, 400)
+                }
+                if(index === 2)
+                {
+                    this.swiper.slideToLoop(this.tabSlides_1 + this.tabSlides_2, 400)
+                }
+            })
+        })
 
-        slidePrev.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Previous')
-        slideNext.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Next')
-
-        swiper.controller.control = previewSwiper
-        previewSwiper.controller.control = swiper
-
-        // swiper.on('slideChange', () => 
-        // {
-        //     slider.style.setProperty('--progress', swiper.realIndex / (swiper.slides.length - 1))
-        // })
-
-        // this.on('tick', () => 
-        // {
-        //     console.log(swiper.autoplayTimeLeft)
-        // })
-
-        swiper.on('autoplayTimeLeft', () => 
+        this.swiper.on('autoplayTimeLeft', () => 
         {
             // get percentage of time left
-            let timeLeft = swiper.autoplay.timeLeft / this.delaySpeed
-            slider.style.setProperty('--progress', 1 - timeLeft)
+            let timeLeft = this.swiper.autoplay.timeLeft / this.delaySpeed
+            this.mainSlider.style.setProperty('--progress', 1 - timeLeft)
         })
-
-        this.swipers.push(swiper)
     }
 
     updateIndexes()

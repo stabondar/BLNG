@@ -10,11 +10,13 @@ interface Props
 	title: string;
 	barbaPage: string;
 	descr: string;
+	img: string;
 }
 
 const { title } = Astro.props;
 const { barbaPage } = Astro.props;
 const { descr } = Astro.props;
+const { img } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,6 +24,13 @@ const { descr } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={descr} />
+		<meta content={title} property="og:title">
+		<meta content={descr} property="og:description">
+		<meta content={img} property="og:image">
+		<meta content={title} property="twitter:title">
+		<meta content={descr} property="twitter:description">
+		<meta content={img} property="twitter:image">
+		<meta property="og:type" content="website">
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
