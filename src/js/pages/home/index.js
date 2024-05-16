@@ -14,16 +14,16 @@ export default class index
 {
     constructor()
     {
-        // this.heroSlider = new HeroSlider()
-        // this.draggable = new Draggable()
-        // this.features = new Features()
-        // this.phone = new Phone()
-        // // this.phrase = new Phrase()
-        // this.svgBg = new SvgBg()
-        // this.palette = new Pallete()
-        // this.steps = new Steps()
-        // this.loadImgs = new LoadImgs()
-        // this.loadVideos = new LoadVideos()
-        // this.galery = new Galery()
+        this.heroSlider = new HeroSlider()
+        this.draggable = new Draggable()
+        this.features = new Features()
+        this.phone = new Phone()
+        // this.phrase = new Phrase()
+        this.svgBg = new SvgBg()
+        this.palette = new Pallete()
+        this.steps = new Steps()
+        this.loadImgs = new LoadImgs()
+        this.loadVideos = new LoadVideos()
+        this.galery = new Galery()
     }
 }

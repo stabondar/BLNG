@@ -1,13 +1,8 @@
-import { loadEnv } from "vite";
 import { defineConfig, squooshImageService } from 'astro/config';
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import tailwind from "@astrojs/tailwind";
-
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
-
-const { PUBLIC_SANITY_PROJECT_ID } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
-const { PUBLIC_SANITY_DATASET } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig(
@@ -18,10 +13,9 @@ export default defineConfig(
     },
     image: 
     {
-        service: squooshImageService(),
-        domains: ["cdn.sanity.io"]
+        service: squooshImageService()
     },
-    output: "server",
+    output: "static",
     adapter: vercel(),
     vite: 
     {
