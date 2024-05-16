@@ -8,8 +8,8 @@
     "host": "astro dev --host",
     "preview": "astro preview",
     "astro": "astro",
-    "build": "astro build",
-    "deploy": "astro build && vercel --prebuilt --prod"
+    "build": "astro build && vercel --prebuilt --prod",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@astrojs/check": "^0.6.0",
