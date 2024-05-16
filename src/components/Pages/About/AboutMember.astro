@@ -9,7 +9,7 @@ const img = getImageUrl(props.image).url()
 
 <div class="flex flex-col gap-8 items-center">
     <div class="aspect-[355/466] w-full overflow-clip relative">
-        <Image src={img} alt={props.title} class="rounded-[20px]" width={355 * 4} height={467 * 4} />
+        <Image src={img} alt={props.title} class="rounded-[20px]" loading="eager" width={355 * 4} height={467 * 4} />
     </div>
     <div class="flex flex-col gap-2 items-center text-center">
         <div class="_28">{props.title}</div>

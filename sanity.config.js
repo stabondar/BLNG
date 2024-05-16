@@ -1,3 +1,4 @@
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
 import { structureTool } from 'sanity/structure'
@@ -16,6 +17,7 @@ export default defineConfig(
     plugins: 
     [
         // deskTool(),
+        vercelDeployTool(),
         structureTool({structure: deskStructure}),
     ],
     schema: 

@@ -36,7 +36,7 @@ export default defineConfig(
             dataset: 'production',
             useCdn: false,
             apiVersion: "2024-04-26",
-            studioBasePath: "/admin"
+            studioBasePath: "/admin",
         }), 
     // react()
     react()
