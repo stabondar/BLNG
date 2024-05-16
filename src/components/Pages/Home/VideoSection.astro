@@ -20,16 +20,9 @@ const img = getImageUrl(section[0].image).url()
             <Title h2={true} size={550} title={section[0].heading}/>
         </div>
 
-        <div class="video-section relative w-full">
+        <div class="video-section relative w-full aspect-[1480/900]">
             <Image  fetchpriority="high" src={img} alt="Video Section Img" width={1480} height={800} class="relative z-10"/>
             <VideoSectionBg />
         </div>
     </div>
 </section>
-
-<style>
-    .video-section
-    {
-        aspect-ratio: 1480 / 900;
-    }
-</style>

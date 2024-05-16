@@ -12,6 +12,7 @@
     "deploy": "astro build && vercel --prebuilt --prod"
   },
   "dependencies": {
+    "@astrojs/check": "^0.6.0",
     "@astrojs/react": "^3.3.2",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.3.1",
@@ -35,6 +36,7 @@
     "react-icons": "^5.1.0",
     "sanity": "^3.41.1",
     "swiper": "^11.1.1",
+    "typescript": "^5.4.5",
     "vercel": "^34.1.4",
     "vite": "^5.2.11"
   },

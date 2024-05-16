@@ -77,12 +77,26 @@ export const deskStructure = (S, context) => S.list()
                     ])
             ),
 
+        S.divider(),
+            
+        S.listItem()
+            .title('Services Pages')
+            .child( 
+                S.list()
+                    .title('Services Pages')
+                    .items(
+                    [
+                        createSection('Privacy policy', 'privacy', S),
+                        createSection('Terms & Conditions', 'terms', S),
+                    ])
+            ),
+
         // remove default document types
         ...S.documentTypeListItems().filter(listItem => 
             ![
                 'homeHero', 'beforeAfter', 'homeDesign', 'homePhraseFirst', 'homePhraseSecond', 'features', 'homeFeatures',
                 'aboutHero', 'aboutLogos', 'team', 'aboutTeam', 'blogList', 'blog', 'homeMockup', 'homePhone', 'homeModels',
-                'galeryItem', 'galeryHome', 'homeColors', 'colorItem', 'services', 'footer', 'homeSeo', 'aboutSeo', 'blogSeo'
+                'galeryItem', 'galeryHome', 'homeColors', 'colorItem', 'services', 'footer', 'homeSeo', 'aboutSeo', 'blogSeo', 'privacy', 'terms'
             ]
             .includes(listItem.getId())),
     ])

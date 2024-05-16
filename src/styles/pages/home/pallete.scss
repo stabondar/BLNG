@@ -14,14 +14,39 @@
         opacity: 0;
         transition: opacity var(--color-ease);
         border-radius: 100vw;
+        cursor: pointer;
     }
 
-    &.active,
     &:hover 
+    {
+        &::before
+        {
+            opacity: .4;
+        }
+    }
+
+    &.active
     {
         &::before
         {
             opacity: 1;
         }
     }
+}
+
+.pallete-img
+{
+    opacity: 0;
+    // transition: opacity var(--color-ease) 0s;
+
+    &.active
+    {
+        opacity: 1;
+        // transition: opacity var(--color-ease) 0.2s;
+    }
+}
+
+.pallete ._14
+{
+    font-weight: 400;
 }

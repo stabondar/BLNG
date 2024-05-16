@@ -4,6 +4,7 @@ interface Props
     src: any,
     alt: string,
     index: number
+    paddings: any
 }
 
 import { Image } from "astro:assets"
@@ -14,6 +15,6 @@ const props = Astro.props
 // const img = await getImage({src: props.src, inferSize: true, format: "webp", quality: 90})
 ---
 
-<div class="hero_img absolute inset-0">
-    <Image fetchpriority={props.index == 0 ? 'high' : 'auto'} src={props.src} alt={props.alt} inferSize={true} format="webp" aria-grabbed={false} loading="eager" class="select-none object-contain tablet-sm:object-cover h-full"/>
+<div class="hero_img absolute inset-0" class:list={[...props.paddings]}>
+    <Image fetchpriority={props.index == 0 ? 'high' : 'auto'} src={props.src} alt={props.alt} width={1400} height={1400} format="webp" aria-grabbed={false} loading="eager" class="select-none object-contain tablet-sm:object-cover h-full"/>
 </div>

@@ -3,13 +3,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default class LoadImgs
+export default class LoadVideos
 {
     constructor()
     {
         this.main = document.querySelector('.main')
-        this.sections = document.querySelectorAll('section')
-        this.sections = [...this.sections].slice(1)
+        this.sections = document.querySelectorAll('[load-videos]')
 
         this.init()
     }
@@ -26,7 +25,7 @@ export default class LoadImgs
                 start: 'top 150%',
                 onEnter: () => 
                 {
-                    !loaded && this.loadImgs(section)
+                    !loaded && this.loadVideo(section)
 
                     loaded = true
                 }
@@ -34,14 +33,17 @@ export default class LoadImgs
         })
     }
 
-    loadImgs(section)
+    loadVideo(section)
     {
-        let imgs = section.querySelectorAll('img')
+        let videos = section.querySelectorAll('video')
 
-        imgs.forEach(img => 
+        videos.forEach(video => 
         {
-            let src = img.getAttribute('data-src')
-            img.src = src
+            let source = video.querySelector('source')
+            let src = source.getAttribute('data-src')
+            source.setAttribute('src', src)
+            video.load()
+            video.play()
         })
     }
 }

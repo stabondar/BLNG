@@ -24,14 +24,3 @@ const props = Astro.props
         <PortableText value={props.title} />
     </h2>
 }
-
-<style is:global lang="scss">
-    .title
-    {
-        strong
-        {
-            color: color-mix(in srgb, currentColor, transparent 60%);
-            font-weight: inherit;
-        }
-    }
-</style>

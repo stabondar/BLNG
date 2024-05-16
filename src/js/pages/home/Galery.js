@@ -15,6 +15,7 @@ export default class Galery extends EventEmitter
         this.cursorText = this.cursor.querySelector('._14')
         this.list = document.querySelector('.galery_list')
         this.section = document.querySelector('.galery')
+        if(this.section.length === 0) return
         this.mainSlider = this.section.querySelector('.galery_slider')
         this.slides = this.mainSlider.querySelectorAll('.swiper-slide')
 

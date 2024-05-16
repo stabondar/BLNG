@@ -5,6 +5,16 @@ import HeroNav from './HeroNav.astro'
 const props = Astro.props
 
 const slides = props.sliders 
+
+const spacings = 
+[
+    ['pb-[76px]', 'sm:pb-[52px]'],
+    ['pb-[52px]', 'sm:pb-[52px]'],
+    ['pb-[52px]', 'sm:pb-[31px]'],
+    ['pb-[52px]', 'sm:pb-[52px]'],
+    ['pb-[52px]', 'sm:pb-[52px]'],
+    ['pt-[70px]', 'sm:pt-[52px]'],
+]
 ---
 
 <div class="hero_slider mt-16 relative sm:mt-10">
@@ -13,7 +23,7 @@ const slides = props.sliders
             <div class="swiper-wrapper h-full noSwipingClass">
                 {slides.map((slide, index) => 
                 {
-                    return <HeroSlide {...slide} index={index} />
+                    return <HeroSlide {...slide} index={index} spacings={spacings[index]} />
                 })}
             </div>
         </div>

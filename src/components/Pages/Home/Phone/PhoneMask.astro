@@ -15,7 +15,7 @@ import { getImage } from 'astro:assets';
         <img data-src={phone} alt="phone mask" class='object-contain'/>
     </div>
     <div class="background-video z-0 canvas-parent">
-        <div class="absolute top-0 left-0 right-0 px-3 z-10 sm:px-2">
+        <!-- <div class="absolute top-0 left-0 right-0 px-3 z-10 sm:px-2">
             <img data-src={nav} alt="phone nav" class='aspect-[432.29/107.8] w-full'/>
         </div>
         <div class="absolute bottom-0 left-0 right-0 px-3">
@@ -23,17 +23,10 @@ import { getImage } from 'astro:assets';
         </div>
         <div class="absolute top-[78px] left-0 right-0 px-3 sm:top-[49px]">
             <img data-src={chat} alt="phone chat" class='aspect-[432/201] w-full'/>
-        </div>
+        </div> -->
         <!-- <video muted webkit-playsinline="true" preload="auto" crossorigin="anonymous" playsinline>
             <source src={video} type="video/mp4" />
         </video> -->
         <canvas id="phone-canvas"></canvas>
     </div>
 </div>
-
-<style>
-    #phone-canvas {
-        width: 100% !important; 
-        height: 100% !important;
-    }
-</style>

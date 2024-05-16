@@ -104,6 +104,32 @@
     }
 }
 
+.slider-arrow
+{
+    border: 1px solid currentColor;
+    color: color-mix(in srgb, currentColor, transparent 80%);
+    transition: color var(--color-ease);
+
+    &:hover
+    {
+        color: color-mix(in srgb, currentColor, transparent 30%);
+    }
+
+    &.white-bg
+    {
+        background-color: #fff;
+    }
+}
+
+@media screen and (max-width: 479px) 
+{
+    .slider-arrow
+    {
+        color: color-mix(in srgb, currentColor, transparent 20%);
+        border-color: color-mix(in srgb, currentColor, transparent 60%);
+    }
+}
+
 @media screen and (max-width: 992px) 
 {
     .hero_nav

@@ -1,5 +1,14 @@
 ---
-// import video from '@static/CamAnimated hand yin yang.mp4'
+import video1 from '/videos/Diversity_1.mp4'
+import video2 from '/videos/Diversity_2.mp4'
+import video3 from '/videos/Diversity_3.mp4'
+import video4 from '/videos/Diversity_4.mp4'
+import video5 from '/videos/Diversity_5.mp4'
+import video6 from '/videos/Diversity_6.mp4'
+import video7 from '/videos/Diversity_7.mp4'
+import video8 from '/videos/Diversity_8.mp4'
+import video9 from '/videos/Diversity_9.mp4'
+import video10 from '/videos/Diversity_10.mp4'
 import { getSanity } from "@lib/api"
 import { getRefs } from "@lib/getRefs"
 import { PortableText } from "astro-portabletext";
@@ -12,10 +21,12 @@ const sortedColors = section[0].colors.map(galeryItem =>
 {
     return colors.find(slider => slider._id === galeryItem._ref);
 })
+
+const videos = [video1]
 ---
 
 <section class="white-section pt-48 pb-48 tablet:pt-36 tablet:pb-36 sm:pt-24 sm:pb-24">
-    <div class="_container short">
+    <div class="_container short pallete">
         <div class="grid grid-cols-[1fr,_1.4fr] grid-rows-2 gap-x-10 tablet-sm:flex tablet-sm:flex-col tablet-sm:gap-10">
 
             <div class="block col-span-1 row-span-1 col-start-1 self-end">
@@ -24,17 +35,27 @@ const sortedColors = section[0].colors.map(galeryItem =>
                 <div class="_22 sm:text-16 opacity-50">{section[0].description}</div>
             </div>
 
-            <div class="pallete-img row-span-2 col-span-1 col-start-2 row-start-1 block relative z-10 aspect-[668/950] overflow-clip rounded-[20px] tablet-sm:w-2/3 sm:w-full">
-                <div class="background-video">
-                    <video muted autoplay crossorigin="anonymous" loop playsinline>
-                        <!-- <source src={video} type="video/mp4" /> -->
+            <div class="pallete-list row-span-2 col-span-1 col-start-2 row-start-1 block relative z-10 aspect-[668/950] overflow-clip rounded-[20px] tablet-sm:w-2/3 sm:w-full">
+
+                {videos.map(video =>  
+                    <div class="pallete-img absolute inset-0">
+                        <div class="background-video">
+                            <video muted autoplay crossorigin="anonymous" loop playsinline>
+                                <source data-src={video} type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+                )}
+                <div class="hidden">
+                    <video muted crossorigin="anonymous" loop playsinline>
+                        <source type="video/mp4" />
                     </video>
                 </div>
             </div>
 
             <div class="block col-span-1 row-span-1 col-start-1 max-w-[422px] self-end pb-3 tablet-sm:self-start tablet-sm:max-w-none">
                 <div class="bg-black h-px opacity-20 w-full mb-5"></div>
-                <div class="pallete_color _14 capitalize pb-8">COLOR</div>
+                <div class="pallete_color _14 uppercase pb-8">COLOR</div>
                 <div class="flex flex-row flex-wrap gap-6 sm:gap-4">
                     {sortedColors.map(color => <div class="pallete_item relative aspect-square w-[38px] rounded-full" style={`background-color: ${color.color}`}></div>)}
                 </div>
@@ -42,10 +63,3 @@ const sortedColors = section[0].colors.map(galeryItem =>
         </div>
     </div>
 </section>
-
-<style>
-    ._14
-    {
-        font-weight: 400;
-    }
-</style>

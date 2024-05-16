@@ -18,12 +18,20 @@ export default class Pallete
 {
     constructor()
     {
-        this.videos = [video1, video2, video3, video4, video5, video6, video7, video8, video9, video10]
-
         this.text = document.querySelector('.pallete_color') 
         this.items = document.querySelectorAll('.pallete_item')
 
-        this.video = document.querySelector('.pallete-img').querySelector('video')
+        this.videos = document.querySelector('.pallete-list').querySelectorAll('video')[0]
+        this.videosParent = document.querySelectorAll('.pallete-img')
+        this.fakeVideo = document.querySelector('.pallete-list').querySelector('.hidden').querySelector('video')
+        this.fakeVideoSource = this.fakeVideo.querySelector('source')
+
+        this.videosList = [video1, video2, video3, video4, video5, video6, video7, video8, video9, video10]
+
+        this.videosParent[0].classList.add('active')
+
+        this.prevVideo = null
+        this.videoUrl
 
         this.loaded = false
 
@@ -35,7 +43,7 @@ export default class Pallete
     {
         ScrollTrigger.create(
         {
-            trigger: '.pallete-img',
+            trigger: '.pallete-list',
             start: 'top 150%',
             onEnter: () => 
             {
@@ -46,15 +54,12 @@ export default class Pallete
 
     embedVideo()
     {
-        this.createSource = `<source src="${video1}" type="video/mp4">`
-
-        this.video.innerHTML = this.createSource
-        this.video.load()
-        this.video.play()
-
-        this.source = this.video.querySelector('source')
-
         this.loaded = true
+        this.source = this.videos.querySelector('source')
+        let src = this.source.getAttribute('data-src')
+        this.source.setAttribute('src', src)
+        this.videos.load()
+        this.videos.play()
     }
 
     init()
@@ -68,17 +73,22 @@ export default class Pallete
             {
                 this.text.innerHTML = text  
 
+                this.currentVideo = this.videosList[this.items.length - index - 1]
+                this.source.setAttribute('src', this.currentVideo)
+                // this.fakeVideoSource.setAttribute('src', this.currentVideo)
+                // this.fakeVideo.load()
+            })
+
+            item.addEventListener('click', () => 
+            {
                 this.items.forEach(it => it.classList.remove('active'))
                 item.classList.add('active')
 
-                let time = this.video.currentTime
+                let time = this.videos.currentTime
+                this.videos.load()
+                this.videos.play()
 
-                const video = this.videos[(this.items.length - 1) - index]
-                this.source.src = video
-                this.video.load()
-                this.video.play()
-
-                this.video.currentTime = time
+                this.videos.currentTime = time
             })
         })
     }

@@ -1,6 +1,6 @@
 .nav
 {
-    transition: color var(--color-ease), background-color var(--color-ease);
+    transition: color var(--color-ease), background-color var(--color-ease), opacity var(--color-ease);
 
     background-color: var(--white);
 
@@ -22,13 +22,41 @@
     }
 }
 
-.at-top,
-.scroll-down
+.at-top
 {
+    &.scroll-down
+    {
+        .nav
+        {
+            opacity: 1;
+            pointer-events: all;
+
+            & > *
+            {
+                pointer-events: all;
+            }
+        }
+    }
+
     .nav
     {
         background-color: transparent;
     }
+}
+
+.scroll-down
+{
+    .nav
+    {
+        opacity: 0;
+        pointer-events: none;
+
+        & > *
+        {
+            pointer-events: none;
+        }
+    }
+
 }
 
 .burger-open

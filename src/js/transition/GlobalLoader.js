@@ -15,7 +15,6 @@ export default class GlobalLoader
         this.hero = document.querySelector('header')
         this.loader = document.querySelector('.loader')
         this.loaderTop = this.loader.querySelectorAll('.loader_part')[0]
-        this.loaderBot = this.loader.querySelectorAll('.loader_part')[1]
         this.loaderText = this.loader.querySelector('._22')
         // this.loaderCounter = this.loader.querySelector('div')
         this.container = container
@@ -28,28 +27,22 @@ export default class GlobalLoader
 
     loadImg()
     {
-        const images = [...this.hero.querySelectorAll('img'), document.querySelector('.video-section').querySelector('img')];
-
-        if(images.length === 0)
+        if(document.querySelector('main').getAttribute('data-transition-page') === 'home')
+        {
+            const images = [...this.hero.querySelectorAll('img'), document.querySelector('.video-section').querySelector('img')]
+            
+            const imgPlay = new Promise(resolve =>
+            {
+                imagesLoaded(images, { background: true }, () =>
+                {
+                    resolve()
+                    this.init()
+                })
+            })
+        } else
         {
             this.init()
-            return
         }
-
-        // imagesLoaded(images, { background: true }).on('progress', instance => 
-        // {
-        //     // const progress = instance.progressedCount / instance.images.length * 100;
-        //     // this.loaderCounter.innerHTML = Math.round(progress) + '%';
-        // })
-
-        const imgPlay = new Promise(resolve =>
-        {
-            imagesLoaded(images, { background: true }, () =>
-            {
-                resolve()
-                this.init()
-            })
-        })
     }
 
     reveal()
@@ -66,6 +59,7 @@ export default class GlobalLoader
     {
         this.loader.classList.add('hidden')
         this.loader.style.setProperty('background', '#212121')
+        gsap.set(this.loader, {opacity: 0})
     }
 
     scrolltop()
@@ -80,8 +74,7 @@ export default class GlobalLoader
             onComplete: () => this.complete() 
         }})
 
-        this.tl.to(this.loaderTop, {y: '-51vh'}, 0)
-        .to(this.loaderBot, {y: '51vh'}, 0)
+        this.tl.to(this.loaderTop, {y: '-101vh'}, 0)
         // .to(this.loaderText, {opacity: 0, }, 0)
     }
 

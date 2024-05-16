@@ -14,5 +14,7 @@ export default class NewsLoader
     init()
     {
         gsap.set(this.main, {autoAlpha: 1})
+
+        this.nav.classList.remove('white')
     }
 }

@@ -8,6 +8,7 @@ import SvgBg from "./SvgBg";
 import Pallete from "./Pallete";
 import Steps from './Steps'
 import LoadImgs from "@js/components/LoadImgs";
+import LoadVideos from "@js/components/LoadVideos";
 
 export default class index
 {
@@ -17,11 +18,12 @@ export default class index
         this.draggable = new Draggable()
         this.features = new Features()
         this.phone = new Phone()
-        this.galery = new Galery()
         // this.phrase = new Phrase()
         this.svgBg = new SvgBg()
         this.palette = new Pallete()
         this.steps = new Steps()
         this.loadImgs = new LoadImgs()
+        this.loadVideos = new LoadVideos()
+        this.galery = new Galery()
     }
 }

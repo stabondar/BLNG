@@ -60,9 +60,9 @@ export default class Drag
 
         slide.style.setProperty('--left', `${left}%`)
 
-        if(left > 75)
+        if(left > 80)
         {
-            let delta = 1 - (left - 70) / 25
+            let delta = 1 - (left - 75) / 25
             this.nav.style.setProperty('--opacity', delta)
         }
     }

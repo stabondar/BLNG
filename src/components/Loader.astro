@@ -4,17 +4,8 @@ import video from '/logo-loader.mp4'
 
 <div class="loader fixed z-50 inset-0 flex flex-col justify-center items-center text-white">
     <!-- <div class="_22">0%</div> -->
-    <div class="loader_part bg-[#FFFFFF] w-full h-full flex relative items-end justify-center overflow-clip">
-        <div class="loader_video aspect-square w-80 relative translate-y-1/2">
-            <div class="background-video">
-                <video muted autoplay crossorigin="anonymous" loop playsinline>
-                    <source src={video} type="video/mp4" />
-                </video>
-            </div>
-        </div>
-    </div>
-    <div class="loader_part bg-[#FFFFFF] w-full h-full flex relative items-start justify-center overflow-clip">
-        <div class="loader_video aspect-square w-80 relative -translate-y-1/2">
+    <div class="loader_part bg-[#FFFFFF] w-full h-full flex relative items-center justify-center overflow-clip">
+        <div class="loader_video aspect-square w-80 relative translate-x-0  ">
             <div class="background-video">
                 <video muted autoplay crossorigin="anonymous" loop playsinline>
                     <source src={video} type="video/mp4" />

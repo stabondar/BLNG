@@ -1,5 +1,5 @@
 import barba from '@barba/core'
-// import barbaPrefetch from '@barba/prefetch'
+import barbaPrefetch from '@barba/prefetch'
 
 import Scroll from '@jsUtils/Scroll'
 import { CheckPages } from '@jsComp/CheckPage'
@@ -48,7 +48,7 @@ export default class App extends EventEmitter
     {
         let it = this
 
-        // barba.use(barbaPrefetch)
+    barba.use(barbaPrefetch)
 
         barba.init(
         {

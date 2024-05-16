@@ -14,17 +14,7 @@ const props = Astro.props
 ---
 
 <div class:list={[props.alignText, props.align]}>
-    <div class="_14 subtitle">
+    <div class="_14 subtitle" style={`--textColor: ${props.color}`}>
         <PortableText value={props.title} />
     </div>
 </div>
-
-<style lang="scss" define:vars={{textColor: props.color}} is:global>
-    ._14.subtitle
-    {
-        strong
-        {
-            color: var(--textColor);
-        }
-    }
-</style>

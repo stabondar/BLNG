@@ -12,6 +12,10 @@ const { PUBLIC_SANITY_DATASET } = loadEnv(process.env.NODE_ENV, process.cwd(), "
 // https://astro.build/config
 export default defineConfig(
 {
+    prefetch: 
+    {
+        prefetchAll: true
+    },
     image: 
     {
         service: squooshImageService(),

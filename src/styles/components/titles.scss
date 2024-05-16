@@ -27,3 +27,20 @@
         }
     }
 }
+
+._14.subtitle
+{
+    strong
+    {
+        color: var(--textColor);
+    }
+}
+
+.title
+{
+    strong
+    {
+        color: color-mix(in srgb, currentColor, transparent 60%);
+        font-weight: inherit;
+    }
+}

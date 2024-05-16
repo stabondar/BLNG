@@ -13,31 +13,3 @@ const props = Astro.props
 <div class="slider-arrow flex items-center justify-center rounded-full aspect-square w-14 cursor-pointer" class:list={[props.rotate && 'rotate-180', props.white && 'white-bg']}>
     <ArrowIcon width="w-6" />
 </div>
-
-<style lang="scss">
-    .slider-arrow
-    {
-        border: 1px solid currentColor;
-        color: color-mix(in srgb, currentColor, transparent 80%);
-        transition: color var(--color-ease);
-
-        &:hover
-        {
-            color: color-mix(in srgb, currentColor, transparent 30%);
-        }
-
-        &.white-bg
-        {
-            background-color: #fff;
-        }
-    }
-
-    @media screen and (max-width: 479px) 
-    {
-        .slider-arrow
-        {
-            color: color-mix(in srgb, currentColor, transparent 20%);
-            border-color: color-mix(in srgb, currentColor, transparent 60%);
-        }
-    };
-</style>
