@@ -7,6 +7,12 @@ export default function privacyFields()
             type: 'string',
         },
         {
+            title: 'Description',
+            name: 'descr',
+            type: 'text',
+            rows: 1,
+        },
+        {
             title: 'Body Text',
             name: 'body',
             type: 'array',

@@ -13,15 +13,70 @@
         font-family: $body;
         margin-bottom: calc(20 / 16 * 1rem);
     }
+
+    h4
+    {
+        font-size: calc(22 / 16 * 1rem);
+        line-height: 1.4;
+        font-weight: 400;
+        font-family: $body;
+        margin-bottom: calc(20 / 16 * 1rem);
+        margin-top: calc(40 / 16 * 1rem);
+    }
     
-    p
+    p, li
     {
         margin-top: calc(15 / 16 * 1rem);
         font-size: calc(20 / 16 * 1rem);
         line-height: 1.5;
         font-weight: 300;
         font-family: $body;
-    
+    }
+
+    a
+    {
+        display: inline-block;
+        position: relative;
+
+        &::before
+        {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: currentColor;
+            transition: transform var(--color-ease);
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        &:hover::before
+        {
+            transform-origin: right;
+            transform: scaleX(0);
+        }
+    }
+
+    li
+    {
+        padding-left: calc(40 / 16 * 1rem);
+        position: relative;
+
+        &::before
+        {
+            content: '';
+            width: calc(8 / 16 * 1rem);
+            height: calc(8 / 16 * 1rem);
+            position: absolute;
+            top: calc(10 / 16 * 1rem);
+            left: calc(20 / 16 * 1rem);
+            border-radius: 100vw;
+            background-color: var(--black);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
     }
 
     .rich-img

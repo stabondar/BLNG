@@ -29,7 +29,7 @@ export default class GlobalLoader
     {
         if(document.querySelector('main').getAttribute('data-transition-page') === 'home')
         {
-            const images = [...this.hero.querySelectorAll('img'), document.querySelector('.video-section').querySelector('img')]
+            const images = [...this.hero.querySelectorAll('img')]
             
             const imgPlay = new Promise(resolve =>
             {

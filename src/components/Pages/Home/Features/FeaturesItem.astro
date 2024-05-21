@@ -7,12 +7,12 @@ const props = Astro.props
 const img = getImageUrl(props.image).url()
 ---
 
-<div class="swiper-slide">
+<div class="swiper-slide select-none">
     <div class="feature-slide flex flex-col items-center relative w-full h-full pt-[4.5rem] pb-24 text-white text-center sm:pt-10 sm:pb-12">
         <div class="_14 relative z-10 opacity-60 mb-6 sm:mb-3">{props.subtitle}</div>
         <div class="_32 relative z-10 flex-grow sm:text-24">{props.title}</div>
         <div class="aspect-square w-32 relative z-10">
-            <img data-src={img} alt={props.title} width={400} height={400} class="object-contain"/>
+            <img data-src={img} alt={props.title} width={400} height={400} class="object-contain aspect-square"/>
             <!-- <Image src={img} format="svg" alt={props.title} width={400} height={400} class="object-contain"/> -->
         </div>
     </div>

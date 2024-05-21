@@ -25,7 +25,7 @@ const items =
             <Subtitle color="#FC502A" title={section[0].subtitle} alignText="text-center" align="justify-center"/>
             <Title h2={true} size={650} title={section[0].heading}/>
         </div>
-        <div class="grid grid-cols-3 gap-5 tablet-sm:flex tablet-sm:flex-row tablet-sm:overflow-x-scroll tablet-sm:-mx-10 tablet-sm:px-10 tablet-sm:pb-1">
+        <div class="grid grid-cols-3 gap-5 tablet-sm:flex tablet-sm:flex-col">
             {items.map((item, index) => <StepsItems index=`0${index + 1}` title={item.title} video={item.video}/>)}
         </div>
     </div>

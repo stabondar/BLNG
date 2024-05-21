@@ -23,7 +23,7 @@ export default class SvgBg
             if(window.innerWidth < 479)
                 end = '+=300px'
             else
-                end = '+=1500px'
+                end = '+=400px'
 
             return end
         }

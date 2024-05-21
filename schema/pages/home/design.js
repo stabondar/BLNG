@@ -13,15 +13,6 @@ export default
         {
             ...customHeading('Subtitle', 'subtitle'),
         },
-        {
-            title: 'Image',
-            name: 'image',
-            type: 'image',
-            options: 
-            {
-                hotspot: true
-            }
-        },
     ],
     preview: 
     {

@@ -1,7 +1,7 @@
 ---
 import video from '@static/steps/steps-video-1.mp4'
-import phone from '@static/phone-mask.png?url'
-import nav from '@static/phone/Nav_bar.svg?url'
+import phone from '@static/phone.png?url'
+import nav from '@static/phone/Nav_bar.png?url'
 import footer from '@static/phone/footer.png?url'
 import chat from '@static/phone/chat.png?url'
 
@@ -10,23 +10,20 @@ import { getImage } from 'astro:assets';
 
 ---
 
-<div class="phone_mask aspect-[340/705] relative sm:w-[220px]">
+<div class="phone_mask aspect-[340/705] relative sm:w-[220px] sm:aspect-[340/690]">
     <div class="absolute inset-0 z-10 scale-[1.18] translate-x-[1.5%] translate-y-[0.5%]">
         <img data-src={phone} alt="phone mask" class='object-contain'/>
     </div>
     <div class="background-video z-0 canvas-parent">
-        <!-- <div class="absolute top-0 left-0 right-0 px-3 z-10 sm:px-2">
-            <img data-src={nav} alt="phone nav" class='aspect-[432.29/107.8] w-full'/>
+        <div class="phone_nav absolute top-2 left-0 right-0 px-3 z-10 sm:px-[7px]">
+            <img data-src={nav} alt="phone nav" class='aspect-[276.2/68.87] w-full'/>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 px-3">
+        <!-- <div class="absolute bottom-0 left-0 right-0 px-3">
             <img data-src={footer} alt="phone footer" class='aspect-[432/253] w-full'/>
-        </div>
-        <div class="absolute top-[78px] left-0 right-0 px-3 sm:top-[49px]">
-            <img data-src={chat} alt="phone chat" class='aspect-[432/201] w-full'/>
         </div> -->
-        <!-- <video muted webkit-playsinline="true" preload="auto" crossorigin="anonymous" playsinline>
-            <source src={video} type="video/mp4" />
-        </video> -->
-        <canvas id="phone-canvas"></canvas>
+        <div class="phone_nav absolute -bottom-2 left-0 right-0 px-3 sm:px-2">
+            <img data-src={chat} alt="phone chat" class='aspect-[276.2/274.79] w-full'/>
+        </div>
+        <canvas id="phone-canvas" class="mt-[19%]"></canvas>
     </div>
 </div>

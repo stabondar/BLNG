@@ -28,26 +28,27 @@ export default class Features
         })
 
         this.arrowPrev.addEventListener('click', () => this.swiper.slidePrev())
-        this.arrowNext.addEventListener('click', () => 
-        {
-            if(this.swiper.activeIndex !== this.swiper.slides.length - 3)
-            {
-                this.swiper.slideNext()
-            }
-        })
+        this.arrowNext.addEventListener('click', () => this.swiper.slideNext())
+        // this.arrowNext.addEventListener('click', () => 
+        // {
+        //     if(this.swiper.activeIndex !== this.swiper.slides.length - 3)
+        //     {
+        //         this.swiper.slideNext()
+        //     }
+        // })
 
         this.swiper.on('slideChange', () => 
         {
-            if(window.innerWidth > 1600)
-            {
-                if(this.swiper.activeIndex !== this.swiper.slides.length - 3)
-                {
-                    this.swiper.allowSlideNext = true
-                } else
-                {
-                    this.swiper.allowSlideNext = false
-                }
-            }
+            // if(window.innerWidth > 1600)
+            // {
+            //     if(this.swiper.activeIndex !== this.swiper.slides.length - 3)
+            //     {
+            //         this.swiper.allowSlideNext = true
+            //     } else
+            //     {
+            //         this.swiper.allowSlideNext = false
+            //     }
+            // }
         })
 
         setTimeout(() => this.swiper.slidesPerViewDynamic(), 200)

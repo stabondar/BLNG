@@ -11,15 +11,6 @@ export default
             ...customHeading('Heading', 'text'),
         },
         {
-            title: 'Image',
-            name: 'image',
-            type: 'image',
-            options: 
-            {
-                hotspot: true
-            }
-        },
-        {
             name: 'item1title',
             type: 'string',
             title: 'Item 1 Title',

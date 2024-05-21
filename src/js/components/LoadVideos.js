@@ -22,7 +22,7 @@ export default class LoadVideos
             ScrollTrigger.create(
             {
                 trigger: section,
-                start: 'top 150%',
+                start: 'top 200%',
                 onEnter: () => 
                 {
                     !loaded && this.loadVideo(section)
@@ -42,8 +42,13 @@ export default class LoadVideos
             let source = video.querySelector('source')
             let src = source.getAttribute('data-src')
             source.setAttribute('src', src)
+            video.setAttribute('playsinline', '')
             video.load()
+            video.muted = true
+            video.currentTime = 0
             video.play()
+
+            video.addEventListener('canplay', () => video.play())
         })
     }
 }

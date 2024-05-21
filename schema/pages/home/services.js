@@ -32,6 +32,11 @@ export default
             title: 'Item 1 Button Link',
         },
         {
+            name: 'item1linktarget',
+            type: 'boolean',
+            title: 'Item 1 Button open in new tab?',
+        },
+        {
             title: 'Item 1 Image',
             name: 'item1image',
             type: 'image',
@@ -56,6 +61,11 @@ export default
             title: 'Item 2 Button Link',
         },
         {
+            name: 'item2linktarget',
+            type: 'boolean',
+            title: 'Item 2 Button open in new tab?',
+        },
+        {
             title: 'Item 2 Image',
             name: 'item2image',
             type: 'image',
@@ -73,6 +83,16 @@ export default
             name: 'item3text',
             type: 'string',
             title: 'Item 3 Subtitle',
+        },
+        {
+            name: 'item3link',
+            type: 'string',
+            title: 'Item 3 Button Link',
+        },
+        {
+            name: 'item3linktarget',
+            type: 'boolean',
+            title: 'Item 3 Button open in new tab?',
         },
         {
             title: 'Item 3 Image',

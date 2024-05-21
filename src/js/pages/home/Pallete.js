@@ -1,32 +1,20 @@
-import video1 from '/videos/Diversity_1.mp4?url'
-import video2 from '/videos/Diversity_2.mp4?url'
-import video3 from '/videos/Diversity_3.mp4?url'
-import video4 from '/videos/Diversity_4.mp4?url'
-import video5 from '/videos/Diversity_5.mp4?url'
-import video6 from '/videos/Diversity_6.mp4?url'
-import video7 from '/videos/Diversity_7.mp4?url'
-import video8 from '/videos/Diversity_8.mp4?url'
-import video9 from '/videos/Diversity_9.mp4?url'
-import video10 from '/videos/Diversity_10.mp4?url'
-
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import EventEmitter from '@js/components/EventEmitter'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default class Pallete
+export default class Pallete extends EventEmitter
 {
     constructor()
     {
+        super()
+
         this.text = document.querySelector('.pallete_color') 
         this.items = document.querySelectorAll('.pallete_item')
 
         this.videos = document.querySelector('.pallete-list').querySelectorAll('video')[0]
         this.videosParent = document.querySelectorAll('.pallete-img')
-        this.fakeVideo = document.querySelector('.pallete-list').querySelector('.hidden').querySelector('video')
-        this.fakeVideoSource = this.fakeVideo.querySelector('source')
-
-        this.videosList = [video1, video2, video3, video4, video5, video6, video7, video8, video9, video10]
 
         this.videosParent[0].classList.add('active')
 
@@ -35,8 +23,25 @@ export default class Pallete
 
         this.loaded = false
 
-        this.init()
+        
         this.trigger()
+    }
+
+    update()
+    {
+        let time = this.videos.currentTime
+        let index = Math.floor(time / this.videoPart)
+        let item = this.items[index]
+
+        this.items.forEach(it => it.classList.remove('active'))
+        item.classList.add('active')
+
+        let text = `color #0${index + 1}`
+        if(index > 8) { text = `color #${index + 1}` }
+
+        this.text.innerHTML = text
+
+        window.requestAnimationFrame(() => this.update())
     }
 
     trigger()
@@ -60,35 +65,29 @@ export default class Pallete
         this.source.setAttribute('src', src)
         this.videos.load()
         this.videos.play()
+
+        this.videos.addEventListener('canplay', () => this.init())
     }
 
     init()
     {
+        window.requestAnimationFrame(() => this.update())
+
+        this.videoDuration = this.videos.duration
+        this.videoPart = this.videoDuration / this.items.length
+
         this.items.forEach((item, index) => 
         {
             let text = `color #0${index + 1}`  
             if(index > 8) { text = `color #${index + 1}` }
-
-            item.addEventListener('mouseenter', () => 
-            {
-                this.text.innerHTML = text  
-
-                this.currentVideo = this.videosList[this.items.length - index - 1]
-                this.source.setAttribute('src', this.currentVideo)
-                // this.fakeVideoSource.setAttribute('src', this.currentVideo)
-                // this.fakeVideo.load()
-            })
-
+            
             item.addEventListener('click', () => 
             {
+                this.text.innerHTML = text  
                 this.items.forEach(it => it.classList.remove('active'))
                 item.classList.add('active')
 
-                let time = this.videos.currentTime
-                this.videos.load()
-                this.videos.play()
-
-                this.videos.currentTime = time
+                this.videos.currentTime = this.videoPart * index
             })
         })
     }

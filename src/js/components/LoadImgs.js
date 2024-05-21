@@ -9,7 +9,7 @@ export default class LoadImgs
     {
         this.main = document.querySelector('.main')
         this.sections = document.querySelectorAll('section')
-        this.sections = [...this.sections].slice(1)
+        // this.sections = [...this.sections].slice(1)
 
         this.init()
     }
@@ -23,7 +23,7 @@ export default class LoadImgs
             ScrollTrigger.create(
             {
                 trigger: section,
-                start: 'top 150%',
+                start: 'top 200%',
                 onEnter: () => 
                 {
                     !loaded && this.loadImgs(section)

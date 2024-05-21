@@ -5,11 +5,12 @@ interface Props
 {
     rotate?: boolean,
     white?: boolean,
+    mobWidth?: string,
 }
 
 const props = Astro.props
 ---
 
-<div class="slider-arrow flex items-center justify-center rounded-full aspect-square w-14 cursor-pointer" class:list={[props.rotate && 'rotate-180', props.white && 'white-bg']}>
+<div class="slider-arrow flex items-center justify-center rounded-full aspect-square w-14 cursor-pointer" class:list={[props.rotate && 'rotate-180', props.white && 'white-bg', props.mobWidth]}>
     <ArrowIcon width="w-6" />
 </div>

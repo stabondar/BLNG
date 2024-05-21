@@ -6,16 +6,29 @@ const props = Astro.props
 
 let video
 let image
+let mobVideo
+let mobImage
 
 if(props.boolean == true)
 {
     video = getVideoUrl(props.video)
     video = video.url
+
+    if(props.mobileVideo)
+    {
+        mobVideo = getVideoUrl(props.mobileVideo)
+        mobVideo = mobVideo.url
+    }
 } else
 {
     image = getImageUrl(props.large)
     image = image.url()
 
+    if(props.mobileImg)
+    {
+        mobImage = getImageUrl(props.mobileImg)
+        mobImage = mobImage.url()
+    }
 }
 ---
 
@@ -27,5 +40,15 @@ if(props.boolean == true)
             </video>
         </div>
     )}
+
+    {props.boolean == true && props.mobileVideo && (
+        <div class="background-video">
+            <video muted autoplay crossorigin="anonymous" loop playsinline>
+                <source data-src={mobVideo} type="video/mp4" />
+            </video>
+        </div>
+    )}
     {props.boolean != true && <img data-src={image} alt='' loading="eager" class="h-full"/>}
+    {props.boolean != true && props.mobileImg && <img data-src={mobImage} alt='' loading="eager" class="h-full"/>}
+
 </div>

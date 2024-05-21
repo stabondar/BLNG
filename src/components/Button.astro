@@ -6,12 +6,13 @@ interface Props
     background?: string
     color?: string
     weight?: number
+    target?: string
 }
 
 const props = Astro.props
 ---
 
-<a href={props.link} class="button px-5 py-3 rounded-lg block" class:list={!props.background && 'bg-black text-white'}
+<a href={props.link} target={props.target} class="button px-5 py-3 rounded-lg block" class:list={!props.background && 'bg-black text-white'}
     style={props.background && `background: ${props.background}; color: ${props.color}`}>
     <div class="_16" style={props.weight && `font-weight: ${props.weight}`}>{props.text}</div>
 </a>

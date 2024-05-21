@@ -11,6 +11,8 @@ export default class Phone
         this.mask = this.section.querySelector('.phone_mask')
         this.title = this.section.querySelector('.phone_title')
         this.tiles = this.section.querySelectorAll('.phone_tile')
+        this.navItems = this.section.querySelectorAll('.phone_nav')
+        this.canvasItem = this.section.querySelector('#phone-canvas')
 
         this.loaded = false
         this.init()
@@ -20,7 +22,7 @@ export default class Phone
 
     init()
     {
-        this.tl = gsap.timeline({paused: true})
+        this.tl = gsap.timeline({paused: true, defaults: {duration: 1}})
 
         this.mm = gsap.matchMedia()
         this.breakpoint = 479
@@ -34,8 +36,10 @@ export default class Phone
             let {isDesktop, isMobile} = context.conditions
             
             this.tl.fromTo(this.mask, {width: '120vw'}, {width: isDesktop ? '340px': '220px'})
+            .fromTo(this.canvasItem, {marginTop: '50%'}, {marginTop: '19%'}, '<')
             .fromTo(this.title, {opacity: 0}, {opacity: 1}, '<80%')
             .fromTo(this.tiles, {opacity: 0}, {opacity: 1, stagger: 0.2}, '<0.2')
+            .fromTo(this.navItems, {opacity: 0}, {opacity: 1, duration: 0.2}, 0.2)
 
         })
 
@@ -61,15 +65,15 @@ export default class Phone
 
         this.sizes =
         {
-            width: this.parent.getBoundingClientRect().width,
-            height: this.parent.getBoundingClientRect().height
+            width: this.canvas.getBoundingClientRect().width,
+            height: this.canvas.getBoundingClientRect().height
         }
 
         this.context = this.canvas.getContext("2d")
 
         this.setCanvasSize()
 
-        const frameCount = 288
+        const frameCount = 140
         const urlStart = '/sequence/'
         const urlEnd = '.jpg'
         const floatingZeros = 3
@@ -101,15 +105,18 @@ export default class Phone
         let iOS = !!navigator.platform.match(/iPhone|iPod|iPad/)
         let resizeTimer
 
-        window.addEventListener("resize", function (e) 
+        window.addEventListener("resize", () =>
         {
-            if (iOS) {
+            if (iOS) 
+            {
                 clearTimeout(resizeTimer)
-                resizeTimer = setTimeout(function () {
-                this.setCanvasSize()
-                this.render()
+                resizeTimer = setTimeout(() => 
+                {
+                    this.setCanvasSize()
+                    this.render()
                 }, 250)
-            } else {
+            } else 
+            {
                 this.setCanvasSize()
                 this.render()
             }
@@ -128,8 +135,8 @@ export default class Phone
 
     setCanvasSize() 
     {
-        this.sizes.width = this.parent.getBoundingClientRect().width
-        this.sizes.height = this.parent.getBoundingClientRect().height
+        this.sizes.width = this.canvas.getBoundingClientRect().width
+        this.sizes.height = this.canvas.getBoundingClientRect().height
         this.canvas.width = this.sizes.width
         this.canvas.height = this.sizes.height
     }

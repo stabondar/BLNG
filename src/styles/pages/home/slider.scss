@@ -107,7 +107,7 @@
 .slider-arrow
 {
     border: 1px solid currentColor;
-    color: color-mix(in srgb, currentColor, transparent 80%);
+    color: color-mix(in srgb, currentColor, transparent 50%);
     transition: color var(--color-ease);
 
     &:hover
@@ -125,8 +125,8 @@
 {
     .slider-arrow
     {
-        color: color-mix(in srgb, currentColor, transparent 20%);
-        border-color: color-mix(in srgb, currentColor, transparent 60%);
+        color: color-mix(in srgb, currentColor, transparent 50%);
+        border-color: color-mix(in srgb, currentColor, transparent 50%);
     }
 }
 
@@ -135,5 +135,15 @@
     .hero_nav
     {
         opacity: 1;
+    }
+
+    .hero_nav-titles
+    {
+        div
+        {
+            right: auto;
+            left: 0;
+            text-align: left;
+        }
     }
 }

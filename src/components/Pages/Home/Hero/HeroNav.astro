@@ -9,13 +9,13 @@ const titles = props.titles
 const length = 6
 ---
 
-<div class="hero_nav absolute right-0 bottom-8 flex flex-col items-end justify-end gap-7 z-10 tablet-sm:relative tablet-sm:mt-10 tablet-sm:items-start sm:gap-5 sm:bottom-0">
+<div class="hero_nav absolute right-0 bottom-8 flex flex-col items-end justify-end gap-7 z-10 tablet-sm:static tablet-sm:mt-10 tablet-sm:items-start sm:gap-5 sm:bottom-0">
     <HeroIndexes length={`0${length}`} titles={titles}/>
-    <div class="hero_nav-titles _28 leading-none overflow-clip relative text-right">
+    <div class="hero_nav-titles _28 leading-none overflow-clip relative text-right tablet-sm:text-left">
         {titles.map(title => <div class="hero_nav-title">{title.title}</div>)}
     </div>
-    <div class="flex flex-row gap-2.5">
-        <SliderArrow white={true}/>
-        <SliderArrow white={true} rotate={true}/>
+    <div class="flex flex-row gap-2.5 sm:absolute sm:top-1/2 sm:-translate-y-[95%] sm:left-0 sm:right-0 sm:justify-between">
+        <SliderArrow white={true} mobWidth="sm:w-10"/>
+        <SliderArrow white={true} rotate={true} mobWidth="sm:w-10"/>
     </div>
 </div>

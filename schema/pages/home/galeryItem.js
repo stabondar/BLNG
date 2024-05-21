@@ -53,6 +53,20 @@ export default
             type: 'boolean'
         },
         {
+            title: 'Mobile Image',
+            name: 'mobileImg',
+            type: 'image',
+            options: 
+            {
+                hotspot: true
+            }
+        },
+        {
+            title: 'Mobile Video',
+            name: 'mobileVideo',
+            type: 'file'
+        },
+        {
             title: 'Next Image Preview',
             name: 'next',
             type: 'image',

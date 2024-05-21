@@ -1,0 +1,15 @@
+.bg-blur
+{
+    opacity: 0;
+}
+
+.video-parent
+{
+    &:has(img[src])
+    {
+        .bg-blur
+        {
+            opacity: 1;
+        }
+    }
+}
