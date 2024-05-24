@@ -29,6 +29,11 @@ export default
             name: 'item2text',
             type: 'text',
             title: 'Item 2 Description',
+        },
+        {
+            name: 'video',
+            title: 'Video URL',
+            type: 'url',
         }
     ],
     preview: 

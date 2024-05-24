@@ -1,5 +1,4 @@
 ---
-import video from '/Diversity-Skin.mp4'
 import { getSanity } from "@lib/api"
 import { getRefs } from "@lib/getRefs"
 import { PortableText } from "astro-portabletext";
@@ -12,6 +11,8 @@ const sortedColors = section[0].colors.map(galeryItem =>
 {
     return colors.find(slider => slider._id === galeryItem._ref);
 })
+
+const video = section[0].video
 ---
 
 <section class="white-section pt-48 pb-48 tablet:pt-36 tablet:pb-36 sm:pt-24 sm:pb-24">
@@ -29,15 +30,9 @@ const sortedColors = section[0].colors.map(galeryItem =>
                 <div class="pallete-img absolute inset-0">
                     <div class="background-video scale-[1.01]">
                         <video muted crossorigin="anonymous" loop playsinline>
-                            <source data-src={video} type="video/mp4" />
+                            <div data-src={video}></div>
                         </video>
                     </div>
-                </div>
-
-                <div class="hidden">
-                    <video muted crossorigin="anonymous" loop playsinline>
-                        <source type="video/mp4" data-src={video} />
-                    </video>
                 </div>
             </div>
 

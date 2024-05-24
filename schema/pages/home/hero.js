@@ -22,6 +22,21 @@ export default
                 }
             ],
         },
+        {
+            name: 'video',
+            title: 'Loader Video',
+            type: 'url',
+        },
+        {
+            name: 'button',
+            title: 'Button Link',
+            type: 'url',
+        },
+        {
+            name: 'buttonText',
+            title: 'Button Text',
+            type: 'string',
+        }
     ],
     preview: 
     {

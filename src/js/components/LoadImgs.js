@@ -41,6 +41,8 @@ export default class LoadImgs
         imgs.forEach(img => 
         {
             let src = img.getAttribute('data-src')
+
+            if(!src) return
             img.src = src
         })
     }

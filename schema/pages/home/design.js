@@ -13,6 +13,11 @@ export default
         {
             ...customHeading('Subtitle', 'subtitle'),
         },
+        {
+            name: 'video',
+            title: 'Video URL',
+            type: 'url',
+        }
     ],
     preview: 
     {

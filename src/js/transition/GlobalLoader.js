@@ -1,6 +1,7 @@
 import App from '@js/App'
 import gsap from 'gsap'
 import imagesLoaded from 'imagesloaded'
+import Hls from 'hls.js'
 
 export default class GlobalLoader
 {
@@ -16,16 +17,41 @@ export default class GlobalLoader
         this.loader = document.querySelector('.loader')
         this.loaderTop = this.loader.querySelectorAll('.loader_part')[0]
         this.loaderText = this.loader.querySelector('._22')
+        this.video = this.loader.querySelector('video')
         // this.loaderCounter = this.loader.querySelector('div')
         this.container = container
 
         this.allowLoad = false
 
+        // this.loadVideo()
         this.loadImg()
         // this.init()
     }
 
-    loadImg()
+    async loadVideo()
+    {
+        const div = this.video.querySelector('div')
+        const url = div.getAttribute('data-src')
+
+        if(this.video.canPlayType("application/vnd.apple.mpegurl")) 
+        {
+            this.video.src = url
+            await this.video.play()
+            await div.remove()
+            await this.loadImg()
+        } else if(Hls.isSupported())
+        {
+            const hls = new Hls()
+
+            hls.loadSource(url)
+            hls.attachMedia(this.video)
+            await this.video.play()
+            await div.remove()
+            await this.loadImg()
+        }
+    }
+
+    async loadImg()
     {
         if(document.querySelector('main').getAttribute('data-transition-page') === 'home')
         {

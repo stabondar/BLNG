@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "build": "astro build",
-    "deploy": "astro build && vercel --prebuilt --prod"
+    "deploy": "astro build && vercel --prebuilt"
   },
   "dependencies": {
     "@astrojs/check": "^0.6.0",
@@ -31,7 +31,7 @@
     "astro-portabletext": "^0.9.9",
     "fontfaceobserver": "^2.3.0",
     "gsap": "file:gsap-bonus.tgz",
-    "hls.js": "^1.5.8",
+    "hls.js": "^1.5.7",
     "imagesloaded": "^5.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -19,14 +19,29 @@ export default
             title: 'Item 1 Title',
         },
         {
+            name: 'video1',
+            title: 'Video URL #1',
+            type: 'url',
+        },
+        {
             name: 'item2title',
             type: 'string',
             title: 'Item 2 Title',
         },
         {
+            name: 'video2',
+            title: 'Video URL #2',
+            type: 'url',
+        },
+        {
             name: 'item3title',
             type: 'string',
             title: 'Item 3 Title',
+        },
+        {
+            name: 'video3',
+            title: 'Video URL #3',
+            type: 'url',
         },
     ],
     preview: 

@@ -11,7 +11,10 @@ export default class LoadVideos
         this.main = document.querySelector('.main')
         this.sections = document.querySelectorAll('[load-videos]')
 
+        if(!this.sections.length) return
+
         this.sections.forEach(section => this.loadVideo(section))
+        // this.init()
     }
 
     init()
@@ -37,23 +40,32 @@ export default class LoadVideos
 
     loadVideo(section)
     {
-        let videos = [...section.querySelectorAll('[data-video-el]')]
+        let videos = [...section.querySelectorAll('video')]
 
         videos.map(el => 
         {
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-        
-                const url = el.children[0].src;
-        
-                hls.loadSource(url);
-                hls.attachMedia(el);
-                el.play()
+            const div = el.querySelector('div')
+            const url = div.getAttribute('data-src')
 
-              } else if (el.canPlayType("application/vnd.apple.mpegurl")) 
+            if(el.canPlayType("application/vnd.apple.mpegurl")) 
+            {
+                el.src = url
+                el.play()
+                div.remove()
+            } else if(Hls.isSupported())
+            {
+                const hls = new Hls({capLevelToPlayerSize: false, ignoreDevicePixelRatio: true, autoLevelCapping: 10});
+
+                hls.on(Hls.Events.MANIFEST_PARSED, function() 
                 {
-                el.src = url;
-              }
+                    hls.currentLevel = hls.levels.length - 1;
+                })
+
+                hls.loadSource(url)
+                hls.attachMedia(el)
+                el.play()
+                div.remove()
+            }
         })
     }
 }

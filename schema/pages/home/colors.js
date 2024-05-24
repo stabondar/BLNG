@@ -20,6 +20,11 @@ export default
             rows: 3,
         },
         {
+            name: 'video',
+            title: 'Video URL',
+            type: 'url',
+        },
+        {
             name: 'colors',
             type: 'array',
             title: 'Colors',

@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import EventEmitter from '@js/components/EventEmitter'
+import Hls from 'hls.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,7 +14,7 @@ export default class Pallete extends EventEmitter
         this.text = document.querySelector('.pallete_color') 
         this.items = document.querySelectorAll('.pallete_item')
 
-        this.videos = document.querySelector('.pallete-list').querySelectorAll('video')[0]
+        this.video = document.querySelector('.pallete-list').querySelectorAll('video')[0]
         this.videosParent = document.querySelectorAll('.pallete-img')
 
         this.videosParent[0].classList.add('active')
@@ -24,12 +25,12 @@ export default class Pallete extends EventEmitter
         this.loaded = false
 
         
-        // this.init()
+        this.loadVideo()
     }
 
     update()
     {
-        let time = this.videos.currentTime
+        let time = this.video.currentTime
         let index = Math.floor(time / this.videoPart)
         let item = this.items[index]
 
@@ -40,40 +41,61 @@ export default class Pallete extends EventEmitter
         if(index > 8) { text = `color #${index + 1}` }
 
         this.text.innerHTML = text
-
-        window.requestAnimationFrame(() => this.update())
     }
 
-    trigger()
+    async loadVideo()
     {
-        ScrollTrigger.create(
+        const div = this.video.querySelector('div')
+        const url = div.getAttribute('data-src')
+
+        if(this.video.canPlayType("application/vnd.apple.mpegurl")) 
         {
-            trigger: '.pallete-list',
-            start: 'top 150%',
-            onEnter: () => 
+            this.video.src = url
+            await this.video.play()
+            await div.remove()
+            await this.init()
+        } else if(Hls.isSupported())
+        {
+            const hls = new Hls({capLevelToPlayerSize: false, ignoreDevicePixelRatio: true, autoLevelCapping: 10});
+
+            hls.on(Hls.Events.MANIFEST_PARSED, function() 
             {
-                !this.loaded && this.embedVideo()
-            }
-        })
+                hls.currentLevel = hls.levels.length - 1;
+            })
+
+            hls.loadSource(url)
+            hls.attachMedia(this.video)
+            await this.video.play()
+            await div.remove()
+            await this.init()
+        }
+        // if (Hls.isSupported()) {
+        //     const hls = new Hls({debug: true});
+    
+        //     const div = this.video.querySelector('div')
+        //     const url = div.getAttribute('data-src');
+    
+        //     hls.loadSource(url);
+        //     hls.attachMedia(this.video);
+        //     await this.video.play()
+
+        //     await div.remove()
+        //     await this.init()
+
+        //   } else if (this.video.canPlayType("application/vnd.apple.mpegurl")) 
+        //     {
+        //     this.video.src = url;
+        //     this.init()
+        //   }
+
     }
 
-    embedVideo()
+    async init()
     {
-        this.loaded = true
-        this.source = this.videos.querySelector('source')
-        let src = this.source.getAttribute('data-src')
-        this.source.setAttribute('src', src)
-        this.videos.load()
-        this.videos.play()
+        // window.requestAnimationFrame(() => this.update()
+        setInterval(() => this.update(), 100)
 
-        this.videos.addEventListener('canplay', () => this.init())
-    }
-
-    init()
-    {
-        window.requestAnimationFrame(() => this.update())
-
-        this.videoDuration = this.videos.duration
+        this.videoDuration = this.video.duration
         this.videoPart = this.videoDuration / this.items.length
 
         this.items.forEach((item, index) => 
@@ -87,7 +109,7 @@ export default class Pallete extends EventEmitter
                 this.items.forEach(it => it.classList.remove('active'))
                 item.classList.add('active')
 
-                this.videos.currentTime = this.videoPart * index
+                this.video.currentTime = this.videoPart * index
             })
         })
     }

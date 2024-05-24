@@ -8,7 +8,7 @@ import SvgBg from "./SvgBg";
 import Pallete from "./Pallete";
 import Steps from './Steps'
 import LoadImgs from "@js/components/LoadImgs";
-import LoadVideos from "@js/components/LoadVideos";
+// import LoadVideos from "@js/components/LoadVideos";
 
 export default class index
 {
@@ -23,7 +23,7 @@ export default class index
         this.palette = new Pallete()
         this.steps = new Steps()
         this.loadImgs = new LoadImgs()
-        this.loadVideos = new LoadVideos()
+        // this.loadVideos = new LoadVideos()
         this.galery = new Galery()
     }
 }

@@ -43,9 +43,9 @@ export default
             }
         },
         {
-            title: 'Video',
             name: 'video',
-            type: 'file'
+            title: 'Video URL',
+            type: 'url',
         },
         {
             title: 'Use Video',
@@ -62,9 +62,9 @@ export default
             }
         },
         {
-            title: 'Mobile Video',
             name: 'mobileVideo',
-            type: 'file'
+            title: 'Mobile Video',
+            type: 'url',
         },
         {
             title: 'Next Image Preview',

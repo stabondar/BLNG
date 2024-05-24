@@ -11,14 +11,9 @@ let mobImage
 
 if(props.boolean == true)
 {
-    video = getVideoUrl(props.video)
-    video = video.url
+    video = props.video
+    mobVideo = props.mobileVideo
 
-    if(props.mobileVideo)
-    {
-        mobVideo = getVideoUrl(props.mobileVideo)
-        mobVideo = mobVideo.url
-    }
 } else
 {
     image = getImageUrl(props.large)
@@ -30,13 +25,15 @@ if(props.boolean == true)
         mobImage = mobImage.url()
     }
 }
+
+// console.log(props.mobileVideo)
 ---
 
 <div class="swiper-slide h-full" current-tab={props.tab}>
     {props.boolean == true && (
         <div class="background-video">
             <video muted autoplay crossorigin="anonymous" loop playsinline>
-                <source data-src={video} type="video/mp4" />
+                <div data-src={video}></div>
             </video>
         </div>
     )}
@@ -44,7 +41,7 @@ if(props.boolean == true)
     {props.boolean == true && props.mobileVideo && (
         <div class="background-video">
             <video muted autoplay crossorigin="anonymous" loop playsinline>
-                <source data-src={mobVideo} type="video/mp4" />
+                <div data-src={mobVideo}></div>
             </video>
         </div>
     )}

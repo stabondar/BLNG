@@ -1,4 +1,9 @@
 ---
+import { getSanity } from "@lib/api"
+const hero = await getSanity('homeHero')
+
+// const video = hero[0].video
+
 import video from '/logo-loader.mp4'
 ---
 
@@ -8,6 +13,7 @@ import video from '/logo-loader.mp4'
         <div class="loader_video aspect-square w-80 relative translate-x-0  ">
             <div class="background-video">
                 <video muted autoplay crossorigin="anonymous" loop playsinline>
+                    <!-- <div data-src={video}></div> -->
                     <source src={video} type="video/mp4" />
                 </video>
             </div>

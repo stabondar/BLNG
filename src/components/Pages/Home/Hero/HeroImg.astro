@@ -16,5 +16,5 @@ const props = Astro.props
 ---
 
 <div class="hero_img absolute inset-0" class:list={[...props.paddings]}>
-    <img data-src={props.src} alt={props.alt} width={1400} height={1400} aria-grabbed={false} loading="eager" class="select-none object-contain md:object-cover h-full"/>
+    <img src={props.src} alt={props.alt} width={1400} height={1400} aria-grabbed={false} loading="eager" class="select-none object-contain md:object-cover h-full"/>
 </div>

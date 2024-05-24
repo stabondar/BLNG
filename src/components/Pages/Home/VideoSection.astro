@@ -3,7 +3,6 @@ import Subtitle from "@components/Subtitle.astro"
 import Title from "@components/Title.astro"
 import VideoSectionBg from './VideoSection/VideoSectionBg.astro'
 
-import video from '/video01.m3u8?url'
 import mask from '@static/tablet.webp'
 import { getImage } from "astro:assets"
 import { getSanity } from "@lib/api";
@@ -12,6 +11,7 @@ import BlurBg from "@components/BlurBg.astro"
 const section = await getSanity('homeDesign')
 
 const img = await getImage({src: mask, width: 1588, height: 1008, quality: 90})
+const video = section[0].video
 ---
 
 <section class="dark-section pt-48 tablet:pt-36 sm:pt-24" white-trigger section-design load-videos>
@@ -29,7 +29,7 @@ const img = await getImage({src: mask, width: 1588, height: 1008, quality: 90})
             <div class="absolute z-10 aspect-[1366/1024] left-1/2 top-1/2 -translate-x-[51%] -translate-y-[54%] w-[59.1%]">
                 <div class="background-video">
                     <video data-video-el muted crossorigin="anonymous" loop playsinline>
-                        <source src='https://customer-bxnymfcijxht3x73.cloudflarestream.com/c102bf48b3f5ca1d7c1c3edc25aeb707/manifest/video.m3u8' type="video/mp4" />
+                        <div data-src={video}></div>
                     </video>
                 </div>
             </div>

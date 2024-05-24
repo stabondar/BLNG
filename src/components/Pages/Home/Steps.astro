@@ -3,13 +3,12 @@ import Subtitle from "@components/Subtitle.astro"
 import Title from "@components/Title.astro"
 import StepsItems from "./Steps/StepsItems.astro"
 
-import video1 from '/videos/toon_shaded_outline_turntable_yin_yang.mp4'
-import video2 from '/videos/reformated_turntable_yin_yang.mp4'
-import video3 from '/videos/CamAnimated_hand_yin_yang_website_graybg.mp4'
-
 import { getSanity } from "@lib/api"
 
 const section = await getSanity('homeModels')
+const video1 = section[0].video1
+const video2 = section[0].video2
+const video3 = section[0].video3
 
 const items = 
 [

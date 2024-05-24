@@ -15,7 +15,7 @@ const props = Astro.props
     <div class="absolute inset-0 z-0">
         <div class="background-video">
             <video muted crossorigin="anonymous" loop playsinline>
-                <source data-src={props.video} type="video/mp4" />
+                <div data-src={props.video}></div>
             </video>
         </div>
     </div>

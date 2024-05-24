@@ -4,13 +4,15 @@ import ExperienceItem from "./Experience/ExperienceItem.astro";
 import BlurBg from '@components/BlurBg.astro'
 
 import mask from '@static/mac.webp'
-import video from '/Video02.mp4'
+// import video from '/Video02.mp4'
 import { getSanity } from "@lib/api";
 import { getImage } from "astro:assets";
 
 const section = await getSanity('homeMockup')
 
 const img = await getImage({src: mask, format: 'webp', quality: '80', inferSize: true})
+
+const video = section[0].video
 ---
 
 <section class="dark-section pt-48 pb-48 tablet:pt-36 tablet:pb-36 sm:pt-24 sm:pb-24" load-videos>
@@ -26,7 +28,7 @@ const img = await getImage({src: mask, format: 'webp', quality: '80', inferSize:
                 <div class="relative aspect-[1580/1036.73] left-1/2 top-[1.5%] -translate-x-[49.8%] w-[72.5%]">
                     <div class="background-video">
                         <video muted crossorigin="anonymous" loop playsinline>
-                            <source data-src={video} type="video/mp4" />
+                            <div data-src={video}></div>
                         </video>
                     </div>
                 </div>
