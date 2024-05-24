@@ -24,7 +24,7 @@ export default class Pallete extends EventEmitter
         this.loaded = false
 
         
-        this.trigger()
+        // this.init()
     }
 
     update()

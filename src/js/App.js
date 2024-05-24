@@ -42,6 +42,7 @@ export default class App extends EventEmitter
         const burger = await import('@jsComp/Burger.js').then(module => new module.default())
         const cursor = await import('@jsComp/Cursor.js').then(module => new module.default())
         const nav = await import('@jsComp/Nav.js').then(module => new module.default())
+        const loadIMgs = await import('@jsComp/LoadImgs.js').then(module => new module.default())
     }
 
     init()
@@ -110,3 +111,5 @@ export default class App extends EventEmitter
         this.barba = barba
     }
 }   
+
+const app = new App()

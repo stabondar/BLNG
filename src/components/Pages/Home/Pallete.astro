@@ -1,5 +1,5 @@
 ---
-import video from '/Diversity-Skin.mp4?url'
+import video from '/Diversity-Skin.mp4'
 import { getSanity } from "@lib/api"
 import { getRefs } from "@lib/getRefs"
 import { PortableText } from "astro-portabletext";
@@ -36,7 +36,7 @@ const sortedColors = section[0].colors.map(galeryItem =>
 
                 <div class="hidden">
                     <video muted crossorigin="anonymous" loop playsinline>
-                        <source type="video/mp4" />
+                        <source type="video/mp4" data-src={video} />
                     </video>
                 </div>
             </div>

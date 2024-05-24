@@ -8,7 +8,7 @@ export default class LoadImgs
     constructor()
     {
         this.main = document.querySelector('.main')
-        this.sections = document.querySelectorAll('section')
+        this.sections = document.querySelectorAll('section, header')
         // this.sections = [...this.sections].slice(1)
 
         this.init()

@@ -1,5 +1,5 @@
 ---
-// import  SpeedInsights  from "@vercel/speed-insights/astro"
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 import Nav from "@components/Nav/Nav.astro";
 import Cursor from "@components/Cursor.astro";
 import Burger from "@components/Burger.astro";
@@ -50,13 +50,11 @@ const { img } = Astro.props;
 
 		<div class="rule"></div>
 
-		<!-- <SpeedInsights /> -->
+		<SpeedInsights />
 	</body>
 </html>
 
 <script>
 	import '../styles/styles.scss'
-	import app from '@js/App.js'
-
-	const js = new app()
+	import '../js/App.js'
 </script>

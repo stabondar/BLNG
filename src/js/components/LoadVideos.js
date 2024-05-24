@@ -1,5 +1,6 @@
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Hls from 'hls.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -10,7 +11,7 @@ export default class LoadVideos
         this.main = document.querySelector('.main')
         this.sections = document.querySelectorAll('[load-videos]')
 
-        this.init()
+        this.sections.forEach(section => this.loadVideo(section))
     }
 
     init()
@@ -23,6 +24,7 @@ export default class LoadVideos
             {
                 trigger: section,
                 start: 'top 200%',
+
                 onEnter: () => 
                 {
                     !loaded && this.loadVideo(section)
@@ -35,20 +37,23 @@ export default class LoadVideos
 
     loadVideo(section)
     {
-        let videos = section.querySelectorAll('video')
+        let videos = [...section.querySelectorAll('[data-video-el]')]
 
-        videos.forEach(video => 
+        videos.map(el => 
         {
-            let source = video.querySelector('source')
-            let src = source.getAttribute('data-src')
-            source.setAttribute('src', src)
-            video.setAttribute('playsinline', '')
-            video.load()
-            video.muted = true
-            video.currentTime = 0
-            video.play()
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+        
+                const url = el.children[0].src;
+        
+                hls.loadSource(url);
+                hls.attachMedia(el);
+                el.play()
 
-            video.addEventListener('canplay', () => video.play())
+              } else if (el.canPlayType("application/vnd.apple.mpegurl")) 
+                {
+                el.src = url;
+              }
         })
     }
 }
