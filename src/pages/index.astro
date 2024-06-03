@@ -20,6 +20,7 @@ const seo = await getSanity('homeSeo')
 const img = getImageUrl(seo[0].image).url()
 const phraseFirst = await getSanity('homePhraseFirst')
 const phraseSecond = await getSanity('homePhraseSecond')
+const footer = await getSanity("footer")
 ---
 
 <Layout title={seo[0].title} barbaPage="home" descr={seo[0].descr} img={img}>
@@ -44,5 +45,5 @@ const phraseSecond = await getSanity('homePhraseSecond')
 	<Pallete />
 	<DividerSection color="white-section" />
 	<Suite />
-	<Footer />
+	<Footer {...footer[0]}/>
 </Layout>

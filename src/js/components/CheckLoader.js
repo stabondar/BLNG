@@ -16,5 +16,8 @@ export const CheckLoader = async (delay) =>
 
         case 'news-inner':
             return await import('@jsTransition/NewsLoader').then(module => new module.default(delay))
+
+        case 'carear':
+            return await import('@jsTransition/NewsLoader').then(module => new module.default(delay))
     }
 }

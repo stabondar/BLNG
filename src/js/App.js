@@ -43,7 +43,7 @@ export default class App extends EventEmitter
         const cursor = await import('@jsComp/Cursor.js').then(module => new module.default())
         const nav = await import('@jsComp/Nav.js').then(module => new module.default())
         const loadIMgs = await import('@jsComp/LoadImgs.js').then(module => new module.default())
-        const loadVideos = await import('@jsComp/LoadVideos.js').then(module => new module.default())
+        // const loadVideos = await import('@jsComp/LoadVideos.js').then(module => new module.default())
     }
 
     init()

@@ -2,7 +2,7 @@
 {
     .swiper-slide
     {
-        width: min(calc(355 / 16 * 1rem), 50%);
+        // width: min(calc(355 / 16 * 1rem), 50%);
         height: calc(506 / 16 * 1rem);
     }
 }
@@ -44,14 +44,6 @@
 {
     .features_left
     {
-        width: calc(230 / 16 * 1rem);
-    }
-}
-
-@media screen and (max-width: 479px) 
-{
-    .features_left
-    {
         width: auto;
     }
 }
@@ -62,7 +54,7 @@
     {
         .swiper-slide
         {
-            width: min(calc(240 / 16 * 1rem), 100%);
+            // width: min(calc(240 / 16 * 1rem), 100%);
             height: calc(337 / 16 * 1rem);
         }
     }

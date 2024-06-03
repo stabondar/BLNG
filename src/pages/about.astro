@@ -13,6 +13,7 @@ const seo = await getSanity('aboutSeo')
 const img = getImageUrl(seo[0].image).url()
 const hero = await getSanity('aboutHero')
 const team = await getSanity('aboutTeam')
+const footer = await getSanity("footerAbout")
 ---
 
 <Layout title={seo[0].title} barbaPage="about" descr={seo[0].descr} img={img}>
@@ -20,5 +21,5 @@ const team = await getSanity('aboutTeam')
     <DividerSection color="black-section" />
     <AboutLogos {...hero} />
     <AboutTeam {...team} />
-	<Footer />
+	<Footer {...footer[0]}/>
 </Layout>

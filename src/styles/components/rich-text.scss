@@ -90,3 +90,32 @@
         margin-top: 0 !important;
     }
 }
+
+.descr
+{
+    a
+    {
+        display: inline-block;
+        position: relative;
+
+        &::before
+        {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: currentColor;
+            transition: transform var(--color-ease);
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        &:hover::before
+        {
+            transform-origin: right;
+            transform: scaleX(0);
+        }
+    }
+}

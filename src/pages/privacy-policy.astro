@@ -10,6 +10,7 @@ import { PortableText } from "astro-portabletext";
 const seo = await getSanity('homeSeo')
 const privacy = await getSanity('privacy')
 const img = getImageUrl(seo[0].image).url()
+const footer = await getSanity("footer")
 ---
 
 <Layout title={seo[0].title} barbaPage="news" descr={seo[0].descr} img={img}>
@@ -25,5 +26,5 @@ const img = getImageUrl(seo[0].image).url()
             </div>
         </div>
     </section>
-	<Footer />
+	<Footer {...footer[0]}/>
 </Layout>

@@ -12,10 +12,11 @@ import { getSanityOrder } from '@lib/apiOrderable'
 
 const header = await getSanity('blog')
 const posts = await getSanityOrder('blogList')
+const footer = await getSanity("footer")
 ---
 
 <Layout title={seo[0].title} barbaPage="news" descr={seo[0].descr} img={img}>
     <InnerPageHeader title={header[0].title} />
     <PostsList posts={posts} />
-    <Footer />
+    <Footer {...footer[0]}/>
 </Layout>

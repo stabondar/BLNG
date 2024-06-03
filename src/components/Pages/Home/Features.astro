@@ -18,8 +18,8 @@ const sortedSliders = section[0].slides.map(galeryItem =>
 
 <section class="dark-section pt-48 tablet:pt-36 sm:pt-24">
     <div class="_container">
-        <div class="features flex flex-row gap-5 sm:flex-col sm:gap-10">
-            <div class="features_left flex flex-col justify-center gap-48 self-stretch flex-none relative z-10 sm:flex-row sm:justify-between sm:gap-0 sm:w-full sm:items-center">
+        <div class="features flex flex-row gap-5 md:flex-col md:gap-10">
+            <div class="features_left flex flex-col justify-center gap-48 self-stretch flex-none relative z-10 md:flex-row md:justify-between md:gap-10 md:w-full md:items-center sm:gap-4">
                 <div class="_32 relative z-10 sm:text-28">{section[0].title}</div>
                 <div class="flex flex-row gap-2.5 relative z-10">
                     <SliderArrow/>
@@ -27,9 +27,13 @@ const sortedSliders = section[0].slides.map(galeryItem =>
                 </div>
                 <div class="absolute bg-black right-0 top-0 bottom-0 w-dvw"></div>
             </div>
-            <div class="features_slider">
-                <div class="swiper-wrapper flex flex-row">
-                    {sortedSliders.map(slide => <FeaturesItem {...slide}/>)}
+            <div class="w-3/4 tablet:w-[64%] tablet-sm:w-[68%] sm:w-[90%]">
+                <div class="w-full relative">
+                    <div class="features_slider">
+                        <div class="swiper-wrapper flex flex-row">
+                            {sortedSliders.map(slide => <FeaturesItem {...slide}/>)}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

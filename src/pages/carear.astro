@@ -8,13 +8,13 @@ import InnerPageHeader from "@components/InnerPageHeader.astro";
 import { PortableText } from "astro-portabletext";
 
 const seo = await getSanity('homeSeo')
-const privacy = await getSanity('terms')
+const privacy = await getSanity('carear')
 const img = getImageUrl(seo[0].image).url()
 const footer = await getSanity("footer")
 ---
 
-<Layout title={seo[0].title} barbaPage="news" descr={seo[0].descr} img={img}>
-    <InnerPageHeader title={privacy[0].title} descr={privacy[0].descr}/>
+<Layout title={seo[0].title} barbaPage="carear" descr={seo[0].descr} img={img}>
+    <InnerPageHeader title={privacy[0].title} descr={privacy[0].descr} />
     <section>
         <div class="_container">
             <div class="relative pt-14 pb-48 tablet:pb-36 sm:pb-24 grid grid-cols-1 tablet:grid-cols-1 tablet-sm:flex tablet-sm:flex-col tablet-sm:gap-10">

@@ -58,6 +58,7 @@ export const deskStructure = (S, context) => S.list()
                         createSection('SEO', 'aboutSeo', S),
                         createSection('Hero', 'aboutHero', S),
                         createSection('Team', 'aboutTeam', S),
+                        createSection('Footer', 'footerAbout', S),
                         // createOrderableSection('Client Logos', 'aboutLogos', S, context),
                     ])
             ),
@@ -88,6 +89,7 @@ export const deskStructure = (S, context) => S.list()
                     [
                         createSection('Privacy policy', 'privacy', S),
                         createSection('Terms & Conditions', 'terms', S),
+                        createSection('Carear', 'carear', S),
                     ])
             ),
 
@@ -96,7 +98,7 @@ export const deskStructure = (S, context) => S.list()
             ![
                 'homeHero', 'beforeAfter', 'homeDesign', 'homePhraseFirst', 'homePhraseSecond', 'features', 'homeFeatures',
                 'aboutHero', 'aboutLogos', 'team', 'aboutTeam', 'blogList', 'blog', 'homeMockup', 'homePhone', 'homeModels',
-                'galeryItem', 'galeryHome', 'homeColors', 'colorItem', 'services', 'footer', 'homeSeo', 'aboutSeo', 'blogSeo', 'privacy', 'terms'
+                'galeryItem', 'galeryHome', 'homeColors', 'colorItem', 'services', 'footer', 'homeSeo', 'aboutSeo', 'blogSeo', 'privacy', 'terms', 'footerAbout', 'carear'
             ]
             .includes(listItem.getId())),
     ])

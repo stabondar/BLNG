@@ -28,10 +28,12 @@ import aboutSeo from "./pages/about/aboutSeo"
 import blogSeo from "./pages/blog/blogSeo"
 import privacy from "./pages/privacy"
 import terms from "./pages/terms"
+import footerAbout from "./pages/about/footerAbout"
+import carear from "./pages/carear/carear"
 
 export const schemaTypes = 
 [
     beforeAfter, hero, text, design, 
     phraseFirst, phraseSecond, features, featuresSection, aboutHero, aboutLogos, team, aboutTeam,
-    blogList, blogPage, mockup, phoneSection, models, galeryItem, galery, colors, colorsItem, services, footer, homeSeo, aboutSeo, blogSeo, privacy, terms
+    blogList, blogPage, mockup, phoneSection, models, galeryItem, galery, colors, colorsItem, services, footer, homeSeo, aboutSeo, blogSeo, privacy, terms, footerAbout, carear
 ]

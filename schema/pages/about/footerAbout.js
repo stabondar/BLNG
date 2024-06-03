@@ -2,7 +2,7 @@ import customHeading from "@schema/customHeading"
 
 export default
 {
-    name: 'footer',
+    name: 'footerAbout',
     title: 'Footer',
     type: 'document',
     fields: 

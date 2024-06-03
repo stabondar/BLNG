@@ -22,9 +22,24 @@ export default class Features
         {
             speed: 1000,
             spaceBetween: 20,
-            slidesPerView: 'auto',
+            slidesPerView: 3,
             preventInteractionOnTransition: true,
             grabCursor: true,
+            breakpoints: 
+            {
+                1280:
+                {
+                    slidesPerView: 3
+                },
+                768:
+                {
+                    slidesPerView: 2
+                },
+                300:
+                {
+                    slidesPerView: 1.2
+                },
+            }
         })
 
         this.arrowPrev.addEventListener('click', () => this.swiper.slidePrev())
