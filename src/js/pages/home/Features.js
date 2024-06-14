@@ -1,5 +1,7 @@
 import Swiper from 'swiper';
+import { FreeMode } from 'swiper/modules';
 import 'swiper/css'
+import 'swiper/css/free-mode'
 
 export default class Features
 {
@@ -20,10 +22,15 @@ export default class Features
     {
         this.swiper = new Swiper(this.sliderParent, 
         {
+            modules: [FreeMode],
             speed: 1000,
             spaceBetween: 20,
             slidesPerView: 3,
-            preventInteractionOnTransition: true,
+            preventInteractionOnTransition: false,
+            freeMode: 
+            {
+                enabled: true,  
+            },
             grabCursor: true,
             breakpoints: 
             {
@@ -33,6 +40,7 @@ export default class Features
                 },
                 768:
                 {
+                    freeMode: false,
                     slidesPerView: 2
                 },
                 300:

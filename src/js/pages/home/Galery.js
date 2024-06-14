@@ -14,6 +14,7 @@ export default class Galery extends EventEmitter
         this.cursor = document.querySelector('.cursor')
         this.cursorText = this.cursor.querySelector('._14')
         this.list = document.querySelector('.galery_list')
+        this.items = this.list.querySelectorAll('.swiper-slide')
         this.section = document.querySelector('.galery')
         if(this.section.length === 0) return
         this.mainSlider = this.section.querySelector('.galery_slider')
@@ -76,9 +77,6 @@ export default class Galery extends EventEmitter
         this.slidePrev.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Previous')
         this.slideNext.addEventListener('mouseenter', () => this.cursorText.innerHTML = 'Next')
 
-        // swiper.controller.control = previewSwiper
-        // previewSwiper.controller.control = swiper
-
         this.swiper.on('slideChange', () => 
         {
             let index = this.swiper.realIndex
@@ -88,6 +86,8 @@ export default class Galery extends EventEmitter
 
             this.tabs.forEach(tab => tab.classList.remove('active'))
             this.tabs[tab].classList.add('active')
+
+            this.changeAutoPlay(this.swiper.realIndex)
         })
 
         this.tabs.forEach((tab, index) =>
@@ -129,5 +129,23 @@ export default class Galery extends EventEmitter
     {
         this.trigger('tick')
         window.requestAnimationFrame(() => this.update())
+    }
+
+    changeAutoPlay(index)
+    {
+        const currentSlide = this.slides[index]
+        const video = currentSlide.querySelector('video')
+
+        if(video)
+        {
+            this.swiper.autoplay.stop()
+            const duration = video.duration * 1000
+
+            setTimeout(() =>
+            {
+                this.swiper.autoplay.start()
+                this.swiper.slideNext()
+            }, duration)
+        }
     }
 }

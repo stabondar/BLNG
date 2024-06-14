@@ -58,7 +58,10 @@ export default class LoadVideos
 
                 hls.on(Hls.Events.MANIFEST_PARSED, function() 
                 {
-                    hls.currentLevel = hls.levels.length - 1;
+                    hls.currentLevel = hls.levels.length - 1
+
+                    const chosenLevel = Math.min(highestLevel, someNetworkSpeedThreshold)
+                    hls.currentLevel = chosenLevel
                 })
 
                 hls.loadSource(url)

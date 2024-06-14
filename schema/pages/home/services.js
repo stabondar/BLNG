@@ -32,6 +32,11 @@ export default
             title: 'Item 1 Button Link',
         },
         {
+            name: 'item1btnText',
+            type: 'string',
+            title: 'Item 1 Button Text',
+        },
+        {
             name: 'item1linktarget',
             type: 'boolean',
             title: 'Item 1 Button open in new tab?',
@@ -61,6 +66,11 @@ export default
             title: 'Item 2 Button Link',
         },
         {
+            name: 'item2btnText',
+            type: 'string',
+            title: 'Item 2 Button Text',
+        },
+        {
             name: 'item2linktarget',
             type: 'boolean',
             title: 'Item 2 Button open in new tab?',
@@ -88,6 +98,11 @@ export default
             name: 'item3link',
             type: 'string',
             title: 'Item 3 Button Link',
+        },
+        {
+            name: 'item3btnText',
+            type: 'string',
+            title: 'Item 3 Button Text',
         },
         {
             name: 'item3linktarget',
