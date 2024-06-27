@@ -31,10 +31,10 @@ export default class Phone
         {
             isDesktop: `(min-width: ${this.breakpoint + 1}px)`,
             isMobile: `(max-width: ${this.breakpoint}px)`
-        }, (context) => 
+        }, (context) =>
         {
             let {isDesktop, isMobile} = context.conditions
-            
+
             this.tl.fromTo(this.mask, {width: '120vw'}, {width: isDesktop ? '340px': '220px'})
             .fromTo(this.canvasItem, {marginTop: '50%'}, {marginTop: '19%'}, '<')
             .fromTo(this.title, {opacity: 0}, {opacity: 1}, '<80%')
@@ -50,11 +50,13 @@ export default class Phone
             scrub: true, animation: this.tl
         })
 
-        ScrollTrigger.create(
-        {
-            trigger: this.section, start: 'top 300%',
-            onEnter: () => !this.loaded && this.sequence() 
-        })
+        // ScrollTrigger.create(
+        // {
+        //     trigger: this.section, start: 'top 300%',
+        //     onEnter: () => !this.loaded && this.sequence()
+        // })
+
+        this.sequence(  )
     }
 
     sequence()
@@ -74,26 +76,26 @@ export default class Phone
         this.setCanvasSize()
 
         const frameCount = 140
-        const urlStart = '/sequence/'
+        const urlStart = '/clientSequence/'
         const urlEnd = '.jpg'
         const floatingZeros = 3
         const currentFrame = (index) => `${urlStart}${(index + 1).toString().padStart(floatingZeros, "0")}${urlEnd}`
         this.images = []
         this.imageFrames = { frame: 0 }
 
-        for (let i = 0; i < frameCount; i++) 
+        for (let i = 0; i < frameCount; i++)
         {
             const img = new Image()
             img.src = currentFrame(i)
             this.images.push(img)
         }
 
-        gsap.to(this.imageFrames, 
+        gsap.to(this.imageFrames,
         {
             frame: frameCount - 1,
             snap: "frame",
             ease: "none",
-            scrollTrigger: 
+            scrollTrigger:
             {
                 trigger: this.section, start: 'top top', end: 'bottom 150%', scrub: true
             },
@@ -107,15 +109,15 @@ export default class Phone
 
         window.addEventListener("resize", () =>
         {
-            if (iOS) 
+            if (iOS)
             {
                 clearTimeout(resizeTimer)
-                resizeTimer = setTimeout(() => 
+                resizeTimer = setTimeout(() =>
                 {
                     this.setCanvasSize()
                     this.render()
                 }, 250)
-            } else 
+            } else
             {
                 this.setCanvasSize()
                 this.render()
@@ -133,7 +135,7 @@ export default class Phone
         this.drawImageProp(this.context, this.images[this.imageFrames.frame], 0, 0, this.sizes.width, this.sizes.height, 0.5, 0.5)
     }
 
-    setCanvasSize() 
+    setCanvasSize()
     {
         this.sizes.width = this.canvas.getBoundingClientRect().width
         this.sizes.height = this.canvas.getBoundingClientRect().height
@@ -141,7 +143,7 @@ export default class Phone
         this.canvas.height = this.sizes.height
     }
 
-    drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) 
+    drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY)
     {
         if (arguments.length === 2) {
         x = y = 0

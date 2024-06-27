@@ -1,4 +1,4 @@
----  
+---
 import Subtitle from "@components/Subtitle.astro"
 import Title from "@components/Title.astro"
 import VideoSectionBg from './VideoSection/VideoSectionBg.astro'
@@ -23,7 +23,7 @@ const video = section[0].video
 
         <div class="video-parent video-section relative w-full aspect-[1588/1008] sm:scale-150 sm:mt-20">
             <div class="absolute inset-0 z-20 pointer-events-none">
-                <img data-src={img.src} alt="">
+                <img src={img.src} alt="">
             </div>
             <BlurBg />
             <div class="absolute z-10 aspect-[1366/1024] left-1/2 top-1/2 -translate-x-[51%] -translate-y-[54%] w-[59.1%]">

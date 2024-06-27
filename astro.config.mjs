@@ -7,17 +7,20 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig(
 {
-    image: 
+    image:
     {
         service: squooshImageService()
     },
     output: "static",
-    adapter: vercel(),
-    vite: 
+    adapter: vercel(
+    {
+        webAnalytics: { enabled: true }
+    }),
+    vite:
     {
         // plugins: [glsl()]
     },
-    integrations: 
+    integrations:
     [
         tailwind(),
         sanity(
@@ -27,7 +30,7 @@ export default defineConfig(
             useCdn: false,
             apiVersion: "2024-04-26",
             studioBasePath: "/admin",
-        }), 
+        }),
     // react()
     react()
     ]
